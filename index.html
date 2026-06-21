@@ -20,6 +20,30 @@
   @keyframes heroIn{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
   @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
   @keyframes pulsing{0%{box-shadow:0 0 0 0 rgba(78,158,46,.5)}70%{box-shadow:0 0 0 9px rgba(78,158,46,0)}100%{box-shadow:0 0 0 0 rgba(78,158,46,0)}}
+  img{max-width:100%}
+  @media (max-width:820px){
+    nav > div{padding-left:16px!important;padding-right:16px!important;gap:10px!important}
+    [data-navlinks]{display:none!important}
+    [data-navhide]{display:none!important}
+    nav a[href="#community"]{padding:9px 14px!important;font-size:13px!important}
+    header#top{padding:46px 18px 58px!important}
+    section{padding-top:66px!important;padding-bottom:66px!important;padding-left:18px!important;padding-right:18px!important}
+    [style*="grid-template-columns:1.05fr .95fr"]{grid-template-columns:1fr!important;gap:38px!important}
+    [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:repeat(2,1fr)!important}
+    [style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr!important}
+    [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;gap:34px!important}
+    [style*="grid-template-columns:.9fr 1.1fr"]{grid-template-columns:1fr!important;gap:34px!important}
+    [style*="grid-template-columns:auto 1fr"]{grid-template-columns:auto 1fr!important;gap:18px!important}
+    [style*="1.6fr 1fr 1fr 1fr"]{grid-template-columns:1.25fr .9fr .9fr .9fr!important}
+    [style*="1.6fr 1fr 1fr 1fr"] > div{padding-left:7px!important;padding-right:7px!important;font-size:12px!important}
+    [data-overlaytext]{position:relative!important;inset:auto!important;max-width:100%!important;padding:30px 20px 38px!important;justify-content:flex-start!important}
+    blockquote{padding:30px 22px!important}
+  }
+  @media (max-width:480px){
+    [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr 1fr!important;gap:12px!important}
+    section{padding-left:16px!important;padding-right:16px!important}
+    header#top{padding-left:16px!important;padding-right:16px!important}
+  }
 </style>
 </helmet>
 
@@ -34,7 +58,7 @@
       </span>
       <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;letter-spacing:-.01em">IMMT<span style="color:#C8841C">AI</span></span>
     </a>
-    <div style="display:flex;align-items:center;gap:30px;font-size:15px;font-weight:500;color:#6E6149">
+    <div data-navlinks style="display:flex;align-items:center;gap:30px;font-size:15px;font-weight:500;color:#6E6149">
       <a href="#platform" style="transition:color .2s" style-hover="color:#C8841C">Platform</a>
       <a href="#pipeline" style="transition:color .2s" style-hover="color:#C8841C">Intelligence</a>
       <a href="#markets" style="transition:color .2s" style-hover="color:#C8841C">Markets</a>
@@ -42,7 +66,7 @@
       <a href="#team" style="transition:color .2s" style-hover="color:#C8841C">Team</a>
     </div>
     <div style="display:flex;align-items:center;gap:12px">
-      <a href="#docs" style="padding:9px 16px;border-radius:10px;border:1px solid #DDD0B4;font-weight:600;font-size:14px;color:#221A0E;transition:all .2s" style-hover="border-color:#C8841C;color:#C8841C">Read Docs</a>
+      <a href="#docs" data-navhide style="padding:9px 16px;border-radius:10px;border:1px solid #DDD0B4;font-weight:600;font-size:14px;color:#221A0E;transition:all .2s" style-hover="border-color:#C8841C;color:#C8841C">Read Docs</a>
       <a href="#community" style="padding:9px 18px;border-radius:10px;background:linear-gradient(135deg,#E8A93A,#C8841C);color:#fff;font-weight:600;font-size:14px;box-shadow:0 8px 20px rgba(200,132,28,.3);transition:transform .2s" style-hover="transform:translateY(-2px)">Join Community</a>
     </div>
   </div>
@@ -124,7 +148,7 @@
           </svg>
         </div>
 
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px">
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:14px">
           <div style="background:#29200F;border:1px solid #3B2F19;border-radius:11px;padding:10px"><div style="font-size:11px;color:#9A8A6B;font-family:'JetBrains Mono',monospace">WIN RATE</div><div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:16px;color:#F2E9D6">71.4%</div></div>
           <div style="background:#29200F;border:1px solid #3B2F19;border-radius:11px;padding:10px"><div style="font-size:11px;color:#9A8A6B;font-family:'JetBrains Mono',monospace">MAX DD</div><div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:16px;color:#F0B94A">5.0%</div></div>
           <div style="background:#29200F;border:1px solid #3B2F19;border-radius:11px;padding:10px"><div style="font-size:11px;color:#9A8A6B;font-family:'JetBrains Mono',monospace">OPEN</div><div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:16px;color:#F2E9D6">37</div></div>
@@ -150,7 +174,7 @@
     <div style="position:relative;overflow:hidden">
       <img src="assets/agents-portfolio.png" alt="100 AI agents building your portfolio" style="width:100%;display:block;object-fit:cover">
       <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,15,9,.84) 0%,rgba(20,15,9,.38) 38%,rgba(20,15,9,0) 62%)"></div>
-      <div style="position:absolute;left:0;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;padding:0 6vw;max-width:620px;color:#fff">
+      <div data-overlaytext style="position:absolute;left:0;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;padding:0 6vw;max-width:620px;color:#fff">
         <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;color:#F0B94A;text-transform:uppercase;margin-bottom:14px" data-reveal>Proof of life</div>
         <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,3.4vw,46px);line-height:1.08;letter-spacing:-.02em;margin:0" data-reveal>100 AI agents. One portfolio.<br>Building 24/7 — on camera.</h2>
         <p style="font-size:17px;line-height:1.55;color:#D8CCB4;margin:18px 0 0;max-width:440px" data-reveal>Every entry, every exit, every retrain — livestreamed and logged on-chain. Nothing hidden behind a black box.</p>
@@ -580,11 +604,9 @@
     </div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
       <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:24px;display:flex;gap:16px;align-items:center"><div style="width:50px;height:50px;border-radius:12px;background:#FBEBC8;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;color:#C8841C;flex:none">DK</div><div><div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;color:#221A0E">Douglas Kim</div><div style="font-size:13.5px;color:#8A7C61;margin-top:2px">Chief Project Manager</div></div></div>
-      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:24px;display:flex;gap:16px;align-items:center"><div style="width:50px;height:50px;border-radius:12px;background:#FBEBC8;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;color:#C8841C;flex:none">WS</div><div><div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;color:#221A0E">Woozie &amp; Soozie</div><div style="font-size:13.5px;color:#8A7C61;margin-top:2px">Head of Product Development</div></div></div>
-      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:24px;display:flex;gap:16px;align-items:center"><div style="width:50px;height:50px;border-radius:12px;background:#FBEBC8;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;color:#C8841C;flex:none">SA</div><div><div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;color:#221A0E">Samuel</div><div style="font-size:13.5px;color:#8A7C61;margin-top:2px">CMO — Growth &amp; Community</div></div></div>
+      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:24px;display:flex;gap:16px;align-items:center"><div style="width:50px;height:50px;border-radius:12px;background:#FBEBC8;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;color:#C8841C;flex:none">SO</div><div><div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;color:#221A0E">Samuel Olaide</div><div style="font-size:13.5px;color:#8A7C61;margin-top:2px">CMO — Marketing &amp; BD</div></div></div>
       <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:24px;display:flex;gap:16px;align-items:center"><div style="width:50px;height:50px;border-radius:12px;background:#FBEBC8;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;color:#C8841C;flex:none">NU</div><div><div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;color:#221A0E">Nuel</div><div style="font-size:13.5px;color:#8A7C61;margin-top:2px">Design Lead</div></div></div>
-      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:24px;display:flex;gap:16px;align-items:center"><div style="width:50px;height:50px;border-radius:12px;background:#FBEBC8;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;color:#C8841C;flex:none">KY</div><div><div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;color:#221A0E">Kyu</div><div style="font-size:13.5px;color:#8A7C61;margin-top:2px">Chief Business Development Officer</div></div></div>
-      <div data-reveal style="background:#F3EAD7;border:1px solid #EBE0CA;border-radius:16px;padding:24px;display:flex;align-items:center;justify-content:center;text-align:center"><div><div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:24px;color:#C8841C">20+</div><div style="font-size:13.5px;color:#6E6149;margin-top:2px">team members across product, growth &amp; infrastructure</div></div></div>
+      <div data-reveal style="background:#F3EAD7;border:1px solid #EBE0CA;border-radius:16px;padding:24px;display:flex;align-items:center;justify-content:center;text-align:center"><div><div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:#C8841C">Building in the open</div><div style="font-size:13.5px;color:#6E6149;margin-top:6px">A lean team shipping live, on camera, every day</div></div></div>
     </div>
   </div>
 </section>
@@ -594,7 +616,7 @@
   <div style="position:relative;max-width:1240px;margin:0 auto;overflow:hidden">
     <img src="assets/knight-guardian.png" alt="IMMT guardian" style="width:100%;display:block;object-fit:cover">
     <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,15,9,.92) 0%,rgba(20,15,9,.45) 45%,rgba(20,15,9,.2) 100%)"></div>
-    <div style="position:absolute;left:0;right:0;bottom:0;padding:0 6vw 7vh;color:#fff">
+    <div data-overlaytext style="position:absolute;left:0;right:0;bottom:0;padding:0 6vw 7vh;color:#fff">
       <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,4vw,54px);line-height:1.05;letter-spacing:-.02em;margin:0;max-width:760px" data-reveal>The agent is running.<br>The only thing missing is <span style="color:#F0B94A">you.</span></h2>
       <div style="display:flex;flex-wrap:wrap;gap:13px;margin-top:30px" data-reveal>
         <a href="https://youtube.com/@terafarm9093" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;padding:14px 22px;border-radius:13px;background:#fff;color:#221A0E;font-weight:600;font-size:16px;transition:transform .2s" style-hover="transform:translateY(-3px)"><svg width="18" height="18" viewBox="0 0 24 24" fill="#FF0000"><path d="M23 12c0-2.3-.2-3.9-.5-5-.3-1-1-1.7-2-2C18.9 4.5 12 4.5 12 4.5s-6.9 0-8.5.5c-1 .3-1.7 1-2 2C1.2 8.1 1 9.7 1 12s.2 3.9.5 5c.3 1 1 1.7 2 2 1.6.5 8.5.5 8.5.5s6.9 0 8.5-.5c1-.3 1.7-1 2-2 .3-1.1.5-2.7.5-5z"/><path d="M9.8 15.5l5.7-3.5-5.7-3.5z" fill="#fff"/></svg>Watch Live</a>
@@ -615,10 +637,10 @@
     <div style="display:flex;gap:24px;font-size:14px;flex-wrap:wrap">
       <a href="https://youtube.com/@terafarm9093" target="_blank" rel="noopener" style="transition:color .2s" style-hover="color:#F0B94A">YouTube</a>
       <a href="https://t.me/IMMT_group" target="_blank" rel="noopener" style="transition:color .2s" style-hover="color:#F0B94A">Telegram · IMMT_group</a>
-      <a href="#" style="transition:color .2s" style-hover="color:#F0B94A">X · @IMMTAI</a>
+      <a href="https://x.com/IMMT_io" target="_blank" rel="noopener" style="transition:color .2s" style-hover="color:#F0B94A">X · @IMMT_io</a>
       <a href="https://immt.io" target="_blank" rel="noopener" style="transition:color .2s" style-hover="color:#F0B94A">immt.io</a>
     </div>
-    <div style="font-size:13px;color:#7A6E55;font-family:'JetBrains Mono',monospace">IMMT · Autonomous Trading Intelligence · Seoul, Korea</div>
+    <div style="font-size:13px;color:#7A6E55;font-family:'JetBrains Mono',monospace">IMMT · Autonomous Trading Intelligence</div>
   </div>
 </footer>
 
@@ -733,6 +755,26 @@ class Component extends DCLogic {
         '<div style="padding:16px;text-align:center">' + cell(r[3]) + '</div>' +
       '</div>'
     ).join('');
+  }
+  setupDashTabs(){
+    const tc = document.getElementById('tab-crypto');
+    const tn = document.getElementById('tab-nasdaq');
+    const fc = document.getElementById('frame-crypto');
+    const fn = document.getElementById('frame-nasdaq');
+    if (!tc || !tn || !fc || !fn) return;
+    const apply = (btn, on) => {
+      btn.style.background = on ? 'linear-gradient(135deg,#E8A93A,#C8841C)' : 'transparent';
+      btn.style.color = on ? '#fff' : '#C2B594';
+      btn.style.boxShadow = on ? '0 8px 20px rgba(200,132,28,.35)' : 'none';
+    };
+    const set = (crypto) => {
+      apply(tc, crypto);
+      apply(tn, !crypto);
+      fc.style.display = crypto ? 'block' : 'none';
+      fn.style.display = crypto ? 'none' : 'block';
+    };
+    tc.onclick = () => set(true);
+    tn.onclick = () => set(false);
   }
 }
 </script>

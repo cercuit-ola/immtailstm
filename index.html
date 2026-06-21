@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:'Hanken Grotesk',sans-serif;color:#221A0E;background:#FBF6EA;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  ::selection{background:#E0A92E;color:#221A0E}
+  a{text-decoration:none;color:inherit}
+  @keyframes heroIn{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+  @keyframes pulsing{0%{box-shadow:0 0 0 0 rgba(78,158,46,.5)}70%{box-shadow:0 0 0 9px rgba(78,158,46,0)}100%{box-shadow:0 0 0 0 rgba(78,158,46,0)}}
+</style>
+</helmet>
+
+<div style="overflow-x:hidden;background:#FBF6EA">
+
+<!-- ============ NAV ============ -->
+<nav style="position:sticky;top:0;z-index:100;backdrop-filter:saturate(160%) blur(14px);background:rgba(251,246,234,.8);border-bottom:1px solid #EBE0CA">
+  <div style="max-width:1240px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a href="#top" style="display:flex;align-items:center;gap:11px">
+      <span style="width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#E8A93A,#C8841C);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(200,132,28,.35)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 14L9 6L12 10L15 4L20 14" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="20" cy="14" r="1.8" fill="#fff"/></svg>
+      </span>
+      <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;letter-spacing:-.01em">IMMT<span style="color:#C8841C">AI</span></span>
+    </a>
+    <div style="display:flex;align-items:center;gap:30px;font-size:15px;font-weight:500;color:#6E6149">
+      <a href="#platform" style="transition:color .2s" style-hover="color:#C8841C">Platform</a>
+      <a href="#pipeline" style="transition:color .2s" style-hover="color:#C8841C">Intelligence</a>
+      <a href="#markets" style="transition:color .2s" style-hover="color:#C8841C">Markets</a>
+      <a href="#traction" style="transition:color .2s" style-hover="color:#C8841C">Traction</a>
+      <a href="#team" style="transition:color .2s" style-hover="color:#C8841C">Team</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <a href="#docs" style="padding:9px 16px;border-radius:10px;border:1px solid #DDD0B4;font-weight:600;font-size:14px;color:#221A0E;transition:all .2s" style-hover="border-color:#C8841C;color:#C8841C">Read Docs</a>
+      <a href="#community" style="padding:9px 18px;border-radius:10px;background:linear-gradient(135deg,#E8A93A,#C8841C);color:#fff;font-weight:600;font-size:14px;box-shadow:0 8px 20px rgba(200,132,28,.3);transition:transform .2s" style-hover="transform:translateY(-2px)">Join Community</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header id="top" style="position:relative;background:radial-gradient(1100px 600px at 78% -8%,#FBE8C8 0%,rgba(251,232,200,0) 60%),linear-gradient(180deg,#FBF6EA 0%,#F6EFDD 100%);padding:72px 32px 90px;overflow:hidden">
+  <div aria-hidden="true" style="position:absolute;inset:0;background-image:linear-gradient(#C8841C14 1px,transparent 1px),linear-gradient(90deg,#C8841C14 1px,transparent 1px);background-size:54px 54px;mask-image:radial-gradient(900px 520px at 75% 10%,#000 0%,transparent 70%);opacity:.7"></div>
+  <div style="position:relative;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center">
+    <div>
+      <div style="display:inline-flex;align-items:center;gap:9px;padding:7px 14px;border-radius:999px;background:#fff;border:1px solid #EAD9B4;font-size:13px;font-weight:600;color:#8A6212;box-shadow:0 4px 14px rgba(200,132,28,.1);animation:heroIn .7s 0s both">
+        <span style="width:8px;height:8px;border-radius:50%;background:#4E9E2E;animation:blink 1.6s infinite"></span>
+        Non-custodial · 100 agents trading live now
+      </div>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(38px,4.6vw,62px);line-height:1.04;letter-spacing:-.025em;margin:22px 0 0;animation:heroIn .7s .08s both">
+        Own autonomous trading agents.<br>
+        <span style="background:linear-gradient(110deg,#E8A93A,#C8841C);-webkit-background-clip:text;background-clip:text;color:transparent">Keep full custody.</span> Trade with discipline.
+      </h1>
+      <p style="font-size:19px;line-height:1.55;color:#6E6149;max-width:560px;margin:22px 0 0;animation:heroIn .7s .16s both">
+        IMMT AI deploys self-evolving LSTM agents to trade crypto derivatives and Nasdaq futures 24/7. Built for traders. Designed for volatility. <strong style="color:#221A0E">Obsessed with survival first.</strong>
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:13px;margin-top:30px;animation:heroIn .7s .24s both">
+        <a href="#watch" style="display:inline-flex;align-items:center;gap:9px;padding:15px 24px;border-radius:13px;background:linear-gradient(135deg,#E8A93A,#C8841C);color:#fff;font-weight:600;font-size:16px;box-shadow:0 12px 26px rgba(200,132,28,.34);transition:transform .2s" style-hover="transform:translateY(-3px)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg> Watch Live Trading
+        </a>
+        <a href="#community" style="padding:15px 24px;border-radius:13px;background:#fff;border:1px solid #DDD0B4;color:#221A0E;font-weight:600;font-size:16px;transition:all .2s" style-hover="border-color:#C8841C;color:#C8841C;transform:translateY(-3px)">Join Community</a>
+        <a href="#docs" style="padding:15px 24px;border-radius:13px;background:#fff;border:1px solid #DDD0B4;color:#221A0E;font-weight:600;font-size:16px;transition:all .2s" style-hover="border-color:#C8841C;color:#C8841C;transform:translateY(-3px)">Read Docs</a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:42px;animation:heroIn .7s .32s both">
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:32px;color:#221A0E;letter-spacing:-.02em"><span data-count="100">100</span></div>
+          <div style="font-size:13px;color:#8A7C61;font-weight:500;margin-top:2px">Live Agents</div>
+        </div>
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:32px;color:#221A0E;letter-spacing:-.02em"><span data-count="2">2</span><span style="font-size:20px;color:#C8841C">yr+</span></div>
+          <div style="font-size:13px;color:#8A7C61;font-weight:500;margin-top:2px">Market Training</div>
+        </div>
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:32px;color:#221A0E;letter-spacing:-.02em"><span data-count="40">40</span><span style="font-size:20px;color:#C8841C">K+</span></div>
+          <div style="font-size:13px;color:#8A7C61;font-weight:500;margin-top:2px">Community</div>
+        </div>
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:32px;color:#4E9E2E;letter-spacing:-.02em"><span data-count="0">0</span></div>
+          <div style="font-size:13px;color:#8A7C61;font-weight:500;margin-top:2px">Liquidations</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIVE DASHBOARD WIDGET -->
+    <div style="animation:heroIn .8s .3s both">
+      <div style="position:relative;background:#1E1710;border-radius:22px;padding:20px;box-shadow:0 30px 70px -20px rgba(30,23,16,.55),0 0 0 1px rgba(255,255,255,.04) inset;color:#F2E9D6">
+        <div style="position:absolute;top:-13px;right:22px;display:flex;align-items:center;gap:7px;padding:7px 13px;border-radius:999px;background:#4E9E2E;color:#06210A;font-weight:700;font-size:12px;font-family:'JetBrains Mono',monospace;animation:pulsing 2.2s infinite">
+          <span style="width:7px;height:7px;border-radius:50%;background:#06210A;animation:blink 1.2s infinite"></span>LIVE
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+          <div>
+            <div style="font-size:12px;color:#9A8A6B;font-family:'JetBrains Mono',monospace;letter-spacing:.04em">TRADING FLOOR</div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px">100 agents active</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:12px;color:#9A8A6B;font-family:'JetBrains Mono',monospace">PnL TODAY</div>
+            <div id="pnl-today" style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:20px;color:#6FBF3E">+2.40%</div>
+          </div>
+        </div>
+
+        <div style="background:#29200F;border:1px solid #3B2F19;border-radius:14px;padding:14px 14px 8px;margin-bottom:14px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
+            <span style="font-size:12px;color:#9A8A6B;font-family:'JetBrains Mono',monospace">EQUITY · 30D</span>
+            <span style="font-size:12px;color:#6FBF3E;font-family:'JetBrains Mono',monospace;font-weight:600">▲ compounding</span>
+          </div>
+          <svg viewBox="0 0 320 110" width="100%" height="92" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="ln" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#E8A93A"/><stop offset="1" stop-color="#F0B94A"/></linearGradient>
+              <linearGradient id="ar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E8A93A" stop-opacity=".34"/><stop offset="1" stop-color="#E8A93A" stop-opacity="0"/></linearGradient>
+            </defs>
+            <path d="M0,92 L26,86 L52,89 L80,70 L106,76 L134,56 L162,62 L190,42 L218,49 L246,28 L274,34 L300,16 L320,12 L320,110 L0,110 Z" fill="url(#ar)"/>
+            <path d="M0,92 L26,86 L52,89 L80,70 L106,76 L134,56 L162,62 L190,42 L218,49 L246,28 L274,34 L300,16 L320,12" fill="none" stroke="url(#ln)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="320" cy="12" r="4" fill="#F0B94A"><animate attributeName="opacity" values="1;.3;1" dur="1.4s" repeatCount="indefinite"/></circle>
+          </svg>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px">
+          <div style="background:#29200F;border:1px solid #3B2F19;border-radius:11px;padding:10px"><div style="font-size:11px;color:#9A8A6B;font-family:'JetBrains Mono',monospace">WIN RATE</div><div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:16px;color:#F2E9D6">71.4%</div></div>
+          <div style="background:#29200F;border:1px solid #3B2F19;border-radius:11px;padding:10px"><div style="font-size:11px;color:#9A8A6B;font-family:'JetBrains Mono',monospace">MAX DD</div><div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:16px;color:#F0B94A">5.0%</div></div>
+          <div style="background:#29200F;border:1px solid #3B2F19;border-radius:11px;padding:10px"><div style="font-size:11px;color:#9A8A6B;font-family:'JetBrains Mono',monospace">OPEN</div><div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:16px;color:#F2E9D6">37</div></div>
+        </div>
+
+        <div style="display:flex;gap:8px;margin-bottom:10px">
+          <div style="flex:1;display:flex;align-items:center;justify-content:space-between;background:#29200F;border:1px solid #3B2F19;border-radius:11px;padding:9px 12px;font-family:'JetBrains Mono',monospace"><span style="font-size:12px;color:#9A8A6B">ETH/USDT</span><span id="eth-price" style="font-size:13px;font-weight:600;color:#F2E9D6">$3,284.50</span></div>
+          <div style="flex:1;display:flex;align-items:center;justify-content:space-between;background:#29200F;border:1px solid #3B2F19;border-radius:11px;padding:9px 12px;font-family:'JetBrains Mono',monospace"><span style="font-size:12px;color:#9A8A6B">BTC/USDT</span><span id="btc-price" style="font-size:13px;font-weight:600;color:#F2E9D6">$67,120.00</span></div>
+        </div>
+
+        <div style="background:#29200F;border:1px solid #3B2F19;border-radius:13px;overflow:hidden">
+          <div style="padding:9px 12px;font-size:11px;color:#9A8A6B;font-family:'JetBrains Mono',monospace;letter-spacing:.05em;border-bottom:1px solid #3B2F19">LIVE EXECUTIONS</div>
+          <div id="agent-feed"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ SHOWCASE BAND ============ -->
+<section style="background:#1E1710;padding:0">
+  <div style="max-width:1240px;margin:0 auto;position:relative">
+    <div style="position:relative;overflow:hidden">
+      <img src="assets/agents-portfolio.png" alt="100 AI agents building your portfolio" style="width:100%;display:block;object-fit:cover">
+      <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,15,9,.84) 0%,rgba(20,15,9,.38) 38%,rgba(20,15,9,0) 62%)"></div>
+      <div style="position:absolute;left:0;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;padding:0 6vw;max-width:620px;color:#fff">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;color:#F0B94A;text-transform:uppercase;margin-bottom:14px" data-reveal>Proof of life</div>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,3.4vw,46px);line-height:1.08;letter-spacing:-.02em;margin:0" data-reveal>100 AI agents. One portfolio.<br>Building 24/7 — on camera.</h2>
+        <p style="font-size:17px;line-height:1.55;color:#D8CCB4;margin:18px 0 0;max-width:440px" data-reveal>Every entry, every exit, every retrain — livestreamed and logged on-chain. Nothing hidden behind a black box.</p>
+        <a href="#watch" style="margin-top:24px;display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:12px;background:#fff;color:#221A0E;font-weight:600;width:max-content;transition:transform .2s" style-hover="transform:translateY(-3px)" data-reveal>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#FF0000"><path d="M23 12c0-2.3-.2-3.9-.5-5-.3-1-1-1.7-2-2C18.9 4.5 12 4.5 12 4.5s-6.9 0-8.5.5c-1 .3-1.7 1-2 2C1.2 8.1 1 9.7 1 12s.2 3.9.5 5c.3 1 1 1.7 2 2 1.6.5 8.5.5 8.5.5s6.9 0 8.5-.5c1-.3 1.7-1 2-2 .3-1.1.5-2.7.5-5z"/><path d="M9.8 15.5l5.7-3.5-5.7-3.5z" fill="#fff"/></svg>
+          Watch on YouTube
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 1 — WHAT IS IMMT ============ -->
+<section id="platform" style="padding:110px 32px;background:#FBF6EA" data-screen-label="What is IMMT">
+  <div style="max-width:1240px;margin:0 auto">
+    <div style="max-width:760px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;color:#B5760F;text-transform:uppercase" data-reveal>What is IMMT AI</div>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,46px);line-height:1.08;letter-spacing:-.02em;margin:16px 0 0;color:#221A0E" data-reveal>Non-custodial autonomous trading infrastructure</h2>
+      <p style="font-size:18px;line-height:1.6;color:#6E6149;margin:20px 0 0" data-reveal>Self-evolving AI agents built for capital preservation and compounding execution across crypto and traditional markets. <strong style="color:#221A0E">Your funds stay in your own exchange account.</strong> Restricted API permissions, zero withdrawal access. We manage execution, risk, and verification — through public dashboards and on-chain logging.</p>
+      <p style="font-size:18px;line-height:1.6;color:#6E6149;margin:14px 0 0" data-reveal>This is not a trading tool. It's an autonomous execution system that continuously adapts, reduces human error, and compounds survival in volatile markets.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px">
+      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:24px;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-5px);box-shadow:0 18px 38px -16px rgba(120,90,30,.25)">
+        <div style="width:40px;height:40px;border-radius:11px;background:#FBEBC8;display:flex;align-items:center;justify-content:center;margin-bottom:14px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8841C" stroke-width="2"><path d="M12 2l8 3v6c0 5-3.5 8-8 11-4.5-3-8-6-8-11V5z" stroke-linejoin="round"/></svg></div>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 6px">Non-custodial</h3>
+        <p style="font-size:15px;line-height:1.55;color:#6E6149;margin:0">Funds stay in your exchange account. Restricted API only — never withdrawal access.</p>
+      </div>
+      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:24px;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-5px);box-shadow:0 18px 38px -16px rgba(120,90,30,.25)">
+        <div style="width:40px;height:40px;border-radius:11px;background:#FBEBC8;display:flex;align-items:center;justify-content:center;margin-bottom:14px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8841C" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6" stroke-linecap="round"/></svg></div>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 6px">User-owned agents</h3>
+        <p style="font-size:15px;line-height:1.55;color:#6E6149;margin:0">You own, govern, and benefit from your AI agent's improvement over time.</p>
+      </div>
+      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:24px;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-5px);box-shadow:0 18px 38px -16px rgba(120,90,30,.25)">
+        <div style="width:40px;height:40px;border-radius:11px;background:#FBEBC8;display:flex;align-items:center;justify-content:center;margin-bottom:14px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8841C" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg></div>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 6px">24/7 execution</h3>
+        <p style="font-size:15px;line-height:1.55;color:#6E6149;margin:0">Autonomous trading around the clock, in every market condition.</p>
+      </div>
+      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:24px;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-5px);box-shadow:0 18px 38px -16px rgba(120,90,30,.25)">
+        <div style="width:40px;height:40px;border-radius:11px;background:#FBEBC8;display:flex;align-items:center;justify-content:center;margin-bottom:14px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8841C" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V8a5 5 0 0 1 10 0v3" stroke-linecap="round"/></svg></div>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 6px">Hardcoded risk</h3>
+        <p style="font-size:15px;line-height:1.55;color:#6E6149;margin:0">Position sizing, stop-loss, and drawdown limits enforced at the architecture level.</p>
+      </div>
+      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:24px;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-5px);box-shadow:0 18px 38px -16px rgba(120,90,30,.25)">
+        <div style="width:40px;height:40px;border-radius:11px;background:#FBEBC8;display:flex;align-items:center;justify-content:center;margin-bottom:14px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8841C" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" stroke-linejoin="round"/></svg></div>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 6px">Transparent verification</h3>
+        <p style="font-size:15px;line-height:1.55;color:#6E6149;margin:0">Every trade livestreamed, every transaction logged on-chain.</p>
+      </div>
+      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:24px;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-5px);box-shadow:0 18px 38px -16px rgba(120,90,30,.25)">
+        <div style="width:40px;height:40px;border-radius:11px;background:#FBEBC8;display:flex;align-items:center;justify-content:center;margin-bottom:14px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8841C" stroke-width="2"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" stroke-linecap="round"/><circle cx="12" cy="12" r="3.4"/></svg></div>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 6px">Self-evolving intelligence</h3>
+        <p style="font-size:15px;line-height:1.55;color:#6E6149;margin:0">Agents retrain continuously on live trade outcomes — getting sharper over time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ SECTION 2 — THE PROBLEM ============ -->
+<section style="padding:110px 32px;background:#F3EAD7" data-screen-label="The Problem">
+  <div style="max-width:1240px;margin:0 auto">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;color:#B5760F;text-transform:uppercase" data-reveal>The problem</div>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,46px);line-height:1.08;letter-spacing:-.02em;margin:16px 0 44px;color:#221A0E;max-width:640px" data-reveal>Existing trading infrastructure is broken</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
+      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:28px;border-top:3px solid #C0573A">
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin:0 0 10px;color:#221A0E">Custodial risk</h3>
+        <p style="font-size:15.5px;line-height:1.6;color:#6E6149;margin:0">Users hand over funds to black-box platforms with no withdrawal transparency. FTX proved this destroys trust.</p>
+      </div>
+      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:28px;border-top:3px solid #C0573A">
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin:0 0 10px;color:#221A0E">Opaque algorithms</h3>
+        <p style="font-size:15.5px;line-height:1.6;color:#6E6149;margin:0">Retail traders can't audit or verify how their capital is being deployed. Risk controls are invisible.</p>
+      </div>
+      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:28px;border-top:3px solid #C0573A">
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin:0 0 10px;color:#221A0E">No ownership</h3>
+        <p style="font-size:15.5px;line-height:1.6;color:#6E6149;margin:0">Traders use borrowed tools with no upside in the AI they help train. No governance. No loyalty. No moat.</p>
+      </div>
+    </div>
+    <blockquote data-reveal style="margin:44px 0 0;padding:36px 40px;background:#1E1710;border-radius:18px;color:#fff;position:relative;overflow:hidden">
+      <div style="position:absolute;top:-10px;left:24px;font-family:'Space Grotesk',sans-serif;font-size:120px;color:rgba(240,185,74,.18);line-height:1">“</div>
+      <p style="position:relative;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(22px,2.6vw,32px);line-height:1.3;letter-spacing:-.01em;margin:0;max-width:840px">The moat in crypto trading isn't returns — it's <span style="color:#F0B94A">who owns the infrastructure.</span></p>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ============ SECTION 3 — THE SOLUTION ============ -->
+<section style="padding:110px 32px;background:#FBF6EA" data-screen-label="The Solution">
+  <div style="max-width:1240px;margin:0 auto">
+    <div style="text-align:center;max-width:680px;margin:0 auto">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;color:#B5760F;text-transform:uppercase" data-reveal>The solution</div>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,46px);line-height:1.08;letter-spacing:-.02em;margin:16px 0 0;color:#221A0E" data-reveal>IMMT inverts the model</h2>
+      <p style="font-size:18px;line-height:1.6;color:#6E6149;margin:16px 0 0" data-reveal>Users own their capital, their AI agents, and their long-term edge.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px">
+      <div data-reveal style="background:linear-gradient(180deg,#FCF1DA,#fff);border:1px solid #EAD9B4;border-radius:16px;padding:26px">
+        <div style="font-family:'JetBrains Mono',monospace;font-weight:600;color:#C8841C;font-size:14px;margin-bottom:14px">01</div>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 8px;color:#221A0E">Non-custodial</h3>
+        <p style="font-size:14.5px;line-height:1.55;color:#6E6149;margin:0">Funds stay in user accounts. Restricted API keys, zero withdrawal access.</p>
+      </div>
+      <div data-reveal style="background:linear-gradient(180deg,#FCF1DA,#fff);border:1px solid #EAD9B4;border-radius:16px;padding:26px">
+        <div style="font-family:'JetBrains Mono',monospace;font-weight:600;color:#C8841C;font-size:14px;margin-bottom:14px">02</div>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 8px;color:#221A0E">User-owned agents</h3>
+        <p style="font-size:14.5px;line-height:1.55;color:#6E6149;margin:0">Traders own, govern, and monetize their LSTM-powered AI characters.</p>
+      </div>
+      <div data-reveal style="background:linear-gradient(180deg,#FCF1DA,#fff);border:1px solid #EAD9B4;border-radius:16px;padding:26px">
+        <div style="font-family:'JetBrains Mono',monospace;font-weight:600;color:#C8841C;font-size:14px;margin-bottom:14px">03</div>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 8px;color:#221A0E">Transparent risk</h3>
+        <p style="font-size:14.5px;line-height:1.55;color:#6E6149;margin:0">Public dashboards: drawdown limits, stop-loss rules, position sizing — all observable.</p>
+      </div>
+      <div data-reveal style="background:linear-gradient(180deg,#FCF1DA,#fff);border:1px solid #EAD9B4;border-radius:16px;padding:26px">
+        <div style="font-family:'JetBrains Mono',monospace;font-weight:600;color:#C8841C;font-size:14px;margin-bottom:14px">04</div>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 8px;color:#221A0E">Marketplace network</h3>
+        <p style="font-size:14.5px;line-height:1.55;color:#6E6149;margin:0">Trade, share, and monetize AI agents — creating compounding network effects.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 4 — HOW IT WORKS ============ -->
+<section style="padding:110px 32px;background:#F3EAD7" data-screen-label="How It Works">
+  <div style="max-width:1240px;margin:0 auto">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;color:#B5760F;text-transform:uppercase" data-reveal>How it works</div>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,46px);line-height:1.08;letter-spacing:-.02em;margin:16px 0 48px;color:#221A0E" data-reveal>From exchange to autonomous execution</h2>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:26px">
+        <span style="width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,#E8A93A,#C8841C);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;margin-bottom:14px">1</span>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 8px;color:#221A0E">Connect exchange</h3>
+        <p style="font-size:14.5px;line-height:1.55;color:#6E6149;margin:0">Link Binance or Bybit via read/trade-only API keys. No withdrawal permissions ever requested.</p>
+      </div>
+      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:26px">
+        <span style="width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,#E8A93A,#C8841C);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;margin-bottom:14px">2</span>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 8px;color:#221A0E">Deploy AI agent</h3>
+        <p style="font-size:14.5px;line-height:1.55;color:#6E6149;margin:0">Select or train an LSTM-powered agent with defined risk parameters and capital allocation.</p>
+      </div>
+      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:26px">
+        <span style="width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,#E8A93A,#C8841C);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;margin-bottom:14px">3</span>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 8px;color:#221A0E">Autonomous execution</h3>
+        <p style="font-size:14.5px;line-height:1.55;color:#6E6149;margin:0">Agent trades ETH/USDT and BTC/USDT derivatives 24/7. All signals verifiable on-chain.</p>
+      </div>
+      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:26px">
+        <span style="width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,#E8A93A,#C8841C);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;margin-bottom:14px">4</span>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 8px;color:#221A0E">Performance &amp; governance</h3>
+        <p style="font-size:14.5px;line-height:1.55;color:#6E6149;margin:0">Public dashboard shows real-time metrics. Users govern parameters and share marketplace upside.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 5 — LSTM PIPELINE (DARK) ============ -->
+<section id="pipeline" style="padding:120px 32px;background:linear-gradient(180deg,#1E1710 0%,#241B0E 100%);color:#F2E9D6;position:relative;overflow:hidden" data-screen-label="Intelligence Pipeline">
+  <div aria-hidden="true" style="position:absolute;inset:0;background-image:linear-gradient(rgba(240,185,74,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(240,185,74,.07) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(900px 500px at 50% 0%,#000,transparent 75%)"></div>
+  <div style="position:relative;max-width:1100px;margin:0 auto;text-align:center">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;color:#F0B94A;text-transform:uppercase" data-reveal>The LSTM intelligence pipeline</div>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,3.8vw,48px);line-height:1.08;letter-spacing:-.02em;margin:16px 0 8px" data-reveal>Five layers. One continuous loop.</h2>
+  </div>
+  <div style="position:relative;max-width:980px;margin:54px auto 0;display:flex;flex-direction:column;gap:14px">
+    <div data-reveal style="display:grid;grid-template-columns:64px 1fr;gap:22px;align-items:start;background:rgba(255,255,255,.03);border:1px solid rgba(240,185,74,.2);border-radius:16px;padding:24px 26px">
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:28px;color:#F0B94A">01</div>
+      <div><h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin:2px 0 6px">Data layer</h3><p style="font-size:15.5px;line-height:1.6;color:#C2B594;margin:0">Real-time price action, order flow, order-book depth, and on-chain/news sentiment — all feeding the model simultaneously for a complete market picture.</p></div>
+    </div>
+    <div data-reveal style="display:grid;grid-template-columns:64px 1fr;gap:22px;align-items:start;background:rgba(255,255,255,.03);border:1px solid rgba(240,185,74,.2);border-radius:16px;padding:24px 26px">
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:28px;color:#F0B94A">02</div>
+      <div><h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin:2px 0 6px">Model layer</h3><p style="font-size:15.5px;line-height:1.6;color:#C2B594;margin:0">LSTM networks trained on 2+ years of real market data, supported by an LLM context layer. A trade only executes once the model clears a minimum confidence threshold.</p></div>
+    </div>
+    <div data-reveal style="display:grid;grid-template-columns:64px 1fr;gap:22px;align-items:start;background:rgba(255,255,255,.03);border:1px solid rgba(240,185,74,.2);border-radius:16px;padding:24px 26px">
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:28px;color:#F0B94A">03</div>
+      <div><h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin:2px 0 6px">Agent layer</h3><p style="font-size:15.5px;line-height:1.6;color:#C2B594;margin:0">100 independent agents deployed simultaneously, each non-correlated. Diversification happens at the infrastructure level — not the portfolio level.</p></div>
+    </div>
+    <div data-reveal style="display:grid;grid-template-columns:64px 1fr;gap:22px;align-items:start;background:linear-gradient(120deg,rgba(232,169,58,.16),rgba(200,132,28,.06));border:1px solid rgba(240,185,74,.42);border-radius:16px;padding:24px 26px">
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:28px;color:#F0B94A">04</div>
+      <div>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin:2px 0 10px">Risk layer <span style="font-size:13px;color:#F0B94A;font-family:'JetBrains Mono',monospace;font-weight:500">· these are physics, not policies</span></h3>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;background:rgba(240,185,74,.13);border:1px solid rgba(240,185,74,.32);color:#F6D79A;padding:6px 12px;border-radius:8px">0.5% max risk / trade</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;background:rgba(240,185,74,.13);border:1px solid rgba(240,185,74,.32);color:#F6D79A;padding:6px 12px;border-radius:8px">3× max leverage</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;background:rgba(240,185,74,.13);border:1px solid rgba(240,185,74,.32);color:#F6D79A;padding:6px 12px;border-radius:8px">5% daily drawdown cap</span>
+        </div>
+        <p style="font-size:15.5px;line-height:1.6;color:#C2B594;margin:0">The drawdown cap triggers an automatic pause. Stop-loss execution is automatic and cannot be overridden.</p>
+      </div>
+    </div>
+    <div data-reveal style="display:grid;grid-template-columns:64px 1fr;gap:22px;align-items:start;background:rgba(255,255,255,.03);border:1px solid rgba(240,185,74,.2);border-radius:16px;padding:24px 26px">
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:28px;color:#F0B94A">05</div>
+      <div><h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin:2px 0 6px">Feedback layer</h3><p style="font-size:15.5px;line-height:1.6;color:#C2B594;margin:0">Every trade outcome is logged and fed back into the LSTM. The model retrains continuously on live results — becoming more accurate and more profitable over time.</p></div>
+    </div>
+    <div data-reveal style="display:flex;align-items:center;justify-content:center;gap:10px;margin-top:10px;color:#F0B94A;font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F0B94A" stroke-width="2"><path d="M21 12a9 9 0 1 1-3-6.7" stroke-linecap="round"/><path d="M21 3v5h-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      OUTCOMES LOOP BACK TO THE DATA LAYER — CONTINUOUSLY
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 6 — MARKETS ============ -->
+<section id="markets" style="padding:110px 32px;background:#FBF6EA" data-screen-label="Markets">
+  <div style="max-width:1240px;margin:0 auto">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;color:#B5760F;text-transform:uppercase" data-reveal>Markets</div>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,46px);line-height:1.08;letter-spacing:-.02em;margin:16px 0 48px;color:#221A0E;max-width:640px" data-reveal>Built for any market. Deployed globally.</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
+      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:18px;padding:28px;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-5px);box-shadow:0 20px 44px -18px rgba(120,90,30,.25)">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+          <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:#221A0E">ETH / USDT</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:#06210A;background:#9FE07A;padding:4px 9px;border-radius:6px">LIVE</span>
+        </div>
+        <p style="font-size:15px;line-height:1.6;color:#6E6149;margin:0">The original market. 100 agents — scalping, market making, and liquidity provision running 24/7. The proof of concept that validated everything.</p>
+      </div>
+      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:18px;padding:28px;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-5px);box-shadow:0 20px 44px -18px rgba(120,90,30,.25)">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+          <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:#221A0E">BTC / USDT</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:#06210A;background:#9FE07A;padding:4px 9px;border-radius:6px">LIVE</span>
+        </div>
+        <p style="font-size:15px;line-height:1.6;color:#6E6149;margin:0">Bitcoin's higher daily volatility creates more scalping opportunities. Retrained on Bitcoin's microstructure, running alongside ETH agents.</p>
+      </div>
+      <div data-reveal style="background:#1E1710;border:1px solid #3B2F19;border-radius:18px;padding:28px;color:#F2E9D6;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-5px);box-shadow:0 20px 44px -18px rgba(120,90,30,.4)">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+          <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:#fff">Nasdaq Futures</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:#221A0E;background:#F0B94A;padding:4px 9px;border-radius:6px">NEW</span>
+        </div>
+        <p style="font-size:15px;line-height:1.6;color:#C2B594;margin:0">Institutional-grade liquidity. Lower manipulation risk. Full regulatory clarity. LSTM models in retraining now for U.S. equity futures.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LIVE DASHBOARDS ============ -->
+<section id="dashboards" style="padding:110px 32px;background:linear-gradient(180deg,#241B0E 0%,#1E1710 100%);color:#F2E9D6;position:relative;overflow:hidden" data-screen-label="Live Dashboards">
+  <div aria-hidden="true" style="position:absolute;inset:0;background-image:radial-gradient(700px 360px at 50% -5%,rgba(240,185,74,.12),transparent 70%)"></div>
+  <div style="position:relative;max-width:1180px;margin:0 auto">
+    <div style="text-align:center;max-width:680px;margin:0 auto">
+      <div style="display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;color:#F0B94A;text-transform:uppercase" data-reveal><span style="width:8px;height:8px;border-radius:50%;background:#6FBF3E;animation:blink 1.5s infinite"></span>Live product · public dashboards</div>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,3.8vw,48px);line-height:1.08;letter-spacing:-.02em;margin:16px 0 0" data-reveal>Look inside the trading floor</h2>
+      <p style="font-size:18px;line-height:1.6;color:#C2B594;margin:16px 0 0" data-reveal>The same dashboards we livestream — real positions, real PnL, real signals. 100 agents working a portfolio in real time, on both markets.</p>
+    </div>
+
+    <!-- segmented control -->
+    <div style="display:flex;justify-content:center;margin-top:36px" data-reveal>
+      <div style="display:inline-flex;gap:6px;padding:6px;background:rgba(255,255,255,.05);border:1px solid #3B2F19;border-radius:14px">
+        <button id="tab-crypto" type="button" style="font-family:'Hanken Grotesk',sans-serif;font-weight:600;font-size:15px;padding:11px 20px;border:none;border-radius:10px;cursor:pointer;transition:all .25s;background:linear-gradient(135deg,#E8A93A,#C8841C);color:#fff;box-shadow:0 8px 20px rgba(200,132,28,.35)">Crypto Futures · ETH/USDT</button>
+        <button id="tab-nasdaq" type="button" style="font-family:'Hanken Grotesk',sans-serif;font-weight:600;font-size:15px;padding:11px 20px;border:none;border-radius:10px;cursor:pointer;transition:all .25s;background:transparent;color:#C2B594;box-shadow:none">Nasdaq Futures · SPCX/USDT</button>
+      </div>
+    </div>
+
+    <!-- crypto frame -->
+    <div id="frame-crypto" data-reveal style="margin-top:30px;border-radius:18px;overflow:hidden;border:1px solid #3B2F19;background:#15100A;box-shadow:0 40px 90px -30px rgba(0,0,0,.7)">
+      <div style="display:flex;align-items:center;gap:14px;padding:12px 16px;background:#231A0E;border-bottom:1px solid #3B2F19">
+        <div style="display:flex;gap:7px"><span style="width:11px;height:11px;border-radius:50%;background:#E0573A"></span><span style="width:11px;height:11px;border-radius:50%;background:#E8A93A"></span><span style="width:11px;height:11px;border-radius:50%;background:#6FBF3E"></span></div>
+        <div style="flex:1;display:flex;align-items:center;gap:8px;max-width:380px;margin:0 auto;background:#15100A;border:1px solid #3B2F19;border-radius:8px;padding:6px 12px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#9A8A6B"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#6FBF3E" stroke-width="2.4"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>app.immt.io/dashboard/eth-usdt</div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:#06210A;background:#6FBF3E;padding:3px 9px;border-radius:6px">LIVE</span>
+      </div>
+      <img src="assets/dash-crypto.png" alt="IMMT AI crypto futures dashboard — ETH/USDT" style="width:100%;display:block">
+      <div style="display:flex;flex-wrap:wrap;gap:10px;padding:18px 20px;background:#1A130B;border-top:1px solid #3B2F19">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#C2B594;background:rgba(240,185,74,.1);border:1px solid #3B2F19;padding:6px 12px;border-radius:8px">ETH/USDT perpetual</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#6FBF3E;background:rgba(111,191,62,.12);border:1px solid rgba(111,191,62,.25);padding:6px 12px;border-radius:8px">+$10,720 month PnL</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#C2B594;background:rgba(240,185,74,.1);border:1px solid #3B2F19;padding:6px 12px;border-radius:8px">LSTM confidence engine</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#C2B594;background:rgba(240,185,74,.1);border:1px solid #3B2F19;padding:6px 12px;border-radius:8px">Live open positions</span>
+      </div>
+    </div>
+
+    <!-- nasdaq frame -->
+    <div id="frame-nasdaq" style="display:none;margin-top:30px;border-radius:18px;overflow:hidden;border:1px solid #3B2F19;background:#15100A;box-shadow:0 40px 90px -30px rgba(0,0,0,.7)">
+      <div style="display:flex;align-items:center;gap:14px;padding:12px 16px;background:#231A0E;border-bottom:1px solid #3B2F19">
+        <div style="display:flex;gap:7px"><span style="width:11px;height:11px;border-radius:50%;background:#E0573A"></span><span style="width:11px;height:11px;border-radius:50%;background:#E8A93A"></span><span style="width:11px;height:11px;border-radius:50%;background:#6FBF3E"></span></div>
+        <div style="flex:1;display:flex;align-items:center;gap:8px;max-width:380px;margin:0 auto;background:#15100A;border:1px solid #3B2F19;border-radius:8px;padding:6px 12px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#9A8A6B"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#6FBF3E" stroke-width="2.4"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>app.immt.io/dashboard/spcx-usdt</div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:#221A0E;background:#F0B94A;padding:3px 9px;border-radius:6px">NEW</span>
+      </div>
+      <img src="assets/dash-nasdaq.png" alt="IMMT AI Nasdaq futures dashboard — SPCX/USDT" style="width:100%;display:block">
+      <div style="display:flex;flex-wrap:wrap;gap:10px;padding:18px 20px;background:#1A130B;border-top:1px solid #3B2F19">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#C2B594;background:rgba(240,185,74,.1);border:1px solid #3B2F19;padding:6px 12px;border-radius:8px">SPCX/USDT futures</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#C2B594;background:rgba(240,185,74,.1);border:1px solid #3B2F19;padding:6px 12px;border-radius:8px">CME session clock</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#C2B594;background:rgba(240,185,74,.1);border:1px solid #3B2F19;padding:6px 12px;border-radius:8px">Institutional-grade liquidity</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#C2B594;background:rgba(240,185,74,.1);border:1px solid #3B2F19;padding:6px 12px;border-radius:8px">In retraining now</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 7 — BUSINESS MODEL ============ -->
+<section style="padding:110px 32px;background:#F3EAD7" data-screen-label="Business Model">
+  <div style="max-width:1240px;margin:0 auto">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;color:#B5760F;text-transform:uppercase" data-reveal>Business model</div>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,46px);line-height:1.08;letter-spacing:-.02em;margin:16px 0 48px;color:#221A0E;max-width:640px" data-reveal>IMMT monetizes autonomous execution</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
+      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:18px;padding:30px">
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin:0 0 18px;color:#221A0E">Agent rental model</h3>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px">
+          <li style="display:flex;gap:10px;font-size:15px;color:#6E6149;line-height:1.5"><span style="color:#C8841C;font-weight:700">—</span>Users rent AI trading agents</li>
+          <li style="display:flex;gap:10px;font-size:15px;color:#6E6149;line-height:1.5"><span style="color:#C8841C;font-weight:700">—</span><strong style="color:#221A0E">20% performance fee</strong>&nbsp;on profits</li>
+          <li style="display:flex;gap:10px;font-size:15px;color:#6E6149;line-height:1.5"><span style="color:#C8841C;font-weight:700">—</span>Aligned incentives: no profits, no upside for IMMT</li>
+        </ul>
+      </div>
+      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:18px;padding:30px">
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin:0 0 18px;color:#221A0E">Day trading access</h3>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px">
+          <li style="display:flex;gap:10px;font-size:15px;color:#6E6149;line-height:1.5"><span style="color:#C8841C;font-weight:700">—</span><strong style="color:#221A0E">$75</strong>&nbsp;per agent per day</li>
+          <li style="display:flex;gap:10px;font-size:15px;color:#6E6149;line-height:1.5"><span style="color:#C8841C;font-weight:700">—</span>On-demand execution for active traders</li>
+          <li style="display:flex;gap:10px;font-size:15px;color:#6E6149;line-height:1.5"><span style="color:#C8841C;font-weight:700">—</span>Real-time AI decision making</li>
+        </ul>
+      </div>
+      <div data-reveal style="background:linear-gradient(165deg,#2A2010,#1E1710);border:1px solid #3B2F19;border-radius:18px;padding:30px;color:#F2E9D6">
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin:0 0 18px;color:#fff">Token utility <span style="color:#F0B94A">($IMMT)</span></h3>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px">
+          <li style="display:flex;gap:10px;font-size:15px;color:#C2B594;line-height:1.5"><span style="color:#F0B94A;font-weight:700">—</span>Gas fee burned with every transaction</li>
+          <li style="display:flex;gap:10px;font-size:15px;color:#C2B594;line-height:1.5"><span style="color:#F0B94A;font-weight:700">—</span>Governance token for platform decisions</li>
+          <li style="display:flex;gap:10px;font-size:15px;color:#C2B594;line-height:1.5"><span style="color:#F0B94A;font-weight:700">—</span>Value vault accruing from all products</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 8 — MARKET OPPORTUNITY ============ -->
+<section style="padding:110px 32px;background:#FBF6EA" data-screen-label="Market Opportunity">
+  <div style="max-width:1240px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;color:#B5760F;text-transform:uppercase" data-reveal>Market opportunity</div>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,3.4vw,44px);line-height:1.1;letter-spacing:-.02em;margin:16px 0 0;color:#221A0E" data-reveal>A trillion-dollar market, underserved at the retail level</h2>
+        <div style="margin-top:32px;display:flex;flex-direction:column;gap:14px">
+          <div data-reveal style="background:#1E1710;border-radius:14px;padding:20px 22px;color:#fff;display:flex;align-items:baseline;justify-content:space-between">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#9A8A6B">TAM</span>
+            <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:30px;color:#F0B94A">$87.6B</span>
+          </div>
+          <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:14px;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;margin:0 14px">
+            <div><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#8A7C61">SAM</span><div style="font-size:13px;color:#6E6149;margin-top:2px">Crypto Futures + AI Trading</div></div>
+            <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:26px;color:#C8841C">$17.6B</span>
+          </div>
+          <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:14px;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;margin:0 28px">
+            <div><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#8A7C61">SOM</span><div style="font-size:13px;color:#6E6149;margin-top:2px">Early Retail + Emerging Market</div></div>
+            <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:#4E9E2E">$176M</span>
+          </div>
+        </div>
+      </div>
+      <div data-reveal style="background:#F3EAD7;border:1px solid #EBE0CA;border-radius:20px;padding:34px">
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin:0 0 20px;color:#221A0E">Target users</h3>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;gap:14px;align-items:flex-start"><span style="width:34px;height:34px;flex:none;border-radius:9px;background:#FBEBC8;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C8841C" stroke-width="2"><path d="M12 2v20M2 12h20" stroke-linecap="round"/></svg></span><p style="margin:0;font-size:15.5px;line-height:1.5;color:#4A4030">Retail traders tired of liquidation cycles</p></div>
+          <div style="display:flex;gap:14px;align-items:flex-start"><span style="width:34px;height:34px;flex:none;border-radius:9px;background:#FBEBC8;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C8841C" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p style="margin:0;font-size:15.5px;line-height:1.5;color:#4A4030">Semi-pro traders seeking automation</p></div>
+          <div style="display:flex;gap:14px;align-items:flex-start"><span style="width:34px;height:34px;flex:none;border-radius:9px;background:#FBEBC8;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C8841C" stroke-width="2"><path d="M12 2l8 3v6c0 5-3.5 8-8 11-4.5-3-8-6-8-11V5z" stroke-linejoin="round"/></svg></span><p style="margin:0;font-size:15.5px;line-height:1.5;color:#4A4030">Emerging-market users with limited risk tolerance</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 9 — TRACTION ============ -->
+<section id="traction" style="padding:110px 32px;background:linear-gradient(180deg,#1E1710,#241B0E);color:#F2E9D6;position:relative;overflow:hidden" data-screen-label="Traction">
+  <div aria-hidden="true" style="position:absolute;inset:0;background-image:radial-gradient(600px 300px at 85% 0%,rgba(240,185,74,.1),transparent 70%)"></div>
+  <div style="position:relative;max-width:1240px;margin:0 auto">
+    <div style="display:flex;align-items:center;gap:12px" data-reveal>
+      <span style="width:9px;height:9px;border-radius:50%;background:#6FBF3E;animation:blink 1.5s infinite"></span>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;color:#F0B94A;text-transform:uppercase">Proof of life — live &amp; operational</div>
+    </div>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,46px);line-height:1.08;letter-spacing:-.02em;margin:16px 0 48px" data-reveal>Traction that's already on the table</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+      <div data-reveal style="background:rgba(255,255,255,.04);border:1px solid #3B2F19;border-radius:16px;padding:28px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:42px;color:#fff;letter-spacing:-.02em">100</div>
+        <div style="font-size:14.5px;color:#C2B594;margin-top:4px">Deployed AI agents <span style="color:#8A7C61">(ETH/USDT live)</span></div>
+      </div>
+      <div data-reveal style="background:rgba(255,255,255,.04);border:1px solid #3B2F19;border-radius:16px;padding:28px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:42px;color:#fff;letter-spacing:-.02em">40K</div>
+        <div style="font-size:14.5px;color:#C2B594;margin-top:4px">Community members <span style="color:#8A7C61">(organic)</span></div>
+      </div>
+      <div data-reveal style="background:rgba(255,255,255,.04);border:1px solid #3B2F19;border-radius:16px;padding:28px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:42px;color:#fff;letter-spacing:-.02em">10K</div>
+        <div style="font-size:14.5px;color:#C2B594;margin-top:4px">Waitlist users <span style="color:#8A7C61">(pre-launch)</span></div>
+      </div>
+      <div data-reveal style="background:rgba(255,255,255,.04);border:1px solid #3B2F19;border-radius:16px;padding:28px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:42px;color:#fff;letter-spacing:-.02em">9</div>
+        <div style="font-size:14.5px;color:#C2B594;margin-top:4px">Paying users <span style="color:#8A7C61">(non-custodial)</span></div>
+      </div>
+      <div data-reveal style="background:linear-gradient(135deg,rgba(232,169,58,.18),rgba(200,132,28,.06));border:1px solid rgba(240,185,74,.4);border-radius:16px;padding:28px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:42px;color:#F0B94A;letter-spacing:-.02em">$150K</div>
+        <div style="font-size:14.5px;color:#E6D6AE;margin-top:4px">Pre-committed institutional capital</div>
+      </div>
+      <div data-reveal style="background:rgba(255,255,255,.04);border:1px solid #3B2F19;border-radius:16px;padding:28px;display:flex;flex-direction:column;justify-content:center">
+        <div style="display:flex;align-items:center;gap:9px"><span style="width:8px;height:8px;border-radius:50%;background:#6FBF3E;animation:blink 1.2s infinite"></span><span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:26px;color:#6FBF3E">LIVE</span></div>
+        <div style="font-size:14.5px;color:#C2B594;margin-top:6px">Public performance dashboard</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 10 — IMMT VS THE MARKET ============ -->
+<section style="padding:110px 32px;background:#FBF6EA" data-screen-label="IMMT vs Market">
+  <div style="max-width:1100px;margin:0 auto">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;color:#B5760F;text-transform:uppercase;text-align:center" data-reveal>IMMT vs the market</div>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,46px);line-height:1.08;letter-spacing:-.02em;margin:16px 0 44px;color:#221A0E;text-align:center" data-reveal>Why nothing else compares</h2>
+    <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:18px;overflow:hidden;box-shadow:0 20px 50px -28px rgba(120,90,30,.3)">
+      <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;background:#1E1710;color:#fff">
+        <div style="padding:18px 24px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px">Feature</div>
+        <div style="padding:18px 16px;text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:#F0B94A;background:rgba(240,185,74,.1)">IMMT</div>
+        <div style="padding:18px 16px;text-align:center;font-size:14px;color:#C2B594">Custodial Bots</div>
+        <div style="padding:18px 16px;text-align:center;font-size:14px;color:#C2B594">CEX Copy-Trade</div>
+      </div>
+      <div id="vs-rows"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 11 — WHY NOW ============ -->
+<section style="padding:110px 32px;background:#F3EAD7" data-screen-label="Why Now">
+  <div style="max-width:1240px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;color:#B5760F;text-transform:uppercase" data-reveal>Why now</div>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,3.8vw,48px);line-height:1.05;letter-spacing:-.02em;margin:16px 0 0;color:#221A0E" data-reveal>The window is open.<br><span style="color:#C8841C">Briefly.</span></h2>
+        <p style="font-size:17px;line-height:1.6;color:#6E6149;margin:22px 0 0" data-reveal>IMMT is not a trading tool. It's an autonomous execution system that continuously adapts, reduces human error, and compounds survival in volatile markets.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div data-reveal style="display:flex;gap:14px;align-items:center;background:#fff;border:1px solid #EBE0CA;border-radius:14px;padding:18px 22px"><span style="width:34px;height:34px;flex:none;border-radius:9px;background:#FBEBC8;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;color:#C8841C">↗</span><span style="font-size:16px;color:#221A0E;font-weight:500">AI trading adoption is accelerating globally</span></div>
+        <div data-reveal style="display:flex;gap:14px;align-items:center;background:#fff;border:1px solid #EBE0CA;border-radius:14px;padding:18px 22px"><span style="width:34px;height:34px;flex:none;border-radius:9px;background:#FBEBC8;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;color:#C8841C">↘</span><span style="font-size:16px;color:#221A0E;font-weight:500">Retail traders are getting structurally wiped by leverage cycles</span></div>
+        <div data-reveal style="display:flex;gap:14px;align-items:center;background:#fff;border:1px solid #EBE0CA;border-radius:14px;padding:18px 22px"><span style="width:34px;height:34px;flex:none;border-radius:9px;background:#FBEBC8;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;color:#C8841C">↓</span><span style="font-size:16px;color:#221A0E;font-weight:500">Trust in trading tools is collapsing</span></div>
+        <div data-reveal style="display:flex;gap:14px;align-items:center;background:#fff;border:1px solid #EBE0CA;border-radius:14px;padding:18px 22px"><span style="width:34px;height:34px;flex:none;border-radius:9px;background:#FBEBC8;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;color:#C8841C">↑</span><span style="font-size:16px;color:#221A0E;font-weight:500">Demand for automated, risk-aware systems is rising</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 12 — TEAM ============ -->
+<section id="team" style="padding:110px 32px;background:#FBF6EA" data-screen-label="Team">
+  <div style="max-width:1240px;margin:0 auto">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;color:#B5760F;text-transform:uppercase" data-reveal>Founding team</div>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,46px);line-height:1.08;letter-spacing:-.02em;margin:16px 0 48px;color:#221A0E" data-reveal>Builders behind the agents</h2>
+    <div data-reveal style="background:linear-gradient(165deg,#2A2010,#1E1710);border:1px solid #3B2F19;border-radius:20px;padding:36px;color:#F2E9D6;margin-bottom:18px;display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center">
+      <div style="width:84px;height:84px;border-radius:18px;background:linear-gradient(135deg,#E8A93A,#C8841C);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:30px;color:#fff;flex:none">RH</div>
+      <div>
+        <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap"><h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:24px;margin:0;color:#fff">Ray Heo</h3><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#F0B94A">Founder / CEO / CTO</span></div>
+        <p style="font-size:15px;line-height:1.6;color:#C2B594;margin:10px 0 0;max-width:780px">20-year IT and trading veteran. Founder of Terafarm Group — the driving force behind IMMT, a standout innovator in crypto trading with 30,000+ users, 20,000 actively trading, and monthly volume above $10B across the Terafarm ecosystem.</p>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:24px;display:flex;gap:16px;align-items:center"><div style="width:50px;height:50px;border-radius:12px;background:#FBEBC8;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;color:#C8841C;flex:none">DK</div><div><div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;color:#221A0E">Douglas Kim</div><div style="font-size:13.5px;color:#8A7C61;margin-top:2px">Chief Project Manager</div></div></div>
+      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:24px;display:flex;gap:16px;align-items:center"><div style="width:50px;height:50px;border-radius:12px;background:#FBEBC8;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;color:#C8841C;flex:none">WS</div><div><div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;color:#221A0E">Woozie &amp; Soozie</div><div style="font-size:13.5px;color:#8A7C61;margin-top:2px">Head of Product Development</div></div></div>
+      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:24px;display:flex;gap:16px;align-items:center"><div style="width:50px;height:50px;border-radius:12px;background:#FBEBC8;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;color:#C8841C;flex:none">SA</div><div><div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;color:#221A0E">Samuel</div><div style="font-size:13.5px;color:#8A7C61;margin-top:2px">CMO — Growth &amp; Community</div></div></div>
+      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:24px;display:flex;gap:16px;align-items:center"><div style="width:50px;height:50px;border-radius:12px;background:#FBEBC8;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;color:#C8841C;flex:none">NU</div><div><div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;color:#221A0E">Nuel</div><div style="font-size:13.5px;color:#8A7C61;margin-top:2px">Design Lead</div></div></div>
+      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:24px;display:flex;gap:16px;align-items:center"><div style="width:50px;height:50px;border-radius:12px;background:#FBEBC8;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;color:#C8841C;flex:none">KY</div><div><div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;color:#221A0E">Kyu</div><div style="font-size:13.5px;color:#8A7C61;margin-top:2px">Chief Business Development Officer</div></div></div>
+      <div data-reveal style="background:#F3EAD7;border:1px solid #EBE0CA;border-radius:16px;padding:24px;display:flex;align-items:center;justify-content:center;text-align:center"><div><div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:24px;color:#C8841C">20+</div><div style="font-size:13.5px;color:#6E6149;margin-top:2px">team members across product, growth &amp; infrastructure</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 13 — CTA ============ -->
+<section id="community" style="position:relative;padding:0;background:#1E1710" data-screen-label="Call to Action">
+  <div style="position:relative;max-width:1240px;margin:0 auto;overflow:hidden">
+    <img src="assets/knight-guardian.png" alt="IMMT guardian" style="width:100%;display:block;object-fit:cover">
+    <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,15,9,.92) 0%,rgba(20,15,9,.45) 45%,rgba(20,15,9,.2) 100%)"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;padding:0 6vw 7vh;color:#fff">
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,4vw,54px);line-height:1.05;letter-spacing:-.02em;margin:0;max-width:760px" data-reveal>The agent is running.<br>The only thing missing is <span style="color:#F0B94A">you.</span></h2>
+      <div style="display:flex;flex-wrap:wrap;gap:13px;margin-top:30px" data-reveal>
+        <a href="https://youtube.com/@terafarm9093" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;padding:14px 22px;border-radius:13px;background:#fff;color:#221A0E;font-weight:600;font-size:16px;transition:transform .2s" style-hover="transform:translateY(-3px)"><svg width="18" height="18" viewBox="0 0 24 24" fill="#FF0000"><path d="M23 12c0-2.3-.2-3.9-.5-5-.3-1-1-1.7-2-2C18.9 4.5 12 4.5 12 4.5s-6.9 0-8.5.5c-1 .3-1.7 1-2 2C1.2 8.1 1 9.7 1 12s.2 3.9.5 5c.3 1 1 1.7 2 2 1.6.5 8.5.5 8.5.5s6.9 0 8.5-.5c1-.3 1.7-1 2-2 .3-1.1.5-2.7.5-5z"/><path d="M9.8 15.5l5.7-3.5-5.7-3.5z" fill="#fff"/></svg>Watch Live</a>
+        <a href="https://t.me/IMMT_group" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;padding:14px 22px;border-radius:13px;background:linear-gradient(135deg,#E8A93A,#C8841C);color:#fff;font-weight:600;font-size:16px;box-shadow:0 12px 26px rgba(200,132,28,.4);transition:transform .2s" style-hover="transform:translateY(-3px)">Join the Community</a>
+        <a href="https://immt.io" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;padding:14px 22px;border-radius:13px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);color:#fff;font-weight:600;font-size:16px;backdrop-filter:blur(6px);transition:transform .2s" style-hover="transform:translateY(-3px)">Visit immt.io</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer style="background:#160F08;color:#C2B594;padding:48px 32px">
+  <div style="max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:11px">
+      <span style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#E8A93A,#C8841C);display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 14L9 6L12 10L15 4L20 14" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;color:#fff">IMMT<span style="color:#F0B94A">AI</span></span>
+    </div>
+    <div style="display:flex;gap:24px;font-size:14px;flex-wrap:wrap">
+      <a href="https://youtube.com/@terafarm9093" target="_blank" rel="noopener" style="transition:color .2s" style-hover="color:#F0B94A">YouTube</a>
+      <a href="https://t.me/IMMT_group" target="_blank" rel="noopener" style="transition:color .2s" style-hover="color:#F0B94A">Telegram · IMMT_group</a>
+      <a href="#" style="transition:color .2s" style-hover="color:#F0B94A">X · @IMMTAI</a>
+      <a href="https://immt.io" target="_blank" rel="noopener" style="transition:color .2s" style-hover="color:#F0B94A">immt.io</a>
+    </div>
+    <div style="font-size:13px;color:#7A6E55;font-family:'JetBrains Mono',monospace">IMMT · Autonomous Trading Intelligence · Seoul, Korea</div>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount(){
+    this._timers = [];
+    requestAnimationFrame(() => {
+      this.runCountUps();
+      this.setupReveals();
+      this.startTicker();
+      this.startFeed();
+      this.buildVsTable();
+      this.setupDashTabs();
+    });
+  }
+  componentWillUnmount(){
+    (this._timers||[]).forEach(t => clearInterval(t));
+    if (this._io) this._io.disconnect();
+  }
+  runCountUps(){
+    document.querySelectorAll('[data-count]').forEach(el => {
+      const target = parseFloat(el.getAttribute('data-count'));
+      if (target === 0){ el.textContent = '0'; return; }
+      const dur = 1400, start = performance.now();
+      const step = (now) => {
+        const p = Math.min((now - start) / dur, 1);
+        const e = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * e).toString();
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+  }
+  setupReveals(){
+    const els = [...document.querySelectorAll('[data-reveal]')];
+    els.forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(26px)';
+      el.style.transition = 'opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1)';
+    });
+    this._io = new IntersectionObserver((ents) => {
+      ents.forEach((ent) => {
+        if (ent.isIntersecting){
+          const el = ent.target;
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+          this._io.unobserve(el);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -7% 0px' });
+    els.forEach(el => this._io.observe(el));
+  }
+  startTicker(){
+    let eth = 3284.5, btc = 67120, pnl = 2.40;
+    const fmt = (n) => n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const t = setInterval(() => {
+      eth = Math.max(3000, eth * (1 + (Math.random() - 0.47) * 0.0011));
+      btc = Math.max(60000, btc * (1 + (Math.random() - 0.47) * 0.0008));
+      pnl = Math.max(0.2, pnl + (Math.random() - 0.42) * 0.05);
+      const e = document.getElementById('eth-price'); if (e) e.textContent = '$' + fmt(eth);
+      const b = document.getElementById('btc-price'); if (b) b.textContent = '$' + fmt(btc);
+      const p = document.getElementById('pnl-today'); if (p) p.textContent = '+' + pnl.toFixed(2) + '%';
+    }, 1500);
+    this._timers.push(t);
+  }
+  startFeed(){
+    const agents = ['ATLAS-07','NOVA-22','ORION-14','VEGA-09','LYRA-31','HELIO-05','DRACO-18','CYGNUS-26','MAIA-12','RIGEL-03'];
+    const pairs = ['ETH/USDT','BTC/USDT'];
+    const sides = ['LONG','SHORT'];
+    const feed = document.getElementById('agent-feed');
+    const render = () => {
+      if (!feed) return;
+      const a = agents[Math.random() * agents.length | 0];
+      const pair = pairs[Math.random() * pairs.length | 0];
+      const side = sides[Math.random() * sides.length | 0];
+      const win = Math.random() > 0.26;
+      const val = (win ? '+' : '-') + (Math.random() * 1.5 + 0.12).toFixed(2) + '%';
+      const row = document.createElement('div');
+      row.style.cssText = 'display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-bottom:1px solid #2A2113;font-family:JetBrains Mono,monospace;font-size:12px;animation:heroIn .4s both';
+      row.innerHTML = '<span style="display:flex;align-items:center;gap:8px;color:#CDBFA0"><span style="width:6px;height:6px;border-radius:50%;background:' + (side === 'LONG' ? '#6FBF3E' : '#E0A92E') + '"></span>' + a + '&nbsp;<span style="color:#8A7C61;font-weight:500">' + side + '</span></span><span style="color:#8A7C61">' + pair + '</span><span style="color:' + (win ? '#6FBF3E' : '#C0573A') + ';font-weight:600">' + val + '</span>';
+      feed.insertBefore(row, feed.firstChild);
+      while (feed.children.length > 4) feed.removeChild(feed.lastChild);
+    };
+    for (let i = 0; i < 4; i++) render();
+    const t = setInterval(render, 2300);
+    this._timers.push(t);
+  }
+  buildVsTable(){
+    const host = document.getElementById('vs-rows');
+    if (!host) return;
+    const rows = [
+      ['Non-custodial', 'yes', 'no', 'no'],
+      ['Transparent risk', 'yes', 'no', 'partial'],
+      ['User-owned agent', 'yes', 'no', 'no'],
+      ['On-chain logging', 'yes', 'rare', 'no'],
+      ['AI marketplace', 'yes', 'no', 'no'],
+      ['Token-aligned model', 'yes', 'rare', 'no']
+    ];
+    const cell = (v) => {
+      if (v === 'yes') return '<span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#E4F4D6;align-items:center;justify-content:center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3C8423" stroke-width="3"><path d="M5 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
+      if (v === 'no') return '<span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#F6E2DC;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C0573A" stroke-width="3"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg></span>';
+      return '<span style="font-family:JetBrains Mono,monospace;font-size:12px;color:#A88A4E;background:#FBEFD2;padding:3px 9px;border-radius:6px">' + v.charAt(0).toUpperCase() + v.slice(1) + '</span>';
+    };
+    host.innerHTML = rows.map((r, i) =>
+      '<div style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;align-items:center;border-top:1px solid #EFE6D2;' + (i % 2 ? 'background:#FCF8EF' : '') + '">' +
+        '<div style="padding:16px 24px;font-weight:600;font-size:15px;color:#221A0E">' + r[0] + '</div>' +
+        '<div style="padding:16px;text-align:center;background:rgba(240,185,74,.07)">' + cell(r[1]) + '</div>' +
+        '<div style="padding:16px;text-align:center">' + cell(r[2]) + '</div>' +
+        '<div style="padding:16px;text-align:center">' + cell(r[3]) + '</div>' +
+      '</div>'
+    ).join('');
+  }
+}
+</script>
+</body>
+</html>

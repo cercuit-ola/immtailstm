@@ -8,783 +8,1001 @@
 <body>
 <x-dc>
 <helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{margin:0;font-family:'Hanken Grotesk',sans-serif;color:#221A0E;background:#FBF6EA;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-  ::selection{background:#E0A92E;color:#221A0E}
-  a{text-decoration:none;color:inherit}
-  @keyframes heroIn{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
-  @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
-  @keyframes pulsing{0%{box-shadow:0 0 0 0 rgba(78,158,46,.5)}70%{box-shadow:0 0 0 9px rgba(78,158,46,0)}100%{box-shadow:0 0 0 0 rgba(78,158,46,0)}}
-  img{max-width:100%}
-  @media (max-width:820px){
-    nav > div{padding-left:16px!important;padding-right:16px!important;gap:10px!important}
-    [data-navlinks]{display:none!important}
-    [data-navhide]{display:none!important}
-    nav a[href="#community"]{padding:9px 14px!important;font-size:13px!important}
-    header#top{padding:46px 18px 58px!important}
-    section{padding-top:66px!important;padding-bottom:66px!important;padding-left:18px!important;padding-right:18px!important}
-    [style*="1.05fr 0.95fr"]{grid-template-columns:1fr!important;gap:38px!important}
-    [style*="repeat(4, 1fr)"]{grid-template-columns:1fr 1fr!important}
-    [style*="repeat(3, 1fr)"]{grid-template-columns:1fr!important}
-    [style*="columns: 1fr 1fr"]{grid-template-columns:1fr!important;gap:34px!important}
-    [style*="0.9fr 1.1fr"]{grid-template-columns:1fr!important;gap:34px!important}
-    [style*="columns: auto 1fr"]{padding:26px!important;gap:18px!important}
-    [style*="1.6fr 1fr 1fr 1fr"]{grid-template-columns:1.3fr 1fr 1fr 1fr!important}
-    [style*="1.6fr 1fr 1fr 1fr"] > div{padding-left:7px!important;padding-right:7px!important;font-size:11.5px!important}
-    [data-overlaytext]{position:relative!important;inset:auto!important;max-width:100%!important;padding:30px 20px 38px!important;justify-content:flex-start!important}
-    blockquote{padding:30px 22px!important}
-  }
-  @media (max-width:480px){
-    [style*="repeat(4, 1fr)"]{grid-template-columns:1fr!important;gap:14px!important}
-    [data-statsgrid]{grid-template-columns:1fr 1fr!important;gap:24px 14px!important}
-    [style*="columns: auto 1fr"]{grid-template-columns:1fr!important}
-    section{padding-left:15px!important;padding-right:15px!important}
-    header#top{padding-left:15px!important;padding-right:15px!important}
-    h1{font-size:34px!important}
-  }
-</style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=satoshi@400,500,600,700&display=swap" rel="stylesheet">
+  <style>
+    body { margin:0; background:#fbfaf6; }
+    a { color:#3626ff; text-decoration:none; }
+    a:hover { color:#241ac2; }
+    ::selection { background:#3626ff; color:#ffffff; }
+    @keyframes pulseDot { 0%,100%{ opacity:1; } 50%{ opacity:0.3; } }
+    @keyframes floatSlow { 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-10px); } }
+    @keyframes fadeIn { from{ opacity:0; } to{ opacity:1; } }
+    @keyframes modalIn { from{ opacity:0; transform:scale(0.94) translateY(12px); } to{ opacity:1; transform:scale(1) translateY(0); } }
+    @keyframes chasePulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.22; } }
+    @keyframes ringSpin { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -500; } }
+    @keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  </style>
 </helmet>
 
-<div style="overflow-x:hidden;background:#FBF6EA">
+<div style="font-family:'Satoshi',sans-serif; background:#fbfaf6; color:#15161b; min-height:100vh; width:100%; position:relative; overflow:hidden;">
 
-<!-- ============ NAV ============ -->
-<nav style="position:sticky;top:0;z-index:100;backdrop-filter:saturate(160%) blur(14px);background:rgba(251,246,234,.8);border-bottom:1px solid #EBE0CA">
-  <div style="max-width:1240px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px">
-    <a href="#top" style="display:flex;align-items:center;gap:11px">
-      <span style="width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#38BDF8,#0EA5E9);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(14,165,233,.35)">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 14L9 6L12 10L15 4L20 14" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="20" cy="14" r="1.8" fill="#fff"/></svg>
-      </span>
-      <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;letter-spacing:-.01em">IMMT<span style="color:#0EA5E9">AI</span></span>
-    </a>
-    <div data-navlinks style="display:flex;align-items:center;gap:30px;font-size:15px;font-weight:500;color:#6E6149">
-      <a href="#platform" style="transition:color .2s" style-hover="color:#0EA5E9">Platform</a>
-      <a href="#pipeline" style="transition:color .2s" style-hover="color:#0EA5E9">Intelligence</a>
-      <a href="#markets" style="transition:color .2s" style-hover="color:#0EA5E9">Markets</a>
-      <a href="#traction" style="transition:color .2s" style-hover="color:#0EA5E9">Traction</a>
-      <a href="#team" style="transition:color .2s" style-hover="color:#0EA5E9">Team</a>
+  <!-- ambient background curves -->
+  <svg style="position:absolute; top:0; left:0; width:100%; height:1400px; pointer-events:none; z-index:0;" viewBox="0 0 1440 1400" preserveAspectRatio="none" fill="none">
+    <path d="M -100 120 C 300 40, 600 260, 1000 140 S 1500 60, 1700 220" stroke="rgba(21,22,27,0.07)" stroke-width="1.5"/>
+    <path d="M -100 300 C 250 420, 700 160, 1100 380 S 1450 300, 1600 500" stroke="rgba(54,38,255,0.10)" stroke-width="1.5"/>
+    <path d="M -50 900 C 350 780, 650 1040, 1050 880 S 1500 760, 1650 960" stroke="rgba(21,22,27,0.06)" stroke-width="1.5"/>
+  </svg>
+
+  <!-- NAV -->
+  <div style="position:sticky; top:0; z-index:100; background:rgba(251,250,246,0.9); backdrop-filter:blur(10px); border-bottom:1px solid rgba(21,22,27,0.08);">
+    <div style="max-width:1320px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; height:76px; padding:0 24px; gap:12px;">
+      <div style="display:flex; align-items:center; gap:9px; flex-shrink:0;">
+        <svg width="26" height="26" viewBox="0 0 26 26" style="flex-shrink:0;">
+          <path d="M2 13 C 2 6, 8 2, 13 2 S 24 6, 24 13 S 18 24, 13 24 S 2 20, 2 13" stroke="#3626ff" stroke-width="2" fill="none"/>
+        </svg>
+        <div style="font-family:'Clash Display',sans-serif; font-weight:600; font-size:19px; letter-spacing:-0.3px; color:#15161b; white-space:nowrap;">iMMT <span style="color:#3626ff;">AI</span></div>
+      </div>
+
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex; align-items:center; gap:0px; flex-wrap:nowrap;">
+        <div style="position:relative;" onMouseEnter="{{ openFeatures }}" onMouseLeave="{{ closeMenu }}">
+          <div style="white-space:nowrap; padding:10px 12px; font-size:13px; font-weight:500; color:{{ featuresColor }}; cursor:pointer; display:flex; align-items:center; gap:5px;">FEATURES <span style="font-size:9px; opacity:0.5;">▾</span></div>
+          <sc-if value="{{ featuresOpen }}">
+            <div style="position:absolute; top:100%; left:50%; transform:translateX(-50%); width:640px; background:#ffffff; border:1px solid rgba(21,22,27,0.08); border-radius:16px; box-shadow:0 30px 60px rgba(21,22,27,0.12); padding:28px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px;">
+              <div>
+                <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1px; color:#9a9da5; text-transform:uppercase; margin-bottom:12px;">Autonomous</div>
+                <div style="display:flex; flex-direction:column; gap:10px;">
+                  <a href="#loop" style="font-size:14px; color:#3f4149;">Self-Trading Loop</a>
+                  <a href="#l5" style="font-size:14px; color:#3f4149;">AI Entry Decisions</a>
+                  <a href="#l5" style="font-size:14px; color:#3f4149;">Position Management</a>
+                  <a href="#l5" style="font-size:14px; color:#3f4149;">Self-Position Exit</a>
+                  <a href="#components" style="font-size:14px; color:#3f4149;">Self-Review &amp; Improvement</a>
+                </div>
+              </div>
+              <div>
+                <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1px; color:#9a9da5; text-transform:uppercase; margin-bottom:12px;">Advanced</div>
+                <div style="display:flex; flex-direction:column; gap:10px;">
+                  <a href="#session" style="font-size:14px; color:#3f4149;">Shadow Simulation</a>
+                  <a href="#components" style="font-size:14px; color:#3f4149;">Backtesting &amp; Verification</a>
+                  <a href="#components" style="font-size:14px; color:#3f4149;">Self-Code Structure</a>
+                  <a href="#levels" style="font-size:14px; color:#3f4149;">Autonomy Levels (L1–L5)</a>
+                  <a href="#safety" style="font-size:14px; color:#3f4149;">Risk &amp; Safety Tools</a>
+                </div>
+              </div>
+              <div>
+                <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1px; color:#9a9da5; text-transform:uppercase; margin-bottom:12px;">More</div>
+                <div style="display:flex; flex-direction:column; gap:10px;">
+                  <a href="#components" style="font-size:14px; color:#3f4149;">Codex + Local LLM</a>
+                  <a href="#" style="font-size:14px; color:#3f4149;">Trading Terminal</a>
+                  <a href="#" style="font-size:14px; color:#3f4149;">Supported Exchanges</a>
+                  <a href="#metrics" style="font-size:14px; color:#3f4149;">Session Monitor</a>
+                  <a href="#" style="font-size:14px; color:#3626ff;">All Features →</a>
+                </div>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+
+        <div style="position:relative;" onMouseEnter="{{ openSolutions }}" onMouseLeave="{{ closeMenu }}">
+          <div style="white-space:nowrap; padding:10px 12px; font-size:13px; font-weight:500; color:{{ solutionsColor }}; cursor:pointer; display:flex; align-items:center; gap:5px;">SOLUTIONS <span style="font-size:9px; opacity:0.5;">▾</span></div>
+          <sc-if value="{{ solutionsOpen }}">
+            <div style="position:absolute; top:100%; left:50%; transform:translateX(-50%); width:220px; background:#ffffff; border:1px solid rgba(21,22,27,0.08); border-radius:16px; box-shadow:0 30px 60px rgba(21,22,27,0.12); padding:16px;">
+              <div style="display:flex; flex-direction:column; gap:4px;">
+                <a href="#" style="font-size:14px; color:#3f4149; padding:8px 10px; border-radius:8px;">AI Arena</a>
+                <a href="#" style="font-size:14px; color:#3f4149; padding:8px 10px; border-radius:8px;">Asset Managers</a>
+                <a href="#" style="font-size:14px; color:#3f4149; padding:8px 10px; border-radius:8px;">Quant Desks / PSPs</a>
+                <a href="#" style="font-size:14px; color:#3f4149; padding:8px 10px; border-radius:8px;">Individuals</a>
+                <a href="#" style="font-size:14px; color:#3f4149; padding:8px 10px; border-radius:8px;">Advanced Traders</a>
+                <a href="#" style="font-size:14px; color:#3f4149; padding:8px 10px; border-radius:8px;">Exchanges</a>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+
+        <a href="#pricing" style="white-space:nowrap; padding:10px 12px; font-size:13px; font-weight:500; color:#3f4149;">PRICING</a>
+
+        <div style="position:relative;" onMouseEnter="{{ openMarketplace }}" onMouseLeave="{{ closeMenu }}">
+          <div style="white-space:nowrap; padding:10px 12px; font-size:13px; font-weight:500; color:{{ marketplaceColor }}; cursor:pointer; display:flex; align-items:center; gap:5px;">MARKETPLACE <span style="font-size:9px; opacity:0.5;">▾</span></div>
+          <sc-if value="{{ marketplaceOpen }}">
+            <div style="position:absolute; top:100%; left:50%; transform:translateX(-50%); width:220px; background:#ffffff; border:1px solid rgba(21,22,27,0.08); border-radius:16px; box-shadow:0 30px 60px rgba(21,22,27,0.12); padding:16px;">
+              <div style="display:flex; flex-direction:column; gap:4px;">
+                <a href="#marketplace" style="font-size:14px; color:#3f4149; padding:8px 10px; border-radius:8px;">Verified Strategies</a>
+                <a href="#marketplace" style="font-size:14px; color:#3f4149; padding:8px 10px; border-radius:8px;">Self-Trader Bots</a>
+                <a href="#marketplace" style="font-size:14px; color:#3f4149; padding:8px 10px; border-radius:8px;">Portfolio Bots</a>
+                <a href="#" style="font-size:14px; color:#3f4149; padding:8px 10px; border-radius:8px;">Templates</a>
+                <a href="#" style="font-size:14px; color:#3f4149; padding:8px 10px; border-radius:8px;">Signals</a>
+                <a href="#" style="font-size:14px; color:#3f4149; padding:8px 10px; border-radius:8px;">Seller Pages</a>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+
+        <div style="position:relative;" onMouseEnter="{{ openLearn }}" onMouseLeave="{{ closeMenu }}">
+          <div style="white-space:nowrap; padding:10px 12px; font-size:13px; font-weight:500; color:{{ learnColor }}; cursor:pointer; display:flex; align-items:center; gap:5px;">LEARN <span style="font-size:9px; opacity:0.5;">▾</span></div>
+          <sc-if value="{{ learnOpen }}">
+            <div style="position:absolute; top:100%; left:50%; transform:translateX(-50%); width:200px; background:#ffffff; border:1px solid rgba(21,22,27,0.08); border-radius:16px; box-shadow:0 30px 60px rgba(21,22,27,0.12); padding:16px;">
+              <div style="display:flex; flex-direction:column; gap:4px;">
+                <a href="#" style="font-size:14px; color:#3f4149; padding:8px 10px; border-radius:8px;">Get Started</a>
+                <a href="#" style="font-size:14px; color:#3f4149; padding:8px 10px; border-radius:8px;">Tutorials</a>
+                <a href="#" style="font-size:14px; color:#3f4149; padding:8px 10px; border-radius:8px;">Documentation</a>
+                <a href="#" style="font-size:14px; color:#3f4149; padding:8px 10px; border-radius:8px;">Academy</a>
+                <a href="#" style="font-size:14px; color:#3f4149; padding:8px 10px; border-radius:8px;">News</a>
+                <a href="#" style="font-size:14px; color:#3f4149; padding:8px 10px; border-radius:8px;">Blog</a>
+                <a href="#" style="font-size:14px; color:#3f4149; padding:8px 10px; border-radius:8px;">Helpdesk</a>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+
+        <div style="position:relative;" onMouseEnter="{{ openCompany }}" onMouseLeave="{{ closeMenu }}">
+          <div style="white-space:nowrap; padding:10px 12px; font-size:13px; font-weight:500; color:{{ companyColor }}; cursor:pointer; display:flex; align-items:center; gap:5px;">COMPANY <span style="font-size:9px; opacity:0.5;">▾</span></div>
+          <sc-if value="{{ companyOpen }}">
+            <div style="position:absolute; top:100%; left:50%; transform:translateX(-50%); width:200px; background:#ffffff; border:1px solid rgba(21,22,27,0.08); border-radius:16px; box-shadow:0 30px 60px rgba(21,22,27,0.12); padding:16px;">
+              <div style="display:flex; flex-direction:column; gap:4px;">
+                <a href="#" style="font-size:14px; color:#3f4149; padding:8px 10px; border-radius:8px;">About</a>
+                <a href="#" style="font-size:14px; color:#3f4149; padding:8px 10px; border-radius:8px;">Careers</a>
+                <a href="#" style="font-size:14px; color:#3f4149; padding:8px 10px; border-radius:8px;">Press</a>
+                <a href="#" style="font-size:14px; color:#3f4149; padding:8px 10px; border-radius:8px;">Affiliate</a>
+                <a href="#" style="font-size:14px; color:#3f4149; padding:8px 10px; border-radius:8px;">Support</a>
+                <a href="#" style="font-size:14px; color:#3f4149; padding:8px 10px; border-radius:8px;">Sell on iMMT AI</a>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex; align-items:center; gap:8px; flex-shrink:0; white-space:nowrap;">
+        <a href="#" style="font-size:13.5px; font-weight:500; color:#3f4149; padding:10px 12px; white-space:nowrap;">Log In</a>
+        <a href="#" style="font-size:13.5px; font-weight:600; color:#ffffff; background:#3626ff; padding:11px 20px; border-radius:999px; white-space:nowrap;">Sign Up</a>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ isMobile }}">
+      <div style="display:flex; align-items:center; gap:10px; flex-shrink:0;">
+        <a href="#" style="font-size:13px; font-weight:600; color:#ffffff; background:#3626ff; padding:9px 16px; border-radius:999px; white-space:nowrap;">Sign Up</a>
+        <div onClick="{{ toggleMobileMenu }}" style="width:36px; height:36px; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:5px; cursor:pointer; flex-shrink:0;">
+          <span style="width:20px; height:1.5px; background:#15161b;"></span>
+          <span style="width:20px; height:1.5px; background:#15161b;"></span>
+          <span style="width:12px; height:1.5px; background:#15161b; align-self:flex-end;"></span>
+        </div>
+      </div>
+      </sc-if>
     </div>
-    <div style="display:flex;align-items:center;gap:12px">
-      <a href="#docs" data-navhide style="padding:9px 16px;border-radius:10px;border:1px solid #DDD0B4;font-weight:600;font-size:14px;color:#221A0E;transition:all .2s" style-hover="border-color:#0EA5E9;color:#0EA5E9">Read Docs</a>
-      <a href="#community" style="padding:9px 18px;border-radius:10px;background:linear-gradient(135deg,#38BDF8,#0EA5E9);color:#fff;font-weight:600;font-size:14px;box-shadow:0 8px 20px rgba(14,165,233,.3);transition:transform .2s" style-hover="transform:translateY(-2px)">Join Community</a>
+
+    <sc-if value="{{ mobileMenuOpen }}">
+      <div style="border-top:1px solid rgba(21,22,27,0.08); background:#ffffff; max-height:calc(100vh - 76px); overflow-y:auto; padding:8px 20px 28px;">
+        <div onClick="{{ toggleFeaturesGroup }}" style="display:flex; justify-content:space-between; align-items:center; padding:16px 0; border-bottom:1px solid rgba(21,22,27,0.07); font-size:15px; font-weight:600; color:#15161b;">
+          FEATURES <span style="font-size:11px; color:#9a9da5;">▾</span>
+        </div>
+        <sc-if value="{{ featuresGroupOpen }}">
+          <div style="display:flex; flex-direction:column; gap:2px; padding:12px 0 4px;">
+            <a href="#loop" style="font-size:14.5px; color:#5c5f68; padding:9px 4px;">Self-Trading Loop</a>
+            <a href="#l5" style="font-size:14.5px; color:#5c5f68; padding:9px 4px;">AI Entry Decisions</a>
+            <a href="#components" style="font-size:14.5px; color:#5c5f68; padding:9px 4px;">Self-Review &amp; Improvement</a>
+            <a href="#levels" style="font-size:14.5px; color:#5c5f68; padding:9px 4px;">Autonomy Levels (L1–L5)</a>
+            <a href="#safety" style="font-size:14.5px; color:#5c5f68; padding:9px 4px;">Risk &amp; Safety Tools</a>
+            <a href="#metrics" style="font-size:14.5px; color:#5c5f68; padding:9px 4px;">Session Monitor</a>
+          </div>
+        </sc-if>
+
+        <div onClick="{{ toggleSolutionsGroup }}" style="display:flex; justify-content:space-between; align-items:center; padding:16px 0; border-bottom:1px solid rgba(21,22,27,0.07); font-size:15px; font-weight:600; color:#15161b;">
+          SOLUTIONS <span style="font-size:11px; color:#9a9da5;">▾</span>
+        </div>
+        <sc-if value="{{ solutionsGroupOpen }}">
+          <div style="display:flex; flex-direction:column; gap:2px; padding:12px 0 4px;">
+            <a href="#" style="font-size:14.5px; color:#5c5f68; padding:9px 4px;">AI Arena</a>
+            <a href="#" style="font-size:14.5px; color:#5c5f68; padding:9px 4px;">Asset Managers</a>
+            <a href="#" style="font-size:14.5px; color:#5c5f68; padding:9px 4px;">Advanced Traders</a>
+            <a href="#" style="font-size:14.5px; color:#5c5f68; padding:9px 4px;">Exchanges</a>
+          </div>
+        </sc-if>
+
+        <a href="#pricing" style="display:block; padding:16px 0; border-bottom:1px solid rgba(21,22,27,0.07); font-size:15px; font-weight:600; color:#15161b;">PRICING</a>
+
+        <div onClick="{{ toggleMarketplaceGroup }}" style="display:flex; justify-content:space-between; align-items:center; padding:16px 0; border-bottom:1px solid rgba(21,22,27,0.07); font-size:15px; font-weight:600; color:#15161b;">
+          MARKETPLACE <span style="font-size:11px; color:#9a9da5;">▾</span>
+        </div>
+        <sc-if value="{{ marketplaceGroupOpen }}">
+          <div style="display:flex; flex-direction:column; gap:2px; padding:12px 0 4px;">
+            <a href="#marketplace" style="font-size:14.5px; color:#5c5f68; padding:9px 4px;">Verified Strategies</a>
+            <a href="#marketplace" style="font-size:14.5px; color:#5c5f68; padding:9px 4px;">Self-Trader Bots</a>
+            <a href="#" style="font-size:14.5px; color:#5c5f68; padding:9px 4px;">Templates</a>
+            <a href="#" style="font-size:14.5px; color:#5c5f68; padding:9px 4px;">Signals</a>
+          </div>
+        </sc-if>
+
+        <div onClick="{{ toggleLearnGroup }}" style="display:flex; justify-content:space-between; align-items:center; padding:16px 0; border-bottom:1px solid rgba(21,22,27,0.07); font-size:15px; font-weight:600; color:#15161b;">
+          LEARN <span style="font-size:11px; color:#9a9da5;">▾</span>
+        </div>
+        <sc-if value="{{ learnGroupOpen }}">
+          <div style="display:flex; flex-direction:column; gap:2px; padding:12px 0 4px;">
+            <a href="#" style="font-size:14.5px; color:#5c5f68; padding:9px 4px;">Documentation</a>
+            <a href="#" style="font-size:14.5px; color:#5c5f68; padding:9px 4px;">Academy</a>
+            <a href="#" style="font-size:14.5px; color:#5c5f68; padding:9px 4px;">Blog</a>
+            <a href="#" style="font-size:14.5px; color:#5c5f68; padding:9px 4px;">Helpdesk</a>
+          </div>
+        </sc-if>
+
+        <div onClick="{{ toggleCompanyGroup }}" style="display:flex; justify-content:space-between; align-items:center; padding:16px 0; border-bottom:1px solid rgba(21,22,27,0.07); font-size:15px; font-weight:600; color:#15161b;">
+          COMPANY <span style="font-size:11px; color:#9a9da5;">▾</span>
+        </div>
+        <sc-if value="{{ companyGroupOpen }}">
+          <div style="display:flex; flex-direction:column; gap:2px; padding:12px 0 4px;">
+            <a href="#" style="font-size:14.5px; color:#5c5f68; padding:9px 4px;">About</a>
+            <a href="#" style="font-size:14.5px; color:#5c5f68; padding:9px 4px;">Careers</a>
+            <a href="#" style="font-size:14.5px; color:#5c5f68; padding:9px 4px;">Support</a>
+          </div>
+        </sc-if>
+
+        <a href="#" style="display:block; padding:20px 0 0; font-size:15px; font-weight:500; color:#3626ff;">Log In</a>
+      </div>
+    </sc-if>
+  </div>
+
+  <!-- HERO -->
+  <div style="position:relative; max-width:1320px; margin:0 auto; padding:{{ heroPadding }}; display:grid; grid-template-columns:{{ heroGridCols }}; gap:40px; align-items:center; z-index:1;">
+    <div>
+      <div style="display:inline-flex; align-items:center; gap:8px; font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:1px; color:#3626ff; border:1px solid rgba(54,38,255,0.25); background:#eceaff; padding:7px 14px; border-radius:999px; margin-bottom:32px;">
+        <span style="width:6px; height:6px; border-radius:50%; background:#3626ff; animation:pulseDot 1.6s infinite;"></span>
+        L5 INDEPENDENT SELF-TRADER
+      </div>
+      <div style="font-family:'Clash Display',sans-serif; font-size:{{ heroHeadlineSize }}; line-height:1.08; font-weight:600; letter-spacing:-1.5px; color:#15161b;">
+        AI that trades,<br/>reviews itself, and<br/><span style="color:#3626ff;">rewrites its own rules.</span>
+      </div>
+      <div style="font-size:18px; line-height:1.65; color:#5c5f68; margin-top:28px; max-width:520px;">
+        The iMMT AI self-trading system is an autonomous architecture where independent AIs learn, decide, review outcomes, and improve their own strategies — inside hard gates, settlement safety, and fund-transfer protections that never move.
+      </div>
+      <div style="display:flex; gap:14px; margin-top:40px; flex-wrap:wrap;">
+        <a href="#" style="font-size:15px; font-weight:600; color:#ffffff; background:#3626ff; padding:15px 28px; border-radius:999px; transition:background 0.2s ease, transform 0.2s ease;" style-hover="background:#241ac2; transform:translateY(-2px);">Start Free</a>
+        <a href="#loop" style="font-size:15px; font-weight:600; color:#15161b; border:1px solid rgba(21,22,27,0.15); padding:15px 28px; border-radius:999px; transition:border-color 0.2s ease, transform 0.2s ease;" style-hover="border-color:#3626ff; transform:translateY(-2px);">See the Trading Loop</a>
+      </div>
+      <div style="display:flex; gap:{{ heroStatsGap }}; margin-top:{{ heroStatsMarginTop }}; padding-top:32px; border-top:1px solid rgba(21,22,27,0.1); flex-wrap:wrap;">
+        <div>
+          <div style="font-family:'Clash Display',sans-serif; font-size:22px; font-weight:600; color:#15161b;">L1 → L5</div>
+          <div style="font-size:13px; color:#9a9da5; margin-top:4px;">autonomy levels</div>
+        </div>
+        <div>
+          <div style="font-family:'Clash Display',sans-serif; font-size:22px; font-weight:600; color:#15161b;">Codex + LLM</div>
+          <div style="font-size:13px; color:#9a9da5; margin-top:4px;">self-improvement engine</div>
+        </div>
+        <div>
+          <div style="font-family:'Clash Display',sans-serif; font-size:22px; font-weight:600; color:#15161b;">~1.5%/day</div>
+          <div style="font-size:13px; color:#9a9da5; margin-top:4px;">observation target, not guaranteed</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position:relative; height:{{ heroGraphicHeight }}; display:flex; align-items:center; justify-content:center;">
+      <div onClick="{{ openLightbox }}" style="position:relative; cursor:pointer; transform:scale(1); transition:transform 0.35s ease; animation:floatSlow 7s ease-in-out infinite;" style-hover="transform:scale(1.025);">
+        <x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" width="{{ phoneWidth }}" height="{{ phoneHeight }}" hint-size="300,650">
+          <div style="display:flex; flex-direction:column; height:100%; padding-top:56px; box-sizing:border-box; font-family:'Satoshi',-apple-system,sans-serif;">
+            <div style="display:flex; align-items:center; justify-content:space-between; padding:14px 20px 6px;">
+              <div style="display:flex; align-items:center; gap:8px;">
+                <div style="width:28px; height:28px; border-radius:8px; background:#3626ff; display:flex; align-items:center; justify-content:center; font-family:'Clash Display',sans-serif; font-weight:600; font-size:12px; color:#ffffff;">iM</div>
+                <div style="font-size:15px; font-weight:600; color:#ffffff;">Agent-04</div>
+              </div>
+              <div style="display:flex; align-items:center; gap:5px; background:rgba(54,38,255,0.25); border:1px solid rgba(139,143,255,0.5); padding:5px 10px; border-radius:999px;">
+                <span style="width:5px; height:5px; border-radius:50%; background:#8b8fff; animation:pulseDot 1.6s infinite;"></span>
+                <span style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; color:#c9c8ff; letter-spacing:0.5px;">LIVE · L5</span>
+              </div>
+            </div>
+            <div style="padding:14px 20px 10px;">
+              <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#8a8d96; letter-spacing:1px; margin-bottom:6px;">SESSION EQUITY</div>
+              <div style="display:flex; align-items:baseline; gap:10px;">
+                <div style="font-family:'Clash Display',sans-serif; font-size:30px; font-weight:600; color:#ffffff;">$48,214</div>
+                <div style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:#5ee6a8;">+2.31%</div>
+              </div>
+            </div>
+            <div style="padding:0 20px; margin:8px 0 6px;">
+              <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#8a8d96; letter-spacing:1px;">OPEN POSITIONS</div>
+            </div>
+            <div style="padding:0 14px; display:flex; flex-direction:column; gap:8px;">
+              <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:12px 14px; display:flex; align-items:center; justify-content:space-between;">
+                <div>
+                  <div style="font-size:13.5px; font-weight:600; color:#ffffff;">BTC-PERP</div>
+                  <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#8a8d96; margin-top:2px;">long · MAE -0.4%</div>
+                </div>
+                <div style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:#5ee6a8;">+3.8%</div>
+              </div>
+              <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:12px 14px; display:flex; align-items:center; justify-content:space-between;">
+                <div>
+                  <div style="font-size:13.5px; font-weight:600; color:#ffffff;">ETH-PERP</div>
+                  <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#8a8d96; margin-top:2px;">short · waiting exit</div>
+                </div>
+                <div style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:#f0a86e;">-0.6%</div>
+              </div>
+            </div>
+            <div style="padding:16px 20px 0;">
+              <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#8a8d96; letter-spacing:1px; margin-bottom:8px;">SELF-REVIEW FEED</div>
+              <div style="display:flex; flex-direction:column; gap:10px;">
+                <div style="display:flex; gap:8px;">
+                  <span style="width:5px; height:5px; border-radius:50%; background:#8b8fff; margin-top:6px; flex-shrink:0;"></span>
+                  <div style="font-size:12px; line-height:1.4; color:#dcdaff;">Exited SOL-PERP at +2.1% — invalidation confirmed.</div>
+                </div>
+                <div style="display:flex; gap:8px;">
+                  <span style="width:5px; height:5px; border-radius:50%; background:#5c5f68; margin-top:6px; flex-shrink:0;"></span>
+                  <div style="font-size:12px; line-height:1.4; color:#a4a7b0;">Codex proposed rule update — pending verification.</div>
+                </div>
+              </div>
+            </div>
+            <div style="margin-top:auto; display:flex; justify-content:space-around; padding:14px 10px 26px; border-top:1px solid rgba(255,255,255,0.08);">
+              <div style="width:8px; height:8px; border-radius:50%; background:#8b8fff;"></div>
+              <div style="width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.2);"></div>
+              <div style="width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.2);"></div>
+              <div style="width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.2);"></div>
+            </div>
+          </div>
+        </x-import>
+
+        <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+          <div style="position:absolute; top:60px; left:-64px; background:#ffffff; border:1px solid rgba(21,22,27,0.08); border-radius:14px; padding:12px 16px; box-shadow:0 20px 40px rgba(21,22,27,0.1); animation:floatSlow 6s ease-in-out infinite;">
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#9a9da5; margin-bottom:3px;">TODAY</div>
+            <div style="font-family:'Clash Display',sans-serif; font-size:16px; font-weight:600; color:#15161b;">+2.3%</div>
+          </div>
+          <div style="position:absolute; bottom:100px; right:-56px; background:#15161b; border-radius:14px; padding:12px 16px; box-shadow:0 20px 40px rgba(21,22,27,0.18); animation:floatSlow 8s ease-in-out infinite 1s;">
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#8b8fff; margin-bottom:3px;">CODEX</div>
+            <div style="font-size:12.5px; color:#ffffff; white-space:nowrap;">rule verified ✓</div>
+          </div>
+        </sc-if>
+      </div>
     </div>
   </div>
-</nav>
 
-<!-- ============ HERO ============ -->
-<header id="top" style="position:relative;background:radial-gradient(1100px 600px at 78% -8%,#DBF1FF 0%,rgba(251,232,200,0) 60%),linear-gradient(180deg,#FBF6EA 0%,#F6EFDD 100%);padding:72px 32px 90px;overflow:hidden">
-  <div aria-hidden="true" style="position:absolute;inset:0;background-image:linear-gradient(#0EA5E914 1px,transparent 1px),linear-gradient(90deg,#0EA5E914 1px,transparent 1px);background-size:54px 54px;mask-image:radial-gradient(900px 520px at 75% 10%,#000 0%,transparent 70%);opacity:.7"></div>
-  <div style="position:relative;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center">
-    <div>
-      <div style="display:inline-flex;align-items:center;gap:9px;padding:7px 14px;border-radius:999px;background:#fff;border:1px solid #EAD9B4;font-size:13px;font-weight:600;color:#0369A1;box-shadow:0 4px 14px rgba(14,165,233,.1);animation:heroIn .7s 0s both">
-        <span style="width:8px;height:8px;border-radius:50%;background:#4E9E2E;animation:blink 1.6s infinite"></span>
-        Non-custodial · 100 agents trading live now
-      </div>
-      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(38px,4.6vw,62px);line-height:1.04;letter-spacing:-.025em;margin:22px 0 0;animation:heroIn .7s .08s both">
-        Own autonomous trading agents.<br>
-        <span style="background:linear-gradient(110deg,#38BDF8,#0EA5E9);-webkit-background-clip:text;background-clip:text;color:transparent">Keep full custody.</span> Trade with discipline.
-      </h1>
-      <p style="font-size:19px;line-height:1.55;color:#6E6149;max-width:560px;margin:22px 0 0;animation:heroIn .7s .16s both">
-        <strong style="color:#221A0E">IMMT AI is non-custodial AI trading infrastructure</strong> - autonomous LSTM agents that trade crypto derivatives and Nasdaq futures 24/7. Built for market makers and retail traders alike. Designed for volatility. Obsessed with survival first.
-      </p>
-      <div style="display:flex;flex-wrap:wrap;gap:13px;margin-top:30px;animation:heroIn .7s .24s both">
-        <a href="#watch" style="display:inline-flex;align-items:center;gap:9px;padding:15px 24px;border-radius:13px;background:linear-gradient(135deg,#38BDF8,#0EA5E9);color:#fff;font-weight:600;font-size:16px;box-shadow:0 12px 26px rgba(14,165,233,.34);transition:transform .2s" style-hover="transform:translateY(-3px)">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg> Watch Live Trading
-        </a>
-        <a href="#community" style="padding:15px 24px;border-radius:13px;background:#fff;border:1px solid #DDD0B4;color:#221A0E;font-weight:600;font-size:16px;transition:all .2s" style-hover="border-color:#0EA5E9;color:#0EA5E9;transform:translateY(-3px)">Join Community</a>
+  <sc-if value="{{ lightboxOpen }}">
+    <div onClick="{{ closeLightbox }}" style="position:fixed; inset:0; z-index:1000; background:rgba(21,22,27,0.6); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:center; padding:24px; animation:fadeIn 0.25s ease;">
+      <div onClick="{{ stopProp }}" style="position:relative; background:#ffffff; border-radius:24px; padding:{{ lightboxPadding }}; max-width:920px; width:100%; display:{{ lightboxDisplay }}; flex-direction:column; gap:36px; align-items:center; box-shadow:0 60px 120px rgba(0,0,0,0.3); animation:modalIn 0.3s ease; max-height:90vh; overflow-y:auto;">
+        <div onClick="{{ closeLightbox }}" style="position:absolute; top:20px; right:20px; width:36px; height:36px; border-radius:50%; background:#fbfaf6; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:16px; color:#15161b;" style-hover="background:#eceaff;">✕</div>
+        <div style="flex-shrink:0;">
+          <x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" width="280" height="600" hint-size="280,600">
+            <div style="display:flex; flex-direction:column; height:100%; padding-top:56px; box-sizing:border-box; font-family:'Satoshi',-apple-system,sans-serif;">
+              <div style="padding:14px 20px 6px;">
+                <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#8a8d96; letter-spacing:1px; margin-bottom:6px;">AGENT-04 · SELF-REVIEW</div>
+                <div style="font-family:'Clash Display',sans-serif; font-size:20px; font-weight:600; color:#ffffff;">Exit quality: 92</div>
+              </div>
+              <div style="padding:10px 20px; display:flex; flex-direction:column; gap:10px;">
+                <div style="background:rgba(255,255,255,0.05); border-radius:12px; padding:12px 14px;">
+                  <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#8b8fff; margin-bottom:4px;">THESIS</div>
+                  <div style="font-size:12.5px; color:#dcdaff; line-height:1.5;">Liquidity sweep + reclaim above session VWAP.</div>
+                </div>
+                <div style="background:rgba(255,255,255,0.05); border-radius:12px; padding:12px 14px;">
+                  <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#8b8fff; margin-bottom:4px;">INVALIDATION</div>
+                  <div style="font-size:12.5px; color:#dcdaff; line-height:1.5;">Close below VWAP with volume confirmation.</div>
+                </div>
+                <div style="background:rgba(255,255,255,0.05); border-radius:12px; padding:12px 14px;">
+                  <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#5ee6a8; margin-bottom:4px;">RESULT</div>
+                  <div style="font-size:12.5px; color:#dcdaff; line-height:1.5;">Exited on time-stop before invalidation. +2.1% net.</div>
+                </div>
+              </div>
+            </div>
+          </x-import>
+        </div>
+        <div style="max-width:380px;">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1.5px; color:#3626ff; text-transform:uppercase; margin-bottom:14px;">Live Agent Monitor</div>
+          <div style="font-family:'Clash Display',sans-serif; font-size:26px; font-weight:600; letter-spacing:-0.5px; color:#15161b; margin-bottom:16px;">Every decision, shown as evidence</div>
+          <div style="font-size:15px; line-height:1.65; color:#5c5f68; margin-bottom:20px;">Each agent surfaces its own thesis, invalidation, and outcome after every trade — the same record Codex and the Local LLM use to propose the next improvement.</div>
+          <a href="#" onClick="{{ closeLightbox }}" style="display:inline-block; font-size:14.5px; font-weight:600; color:#ffffff; background:#3626ff; padding:13px 24px; border-radius:999px;" style-hover="background:#241ac2;">Explore the dashboard</a>
+        </div>
       </div>
     </div>
+  </sc-if>
 
-    <!-- LIVE DASHBOARD WIDGET -->
-    <div style="animation:heroIn .8s .3s both">
-      <div style="position:relative;background:#1E1710;border-radius:22px;padding:20px;box-shadow:0 30px 70px -20px rgba(30,23,16,.55),0 0 0 1px rgba(255,255,255,.04) inset;color:#F2E9D6">
-        <div style="position:absolute;top:-13px;right:22px;display:flex;align-items:center;gap:7px;padding:7px 13px;border-radius:999px;background:#4E9E2E;color:#06210A;font-weight:700;font-size:12px;font-family:'JetBrains Mono',monospace;animation:pulsing 2.2s infinite">
-          <span style="width:7px;height:7px;border-radius:50%;background:#06210A;animation:blink 1.2s infinite"></span>LIVE
-        </div>
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-          <div>
-            <div style="font-size:12px;color:#9A8A6B;font-family:'JetBrains Mono',monospace;letter-spacing:.04em">TRADING FLOOR</div>
-            <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px">100 agents active</div>
-          </div>
-          <div style="text-align:right">
-            <div style="font-size:12px;color:#9A8A6B;font-family:'JetBrains Mono',monospace">PnL TODAY</div>
-            <div id="pnl-today" style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:20px;color:#6FBF3E">+2.40%</div>
-          </div>
-        </div>
+  <!-- OVERVIEW -->
+  <div style="position:relative; max-width:1320px; margin:0 auto; padding:{{ overviewPadding }}; display:{{ overviewDisplay }}; flex-direction:column; grid-template-columns:0.9fr 1.1fr; gap:{{ overviewGap }}; z-index:1;">
+    <div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:18px;">
+        <svg width="24" height="44" viewBox="0 0 24 44"><path d="M12 0 C 2 10, 22 20, 12 44" stroke="#3626ff" stroke-width="1.5" fill="none"/></svg>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:1.5px; color:#3626ff; text-transform:uppercase;">01 — Overview</div>
+      </div>
+      <div style="font-family:'Clash Display',sans-serif; font-size:36px; font-weight:600; letter-spacing:-1px; color:#15161b; margin-bottom:20px;">Autonomy inside fixed boundaries</div>
+      <div style="font-size:16.5px; line-height:1.75; color:#5c5f68;">
+        The central system does not make every trading decision. It maintains hard gates, settlement safety, and fund-transfer protections, while each AI performs entry judgment, position management, self-position exit, self-review, and self-improvement inside those boundaries.
+      </div>
+    </div>
+    <div style="position:relative; display:grid; grid-template-columns:repeat(4, 1fr); grid-template-rows:repeat(2, minmax(132px, auto)); gap:14px;">
+      <svg style="position:absolute; top:-20px; left:-20px; width:calc(100% + 40px); height:calc(100% + 40px); pointer-events:none; z-index:0;" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <path d="M 0 60 C 30 40, 60 80, 100 30" stroke="rgba(54,38,255,0.12)" stroke-width="0.4" fill="none"/>
+      </svg>
+      <div style="grid-column:span 2; grid-row:span 2; position:relative; background:#15161b; border-radius:18px; padding:28px; display:flex; flex-direction:column; justify-content:space-between; transition:transform 0.45s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease; cursor:default;" style-hover="transform:scale(1.035) translateY(-6px); box-shadow:0 24px 48px rgba(21,22,27,0.25);">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#8b8fff;">READ</div>
+        <div style="font-size:17px; line-height:1.5; color:#ffffff; max-width:280px;">Interpret the current market state.</div>
+      </div>
+      <div style="grid-column:span 1; grid-row:1; background:#ffffff; border:1px solid rgba(21,22,27,0.08); border-radius:16px; padding:20px; box-shadow:0 20px 40px rgba(21,22,27,0.04); transition:transform 0.45s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease; cursor:default;" style-hover="transform:scale(1.06) translateY(-6px); box-shadow:0 24px 44px rgba(21,22,27,0.14);">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#9a9da5; margin-bottom:10px;">DECIDE</div>
+        <div style="font-size:14px; line-height:1.45; color:#26282f;">Decide whether to enter or wait.</div>
+      </div>
+      <div style="grid-column:span 1; grid-row:1; background:#eceaff; border:1px solid rgba(54,38,255,0.15); border-radius:16px; padding:20px; transition:transform 0.45s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease; cursor:default;" style-hover="transform:scale(1.06) translateY(-6px); box-shadow:0 24px 44px rgba(54,38,255,0.18);">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#3626ff; margin-bottom:10px;">MANAGE</div>
+        <div style="font-size:14px; line-height:1.45; color:#26282f;">Manage its own position after entry.</div>
+      </div>
+      <div style="grid-column:span 1; grid-row:2; background:#ffffff; border:1px solid rgba(21,22,27,0.08); border-radius:16px; padding:20px; box-shadow:0 20px 40px rgba(21,22,27,0.04); transition:transform 0.45s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease; cursor:default;" style-hover="transform:scale(1.06) translateY(-6px); box-shadow:0 24px 44px rgba(21,22,27,0.14);">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#9a9da5; margin-bottom:10px;">EXIT</div>
+        <div style="font-size:14px; line-height:1.45; color:#26282f;">Create exit evidence and decide timing of its own position exit.</div>
+      </div>
+      <div style="grid-column:span 1; grid-row:2; background:#ffffff; border:1px solid rgba(21,22,27,0.08); border-radius:16px; padding:20px; box-shadow:0 20px 40px rgba(21,22,27,0.04); transition:transform 0.45s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease; cursor:default;" style-hover="transform:scale(1.06) translateY(-6px); box-shadow:0 24px 44px rgba(21,22,27,0.14);">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#9a9da5; margin-bottom:10px;">EVOLVE</div>
+        <div style="font-size:14px; line-height:1.45; color:#26282f;">Codex + Local LLM evolve its own rules and self-develop code.</div>
+      </div>
+    </div>
+  </div>
 
-        <div style="background:#29200F;border:1px solid #3B2F19;border-radius:14px;padding:14px 14px 8px;margin-bottom:14px">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
-            <span style="font-size:12px;color:#9A8A6B;font-family:'JetBrains Mono',monospace">EQUITY · 30D</span>
-            <span style="font-size:12px;color:#6FBF3E;font-family:'JetBrains Mono',monospace;font-weight:600">▲ compounding</span>
-          </div>
-          <svg viewBox="0 0 320 110" width="100%" height="92" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="ln" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#38BDF8"/><stop offset="1" stop-color="#7DD3FC"/></linearGradient>
-              <linearGradient id="ar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#38BDF8" stop-opacity=".34"/><stop offset="1" stop-color="#38BDF8" stop-opacity="0"/></linearGradient>
-            </defs>
-            <path d="M0,92 L26,86 L52,89 L80,70 L106,76 L134,56 L162,62 L190,42 L218,49 L246,28 L274,34 L300,16 L320,12 L320,110 L0,110 Z" fill="url(#ar)"/>
-            <path d="M0,92 L26,86 L52,89 L80,70 L106,76 L134,56 L162,62 L190,42 L218,49 L246,28 L274,34 L300,16 L320,12" fill="none" stroke="url(#ln)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="320" cy="12" r="4" fill="#7DD3FC"><animate attributeName="opacity" values="1;.3;1" dur="1.4s" repeatCount="indefinite"/></circle>
+  <!-- SELF-TRADING LOOP -->
+  <div id="loop" style="position:relative; background:#ffffff; border-top:1px solid rgba(21,22,27,0.08); border-bottom:1px solid rgba(21,22,27,0.08); padding:{{ loopPadding }}; z-index:1;">
+    <div style="max-width:1320px; margin:0 auto;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:18px;">
+        <svg width="24" height="44" viewBox="0 0 24 44"><path d="M12 0 C 2 10, 22 20, 12 44" stroke="#3626ff" stroke-width="1.5" fill="none"/></svg>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:1.5px; color:#3626ff; text-transform:uppercase;">02 — Architecture</div>
+      </div>
+      <div style="font-family:'Clash Display',sans-serif; font-size:36px; font-weight:600; letter-spacing:-1px; color:#15161b; margin-bottom:52px; max-width:640px;">The self-trading loop</div>
+      <div style="display:{{ loopDisplay }}; flex-direction:column; grid-template-columns:0.85fr 1.15fr; gap:{{ loopGap }}; align-items:center;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0 28px;">
+          <sc-for list="{{ loopSteps }}" as="step" hint-placeholder-count="12">
+            <div style="display:flex; gap:14px; padding:16px 0; border-bottom:1px solid rgba(21,22,27,0.07);">
+              <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:{{ step.color }}; flex-shrink:0; width:22px;">{{ step.num }}</div>
+              <div style="font-size:13.5px; line-height:1.4; color:#26282f;">{{ step.text }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="position:relative;">
+          <svg viewBox="0 0 600 600" style="width:100%; height:auto;">
+            <circle cx="300" cy="300" r="250" stroke="rgba(21,22,27,0.12)" stroke-width="1.5" fill="none"/>
+            <circle cx="300" cy="300" r="250" stroke="#3626ff" stroke-opacity="0.4" stroke-width="1.5" fill="none" stroke-dasharray="6 22" style="animation:ringSpin 14s linear infinite; transform-origin:300px 300px;"/>
+            <path d="M 316 51 C 330 55, 320 68, 306 66" fill="#15161b"/>
+            <circle cx="300" cy="300" r="60" fill="#fbfaf6" stroke="rgba(54,38,255,0.25)" stroke-width="1.5"/>
+            <text x="300" y="296" text-anchor="middle" font-family="Clash Display, sans-serif" font-size="15" font-weight="600" fill="#3626ff">LOOP</text>
+            <text x="300" y="314" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#9a9da5">continuous</text>
+            <sc-for list="{{ loopSteps }}" as="step" hint-placeholder-count="12">
+              <g style="animation:chasePulse 3.6s ease-in-out infinite; animation-delay:{{ step.delay }}s; transform-origin:{{ step.x }}px {{ step.y }}px;">
+                <circle cx="{{ step.x }}" cy="{{ step.y }}" r="{{ step.r }}" fill="{{ step.color }}"/>
+                <text x="{{ step.x }}" y="{{ step.y }}" dy="4" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600" fill="#ffffff">{{ step.num }}</text>
+              </g>
+            </sc-for>
           </svg>
         </div>
-
-        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:14px">
-          <div style="background:#29200F;border:1px solid #3B2F19;border-radius:11px;padding:10px"><div style="font-size:11px;color:#9A8A6B;font-family:'JetBrains Mono',monospace">WIN RATE</div><div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:16px;color:#F2E9D6">71.4%</div></div>
-          <div style="background:#29200F;border:1px solid #3B2F19;border-radius:11px;padding:10px"><div style="font-size:11px;color:#9A8A6B;font-family:'JetBrains Mono',monospace">MAX DD</div><div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:16px;color:#7DD3FC">5.0%</div></div>
-          <div style="background:#29200F;border:1px solid #3B2F19;border-radius:11px;padding:10px"><div style="font-size:11px;color:#9A8A6B;font-family:'JetBrains Mono',monospace">OPEN</div><div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:16px;color:#F2E9D6">37</div></div>
-        </div>
-
-        <div style="display:flex;gap:8px;margin-bottom:10px">
-          <div style="flex:1;display:flex;align-items:center;justify-content:space-between;background:#29200F;border:1px solid #3B2F19;border-radius:11px;padding:9px 12px;font-family:'JetBrains Mono',monospace"><span style="font-size:12px;color:#9A8A6B">ETH/USDT</span><span id="eth-price" style="font-size:13px;font-weight:600;color:#F2E9D6">$3,284.50</span></div>
-          <div style="flex:1;display:flex;align-items:center;justify-content:space-between;background:#29200F;border:1px solid #3B2F19;border-radius:11px;padding:9px 12px;font-family:'JetBrains Mono',monospace"><span style="font-size:12px;color:#9A8A6B">BTC/USDT</span><span id="btc-price" style="font-size:13px;font-weight:600;color:#F2E9D6">$67,120.00</span></div>
-        </div>
-
-        <div style="background:#29200F;border:1px solid #3B2F19;border-radius:13px;overflow:hidden">
-          <div style="padding:9px 12px;font-size:11px;color:#9A8A6B;font-family:'JetBrains Mono',monospace;letter-spacing:.05em;border-bottom:1px solid #3B2F19">LIVE EXECUTIONS</div>
-          <div id="agent-feed"></div>
-        </div>
       </div>
     </div>
   </div>
-</header>
 
-<!-- ============ SHOWCASE BAND ============ -->
-<section style="background:#1E1710;padding:0">
-  <div style="max-width:1240px;margin:0 auto;position:relative">
-    <div style="position:relative;overflow:hidden">
-      <img src="assets/agents-portfolio.png" alt="100 AI agents building your portfolio" style="width:100%;display:block;object-fit:cover">
-      <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,15,9,.84) 0%,rgba(20,15,9,.38) 38%,rgba(20,15,9,0) 62%)"></div>
-      <div data-overlaytext style="position:absolute;left:0;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;padding:0 6vw;max-width:620px;color:#fff">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;color:#7DD3FC;text-transform:uppercase;margin-bottom:14px" data-reveal>Proof of life</div>
-        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,3.4vw,46px);line-height:1.08;letter-spacing:-.02em;margin:0" data-reveal>100 AI agents. One portfolio.<br>Building 24/7 - on camera.</h2>
-        <p style="font-size:17px;line-height:1.55;color:#D8CCB4;margin:18px 0 0;max-width:440px" data-reveal>Every entry, every exit, every retrain - livestreamed and logged on-chain. Nothing hidden behind a black box.</p>
-        <a href="#watch" style="margin-top:24px;display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:12px;background:#fff;color:#221A0E;font-weight:600;width:max-content;transition:transform .2s" style-hover="transform:translateY(-3px)" data-reveal>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="#FF0000"><path d="M23 12c0-2.3-.2-3.9-.5-5-.3-1-1-1.7-2-2C18.9 4.5 12 4.5 12 4.5s-6.9 0-8.5.5c-1 .3-1.7 1-2 2C1.2 8.1 1 9.7 1 12s.2 3.9.5 5c.3 1 1 1.7 2 2 1.6.5 8.5.5 8.5.5s6.9 0 8.5-.5c1-.3 1.7-1 2-2 .3-1.1.5-2.7.5-5z"/><path d="M9.8 15.5l5.7-3.5-5.7-3.5z" fill="#fff"/></svg>
-          Watch on YouTube
-        </a>
-      </div>
+  <!-- L5 CAPABILITY -->
+  <div id="l5" style="position:relative; max-width:1320px; margin:0 auto; padding:{{ l5Padding }}; z-index:1;">
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:18px;">
+      <svg width="24" height="44" viewBox="0 0 24 44"><path d="M12 0 C 2 10, 22 20, 12 44" stroke="#3626ff" stroke-width="1.5" fill="none"/></svg>
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:1.5px; color:#3626ff; text-transform:uppercase;">03 — Capability</div>
     </div>
-  </div>
-</section>
-
-<!-- ============ STATS STRIP ============ -->
-<section style="background:#1E1710;padding:0" data-screen-label="Key Stats">
-  <div style="max-width:1240px;margin:0 auto;padding:38px 32px">
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px" data-statsgrid>
-      <div style="text-align:center">
-        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,3.4vw,40px);color:#fff;letter-spacing:-.02em"><span data-count="100">100</span></div>
-        <div style="font-size:13.5px;color:#9A8A6B;font-weight:500;margin-top:4px">Live Agents</div>
-      </div>
-      <div style="text-align:center">
-        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,3.4vw,40px);color:#fff;letter-spacing:-.02em"><span data-count="2">2</span><span style="font-size:22px;color:#7DD3FC">yr+</span></div>
-        <div style="font-size:13.5px;color:#9A8A6B;font-weight:500;margin-top:4px">Market Training</div>
-      </div>
-      <div style="text-align:center">
-        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,3.4vw,40px);color:#fff;letter-spacing:-.02em"><span data-count="40">40</span><span style="font-size:22px;color:#7DD3FC">K+</span></div>
-        <div style="font-size:13.5px;color:#9A8A6B;font-weight:500;margin-top:4px">Community</div>
-      </div>
-      <div style="text-align:center">
-        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,3.4vw,40px);color:#6FBF3E;letter-spacing:-.02em"><span data-count="0">0</span></div>
-        <div style="font-size:13.5px;color:#9A8A6B;font-weight:500;margin-top:4px">Liquidations</div>
-      </div>
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:32px; margin-bottom:52px; flex-wrap:wrap;">
+      <div style="font-family:'Clash Display',sans-serif; font-size:36px; font-weight:600; letter-spacing:-1px; color:#15161b; max-width:640px;">L5 means explaining every trade, not just profiting from it</div>
+      <div style="font-size:15.5px; line-height:1.6; color:#5c5f68; max-width:420px;">L5 does not simply mean a profitable AI. It means the AI can explain profits, losses, waiting, and failed exits as its own decision process, then improve that process before the next trade.</div>
     </div>
-  </div>
-</section>
-
-<!-- ============ SECTION 1 - WHAT IS IMMT ============ -->
-<section id="platform" style="padding:110px 32px;background:#FBF6EA" data-screen-label="What is IMMT">
-  <div style="max-width:1240px;margin:0 auto">
-    <div style="max-width:760px">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;color:#0284C7;text-transform:uppercase" data-reveal>What is IMMT AI</div>
-      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,46px);line-height:1.08;letter-spacing:-.02em;margin:16px 0 0;color:#221A0E" data-reveal>Non-custodial autonomous trading infrastructure</h2>
-      <p style="font-size:18px;line-height:1.6;color:#6E6149;margin:20px 0 0" data-reveal>Self-evolving AI agents built for capital preservation and compounding execution across crypto and traditional markets. <strong style="color:#221A0E">Your funds stay in your own exchange account.</strong> Restricted API permissions, zero withdrawal access. We manage execution, risk, and verification - through public dashboards and on-chain logging.</p>
-      <p style="font-size:18px;line-height:1.6;color:#6E6149;margin:14px 0 0" data-reveal>This is not a trading tool. It's an autonomous execution system that continuously adapts, reduces human error, and compounds survival in volatile markets.</p>
-    </div>
-
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px">
-      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:24px;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-5px);box-shadow:0 18px 38px -16px rgba(12,74,110,.25)">
-        <div style="width:40px;height:40px;border-radius:11px;background:#E0F2FE;display:flex;align-items:center;justify-content:center;margin-bottom:14px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2"><path d="M12 2l8 3v6c0 5-3.5 8-8 11-4.5-3-8-6-8-11V5z" stroke-linejoin="round"/></svg></div>
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 6px">Non-custodial</h3>
-        <p style="font-size:15px;line-height:1.55;color:#6E6149;margin:0">Funds stay in your exchange account. Restricted API only - never withdrawal access.</p>
+    <div style="display:{{ l5Display }}; flex-direction:column; grid-template-columns:0.85fr 1.15fr; gap:24px;">
+      <div style="background:#3626ff; border-radius:22px; padding:44px 36px; display:flex; flex-direction:column; justify-content:space-between; position:relative; overflow:hidden;">
+        <svg style="position:absolute; bottom:-40px; right:-40px; width:220px; height:220px; opacity:0.5;" viewBox="0 0 220 220"><path d="M 0 110 C 60 60, 140 180, 220 90" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" fill="none"/></svg>
+        <div style="font-family:'Clash Display',sans-serif; font-size:26px; line-height:1.35; font-weight:600; color:#ffffff; position:relative;">"Explain profits, losses, waiting, and failed exits as its own decision process."</div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#c9c8ff; margin-top:24px; position:relative;">— L5 definition</div>
       </div>
-      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:24px;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-5px);box-shadow:0 18px 38px -16px rgba(12,74,110,.25)">
-        <div style="width:40px;height:40px;border-radius:11px;background:#E0F2FE;display:flex;align-items:center;justify-content:center;margin-bottom:14px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6" stroke-linecap="round"/></svg></div>
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 6px">User-owned agents</h3>
-        <p style="font-size:15px;line-height:1.55;color:#6E6149;margin:0">You own, govern, and benefit from your AI agent's improvement over time.</p>
-      </div>
-      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:24px;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-5px);box-shadow:0 18px 38px -16px rgba(12,74,110,.25)">
-        <div style="width:40px;height:40px;border-radius:11px;background:#E0F2FE;display:flex;align-items:center;justify-content:center;margin-bottom:14px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg></div>
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 6px">24/7 execution</h3>
-        <p style="font-size:15px;line-height:1.55;color:#6E6149;margin:0">Autonomous trading around the clock, in every market condition.</p>
-      </div>
-      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:24px;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-5px);box-shadow:0 18px 38px -16px rgba(12,74,110,.25)">
-        <div style="width:40px;height:40px;border-radius:11px;background:#E0F2FE;display:flex;align-items:center;justify-content:center;margin-bottom:14px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V8a5 5 0 0 1 10 0v3" stroke-linecap="round"/></svg></div>
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 6px">Hardcoded risk</h3>
-        <p style="font-size:15px;line-height:1.55;color:#6E6149;margin:0">Position sizing, stop-loss, and drawdown limits enforced at the architecture level.</p>
-      </div>
-      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:24px;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-5px);box-shadow:0 18px 38px -16px rgba(12,74,110,.25)">
-        <div style="width:40px;height:40px;border-radius:11px;background:#E0F2FE;display:flex;align-items:center;justify-content:center;margin-bottom:14px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" stroke-linejoin="round"/></svg></div>
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 6px">Transparent verification</h3>
-        <p style="font-size:15px;line-height:1.55;color:#6E6149;margin:0">Every trade livestreamed, every transaction logged on-chain.</p>
-      </div>
-      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:24px;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-5px);box-shadow:0 18px 38px -16px rgba(12,74,110,.25)">
-        <div style="width:40px;height:40px;border-radius:11px;background:#E0F2FE;display:flex;align-items:center;justify-content:center;margin-bottom:14px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" stroke-linecap="round"/><circle cx="12" cy="12" r="3.4"/></svg></div>
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 6px">Self-evolving intelligence</h3>
-        <p style="font-size:15px;line-height:1.55;color:#6E6149;margin:0">Agents retrain continuously on live trade outcomes - getting sharper over time.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ============ SECTION 2 - THE PROBLEM ============ -->
-<section style="padding:110px 32px;background:#F3EAD7" data-screen-label="The Problem">
-  <div style="max-width:1240px;margin:0 auto">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;color:#0284C7;text-transform:uppercase" data-reveal>The problem</div>
-    <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,46px);line-height:1.08;letter-spacing:-.02em;margin:16px 0 44px;color:#221A0E;max-width:640px" data-reveal>Existing trading infrastructure is broken</h2>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
-      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:28px;border-top:3px solid #C0573A">
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin:0 0 10px;color:#221A0E">Custodial risk</h3>
-        <p style="font-size:15.5px;line-height:1.6;color:#6E6149;margin:0">Users hand over funds to black-box platforms with no withdrawal transparency. FTX proved this destroys trust.</p>
-      </div>
-      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:28px;border-top:3px solid #C0573A">
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin:0 0 10px;color:#221A0E">Opaque algorithms</h3>
-        <p style="font-size:15.5px;line-height:1.6;color:#6E6149;margin:0">Retail traders can't audit or verify how their capital is being deployed. Risk controls are invisible.</p>
-      </div>
-      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:28px;border-top:3px solid #C0573A">
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin:0 0 10px;color:#221A0E">No ownership</h3>
-        <p style="font-size:15.5px;line-height:1.6;color:#6E6149;margin:0">Traders use borrowed tools with no upside in the AI they help train. No governance. No loyalty. No moat.</p>
-      </div>
-    </div>
-    <blockquote data-reveal style="margin:44px 0 0;padding:36px 40px;background:#1E1710;border-radius:18px;color:#fff;position:relative;overflow:hidden">
-      <div style="position:absolute;top:-10px;left:24px;font-family:'Space Grotesk',sans-serif;font-size:120px;color:rgba(56,189,248,.18);line-height:1">“</div>
-      <p style="position:relative;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(22px,2.6vw,32px);line-height:1.3;letter-spacing:-.01em;margin:0;max-width:840px">The moat in crypto trading isn't returns - it's <span style="color:#7DD3FC">who owns the infrastructure.</span></p>
-    </blockquote>
-  </div>
-</section>
-
-<!-- ============ SECTION 3 - THE SOLUTION ============ -->
-<section style="padding:110px 32px;background:#FBF6EA" data-screen-label="The Solution">
-  <div style="max-width:1240px;margin:0 auto">
-    <div style="text-align:center;max-width:680px;margin:0 auto">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;color:#0284C7;text-transform:uppercase" data-reveal>The solution</div>
-      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,46px);line-height:1.08;letter-spacing:-.02em;margin:16px 0 0;color:#221A0E" data-reveal>IMMT inverts the model</h2>
-      <p style="font-size:18px;line-height:1.6;color:#6E6149;margin:16px 0 0" data-reveal>Users own their capital, their AI agents, and their long-term edge.</p>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px">
-      <div data-reveal style="background:linear-gradient(180deg,#EAF6FD,#fff);border:1px solid #EAD9B4;border-radius:16px;padding:26px">
-        <div style="font-family:'JetBrains Mono',monospace;font-weight:600;color:#0EA5E9;font-size:14px;margin-bottom:14px">01</div>
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 8px;color:#221A0E">Non-custodial</h3>
-        <p style="font-size:14.5px;line-height:1.55;color:#6E6149;margin:0">Funds stay in user accounts. Restricted API keys, zero withdrawal access.</p>
-      </div>
-      <div data-reveal style="background:linear-gradient(180deg,#EAF6FD,#fff);border:1px solid #EAD9B4;border-radius:16px;padding:26px">
-        <div style="font-family:'JetBrains Mono',monospace;font-weight:600;color:#0EA5E9;font-size:14px;margin-bottom:14px">02</div>
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 8px;color:#221A0E">User-owned agents</h3>
-        <p style="font-size:14.5px;line-height:1.55;color:#6E6149;margin:0">Traders own, govern, and monetize their LSTM-powered AI characters.</p>
-      </div>
-      <div data-reveal style="background:linear-gradient(180deg,#EAF6FD,#fff);border:1px solid #EAD9B4;border-radius:16px;padding:26px">
-        <div style="font-family:'JetBrains Mono',monospace;font-weight:600;color:#0EA5E9;font-size:14px;margin-bottom:14px">03</div>
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 8px;color:#221A0E">Transparent risk</h3>
-        <p style="font-size:14.5px;line-height:1.55;color:#6E6149;margin:0">Public dashboards: drawdown limits, stop-loss rules, position sizing - all observable.</p>
-      </div>
-      <div data-reveal style="background:linear-gradient(180deg,#EAF6FD,#fff);border:1px solid #EAD9B4;border-radius:16px;padding:26px">
-        <div style="font-family:'JetBrains Mono',monospace;font-weight:600;color:#0EA5E9;font-size:14px;margin-bottom:14px">04</div>
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 8px;color:#221A0E">Marketplace network</h3>
-        <p style="font-size:14.5px;line-height:1.55;color:#6E6149;margin:0">Trade, share, and monetize AI agents - creating compounding network effects.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SECTION 4 - HOW IT WORKS ============ -->
-<section style="padding:110px 32px;background:#F3EAD7" data-screen-label="How It Works">
-  <div style="max-width:1240px;margin:0 auto">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;color:#0284C7;text-transform:uppercase" data-reveal>How it works</div>
-    <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,46px);line-height:1.08;letter-spacing:-.02em;margin:16px 0 48px;color:#221A0E" data-reveal>From exchange to autonomous execution</h2>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
-      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:26px">
-        <span style="width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,#38BDF8,#0EA5E9);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;margin-bottom:14px">1</span>
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 8px;color:#221A0E">Connect exchange</h3>
-        <p style="font-size:14.5px;line-height:1.55;color:#6E6149;margin:0">Link Binance or Bybit via read/trade-only API keys. No withdrawal permissions ever requested.</p>
-      </div>
-      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:26px">
-        <span style="width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,#38BDF8,#0EA5E9);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;margin-bottom:14px">2</span>
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 8px;color:#221A0E">Deploy AI agent</h3>
-        <p style="font-size:14.5px;line-height:1.55;color:#6E6149;margin:0">Select or train an LSTM-powered agent with defined risk parameters and capital allocation.</p>
-      </div>
-      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:26px">
-        <span style="width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,#38BDF8,#0EA5E9);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;margin-bottom:14px">3</span>
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 8px;color:#221A0E">Autonomous execution</h3>
-        <p style="font-size:14.5px;line-height:1.55;color:#6E6149;margin:0">Agent trades ETH/USDT and BTC/USDT derivatives 24/7. All signals verifiable on-chain.</p>
-      </div>
-      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:26px">
-        <span style="width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,#38BDF8,#0EA5E9);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;margin-bottom:14px">4</span>
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 8px;color:#221A0E">Performance &amp; governance</h3>
-        <p style="font-size:14.5px;line-height:1.55;color:#6E6149;margin:0">Public dashboard shows real-time metrics. Users govern parameters and share marketplace upside.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SECTION 5 - LSTM PIPELINE (DARK) ============ -->
-<section id="pipeline" style="padding:120px 32px;background:linear-gradient(180deg,#1E1710 0%,#241B0E 100%);color:#F2E9D6;position:relative;overflow:hidden" data-screen-label="Intelligence Pipeline">
-  <div aria-hidden="true" style="position:absolute;inset:0;background-image:linear-gradient(rgba(56,189,248,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.07) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(900px 500px at 50% 0%,#000,transparent 75%)"></div>
-  <div style="position:relative;max-width:1100px;margin:0 auto;text-align:center">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;color:#7DD3FC;text-transform:uppercase" data-reveal>The LSTM intelligence pipeline</div>
-    <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,3.8vw,48px);line-height:1.08;letter-spacing:-.02em;margin:16px 0 8px" data-reveal>Five layers. One continuous loop.</h2>
-  </div>
-  <div style="position:relative;max-width:980px;margin:54px auto 0;display:flex;flex-direction:column;gap:14px">
-    <div data-reveal style="display:grid;grid-template-columns:64px 1fr;gap:22px;align-items:start;background:rgba(255,255,255,.03);border:1px solid rgba(56,189,248,.2);border-radius:16px;padding:24px 26px">
-      <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:28px;color:#7DD3FC">01</div>
-      <div><h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin:2px 0 6px">Data layer</h3><p style="font-size:15.5px;line-height:1.6;color:#C2B594;margin:0">Real-time price action, order flow, order-book depth, and on-chain/news sentiment - all feeding the model simultaneously for a complete market picture.</p></div>
-    </div>
-    <div data-reveal style="display:grid;grid-template-columns:64px 1fr;gap:22px;align-items:start;background:rgba(255,255,255,.03);border:1px solid rgba(56,189,248,.2);border-radius:16px;padding:24px 26px">
-      <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:28px;color:#7DD3FC">02</div>
-      <div><h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin:2px 0 6px">Model layer</h3><p style="font-size:15.5px;line-height:1.6;color:#C2B594;margin:0">LSTM networks trained on 2+ years of real market data, supported by an LLM context layer. A trade only executes once the model clears a minimum confidence threshold.</p></div>
-    </div>
-    <div data-reveal style="display:grid;grid-template-columns:64px 1fr;gap:22px;align-items:start;background:rgba(255,255,255,.03);border:1px solid rgba(56,189,248,.2);border-radius:16px;padding:24px 26px">
-      <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:28px;color:#7DD3FC">03</div>
-      <div><h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin:2px 0 6px">Agent layer</h3><p style="font-size:15.5px;line-height:1.6;color:#C2B594;margin:0">100 independent agents deployed simultaneously, each non-correlated. Diversification happens at the infrastructure level - not the portfolio level.</p></div>
-    </div>
-    <div data-reveal style="display:grid;grid-template-columns:64px 1fr;gap:22px;align-items:start;background:linear-gradient(120deg,rgba(56,189,248,.16),rgba(14,165,233,.06));border:1px solid rgba(56,189,248,.42);border-radius:16px;padding:24px 26px">
-      <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:28px;color:#7DD3FC">04</div>
-      <div>
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin:2px 0 10px">Risk layer <span style="font-size:13px;color:#7DD3FC;font-family:'JetBrains Mono',monospace;font-weight:500">· these are physics, not policies</span></h3>
-        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px">
-          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;background:rgba(56,189,248,.13);border:1px solid rgba(56,189,248,.32);color:#BAE6FD;padding:6px 12px;border-radius:8px">0.5% max risk / trade</span>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;background:rgba(56,189,248,.13);border:1px solid rgba(56,189,248,.32);color:#BAE6FD;padding:6px 12px;border-radius:8px">3× max leverage</span>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;background:rgba(56,189,248,.13);border:1px solid rgba(56,189,248,.32);color:#BAE6FD;padding:6px 12px;border-radius:8px">5% daily drawdown cap</span>
-        </div>
-        <p style="font-size:15.5px;line-height:1.6;color:#C2B594;margin:0">The drawdown cap triggers an automatic pause. Stop-loss execution is automatic and cannot be overridden.</p>
-      </div>
-    </div>
-    <div data-reveal style="display:grid;grid-template-columns:64px 1fr;gap:22px;align-items:start;background:rgba(255,255,255,.03);border:1px solid rgba(56,189,248,.2);border-radius:16px;padding:24px 26px">
-      <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:28px;color:#7DD3FC">05</div>
-      <div><h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin:2px 0 6px">Feedback layer</h3><p style="font-size:15.5px;line-height:1.6;color:#C2B594;margin:0">Every trade outcome is logged and fed back into the LSTM. The model retrains continuously on live results - becoming more accurate and more profitable over time.</p></div>
-    </div>
-    <div data-reveal style="display:flex;align-items:center;justify-content:center;gap:10px;margin-top:10px;color:#7DD3FC;font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7DD3FC" stroke-width="2"><path d="M21 12a9 9 0 1 1-3-6.7" stroke-linecap="round"/><path d="M21 3v5h-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      OUTCOMES LOOP BACK TO THE DATA LAYER - CONTINUOUSLY
-    </div>
-  </div>
-</section>
-
-<!-- ============ SECTION 6 - MARKETS ============ -->
-<section id="markets" style="padding:110px 32px;background:#FBF6EA" data-screen-label="Markets">
-  <div style="max-width:1240px;margin:0 auto">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;color:#0284C7;text-transform:uppercase" data-reveal>Markets</div>
-    <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,46px);line-height:1.08;letter-spacing:-.02em;margin:16px 0 48px;color:#221A0E;max-width:640px" data-reveal>Built for any market. Deployed globally.</h2>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
-      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:18px;padding:28px;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-5px);box-shadow:0 20px 44px -18px rgba(12,74,110,.25)">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
-          <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:#221A0E">ETH / USDT</span>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:#06210A;background:#9FE07A;padding:4px 9px;border-radius:6px">LIVE</span>
-        </div>
-        <p style="font-size:15px;line-height:1.6;color:#6E6149;margin:0">The original market. 100 agents - scalping, market making, and liquidity provision running 24/7. The proof of concept that validated everything.</p>
-      </div>
-      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:18px;padding:28px;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-5px);box-shadow:0 20px 44px -18px rgba(12,74,110,.25)">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
-          <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:#221A0E">BTC / USDT</span>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:#06210A;background:#9FE07A;padding:4px 9px;border-radius:6px">LIVE</span>
-        </div>
-        <p style="font-size:15px;line-height:1.6;color:#6E6149;margin:0">Bitcoin's higher daily volatility creates more scalping opportunities. Retrained on Bitcoin's microstructure, running alongside ETH agents.</p>
-      </div>
-      <div data-reveal style="background:#1E1710;border:1px solid #3B2F19;border-radius:18px;padding:28px;color:#F2E9D6;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-5px);box-shadow:0 20px 44px -18px rgba(12,74,110,.4)">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
-          <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:#fff">Nasdaq Futures</span>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:#221A0E;background:#7DD3FC;padding:4px 9px;border-radius:6px">NEW</span>
-        </div>
-        <p style="font-size:15px;line-height:1.6;color:#C2B594;margin:0">Institutional-grade liquidity. Lower manipulation risk. Full regulatory clarity. LSTM models in retraining now for U.S. equity futures.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ LIVE DASHBOARDS ============ -->
-<section id="dashboards" style="padding:110px 32px;background:linear-gradient(180deg,#241B0E 0%,#1E1710 100%);color:#F2E9D6;position:relative;overflow:hidden" data-screen-label="Live Dashboards">
-  <div aria-hidden="true" style="position:absolute;inset:0;background-image:radial-gradient(700px 360px at 50% -5%,rgba(56,189,248,.12),transparent 70%)"></div>
-  <div style="position:relative;max-width:1180px;margin:0 auto">
-    <div style="text-align:center;max-width:680px;margin:0 auto">
-      <div style="display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;color:#7DD3FC;text-transform:uppercase" data-reveal><span style="width:8px;height:8px;border-radius:50%;background:#6FBF3E;animation:blink 1.5s infinite"></span>Live product · public dashboards</div>
-      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,3.8vw,48px);line-height:1.08;letter-spacing:-.02em;margin:16px 0 0" data-reveal>Look inside the trading floor</h2>
-      <p style="font-size:18px;line-height:1.6;color:#C2B594;margin:16px 0 0" data-reveal>The same dashboards we livestream - real positions, real PnL, real signals. 100 agents working a portfolio in real time, on both markets.</p>
-    </div>
-
-    <!-- segmented control -->
-    <div style="display:flex;justify-content:center;margin-top:36px" data-reveal>
-      <div style="display:inline-flex;gap:6px;padding:6px;background:rgba(255,255,255,.05);border:1px solid #3B2F19;border-radius:14px">
-        <button id="tab-crypto" type="button" style="font-family:'Hanken Grotesk',sans-serif;font-weight:600;font-size:15px;padding:11px 20px;border:none;border-radius:10px;cursor:pointer;transition:all .25s;background:linear-gradient(135deg,#38BDF8,#0EA5E9);color:#fff;box-shadow:0 8px 20px rgba(14,165,233,.35)">Crypto Futures · ETH/USDT</button>
-        <button id="tab-nasdaq" type="button" style="font-family:'Hanken Grotesk',sans-serif;font-weight:600;font-size:15px;padding:11px 20px;border:none;border-radius:10px;cursor:pointer;transition:all .25s;background:transparent;color:#C2B594;box-shadow:none">Nasdaq Futures · SPCX/USDT</button>
-      </div>
-    </div>
-
-    <!-- crypto frame -->
-    <div id="frame-crypto" data-reveal style="margin-top:30px;border-radius:18px;overflow:hidden;border:1px solid #3B2F19;background:#15100A;box-shadow:0 40px 90px -30px rgba(0,0,0,.7)">
-      <div style="display:flex;align-items:center;gap:14px;padding:12px 16px;background:#231A0E;border-bottom:1px solid #3B2F19">
-        <div style="display:flex;gap:7px"><span style="width:11px;height:11px;border-radius:50%;background:#E0573A"></span><span style="width:11px;height:11px;border-radius:50%;background:#38BDF8"></span><span style="width:11px;height:11px;border-radius:50%;background:#6FBF3E"></span></div>
-        <div style="flex:1;display:flex;align-items:center;gap:8px;max-width:380px;margin:0 auto;background:#15100A;border:1px solid #3B2F19;border-radius:8px;padding:6px 12px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#9A8A6B"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#6FBF3E" stroke-width="2.4"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>app.immt.io/dashboard/eth-usdt</div>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:#06210A;background:#6FBF3E;padding:3px 9px;border-radius:6px">LIVE</span>
-      </div>
-      <img src="assets/dash-crypto.png" alt="IMMT AI crypto futures dashboard - ETH/USDT" style="width:100%;display:block">
-      <div style="display:flex;flex-wrap:wrap;gap:10px;padding:18px 20px;background:#1A130B;border-top:1px solid #3B2F19">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#C2B594;background:rgba(56,189,248,.1);border:1px solid #3B2F19;padding:6px 12px;border-radius:8px">ETH/USDT perpetual</span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#6FBF3E;background:rgba(111,191,62,.12);border:1px solid rgba(111,191,62,.25);padding:6px 12px;border-radius:8px">+$10,720 month PnL</span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#C2B594;background:rgba(56,189,248,.1);border:1px solid #3B2F19;padding:6px 12px;border-radius:8px">LSTM confidence engine</span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#C2B594;background:rgba(56,189,248,.1);border:1px solid #3B2F19;padding:6px 12px;border-radius:8px">Live open positions</span>
-      </div>
-    </div>
-
-    <!-- nasdaq frame -->
-    <div id="frame-nasdaq" style="display:none;margin-top:30px;border-radius:18px;overflow:hidden;border:1px solid #3B2F19;background:#15100A;box-shadow:0 40px 90px -30px rgba(0,0,0,.7)">
-      <div style="display:flex;align-items:center;gap:14px;padding:12px 16px;background:#231A0E;border-bottom:1px solid #3B2F19">
-        <div style="display:flex;gap:7px"><span style="width:11px;height:11px;border-radius:50%;background:#E0573A"></span><span style="width:11px;height:11px;border-radius:50%;background:#38BDF8"></span><span style="width:11px;height:11px;border-radius:50%;background:#6FBF3E"></span></div>
-        <div style="flex:1;display:flex;align-items:center;gap:8px;max-width:380px;margin:0 auto;background:#15100A;border:1px solid #3B2F19;border-radius:8px;padding:6px 12px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#9A8A6B"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#6FBF3E" stroke-width="2.4"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>app.immt.io/dashboard/spcx-usdt</div>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:#221A0E;background:#7DD3FC;padding:3px 9px;border-radius:6px">NEW</span>
-      </div>
-      <img src="assets/dash-nasdaq.png" alt="IMMT AI Nasdaq futures dashboard - SPCX/USDT" style="width:100%;display:block">
-      <div style="display:flex;flex-wrap:wrap;gap:10px;padding:18px 20px;background:#1A130B;border-top:1px solid #3B2F19">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#C2B594;background:rgba(56,189,248,.1);border:1px solid #3B2F19;padding:6px 12px;border-radius:8px">SPCX/USDT futures</span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#C2B594;background:rgba(56,189,248,.1);border:1px solid #3B2F19;padding:6px 12px;border-radius:8px">CME session clock</span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#C2B594;background:rgba(56,189,248,.1);border:1px solid #3B2F19;padding:6px 12px;border-radius:8px">Institutional-grade liquidity</span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#C2B594;background:rgba(56,189,248,.1);border:1px solid #3B2F19;padding:6px 12px;border-radius:8px">In retraining now</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SECTION 7 - BUSINESS MODEL ============ -->
-<section style="padding:110px 32px;background:#F3EAD7" data-screen-label="Business Model">
-  <div style="max-width:1240px;margin:0 auto">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;color:#0284C7;text-transform:uppercase" data-reveal>Business model</div>
-    <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,46px);line-height:1.08;letter-spacing:-.02em;margin:16px 0 48px;color:#221A0E;max-width:640px" data-reveal>IMMT monetizes autonomous execution</h2>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
-      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:18px;padding:30px">
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin:0 0 18px;color:#221A0E">Agent rental model</h3>
-        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px">
-          <li style="display:flex;gap:10px;font-size:15px;color:#6E6149;line-height:1.5"><span style="color:#0EA5E9;font-weight:700">-</span>Users rent AI trading agents</li>
-          <li style="display:flex;gap:10px;font-size:15px;color:#6E6149;line-height:1.5"><span style="color:#0EA5E9;font-weight:700">-</span><strong style="color:#221A0E">20% performance fee</strong>&nbsp;on profits</li>
-          <li style="display:flex;gap:10px;font-size:15px;color:#6E6149;line-height:1.5"><span style="color:#0EA5E9;font-weight:700">-</span>Aligned incentives: no profits, no upside for IMMT</li>
-        </ul>
-      </div>
-      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:18px;padding:30px">
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin:0 0 18px;color:#221A0E">Day trading access</h3>
-        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px">
-          <li style="display:flex;gap:10px;font-size:15px;color:#6E6149;line-height:1.5"><span style="color:#0EA5E9;font-weight:700">-</span><strong style="color:#221A0E">$75</strong>&nbsp;per agent per day</li>
-          <li style="display:flex;gap:10px;font-size:15px;color:#6E6149;line-height:1.5"><span style="color:#0EA5E9;font-weight:700">-</span>On-demand execution for active traders</li>
-          <li style="display:flex;gap:10px;font-size:15px;color:#6E6149;line-height:1.5"><span style="color:#0EA5E9;font-weight:700">-</span>Real-time AI decision making</li>
-        </ul>
-      </div>
-      <div data-reveal style="background:linear-gradient(165deg,#2A2010,#1E1710);border:1px solid #3B2F19;border-radius:18px;padding:30px;color:#F2E9D6">
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin:0 0 18px;color:#fff">Token utility <span style="color:#7DD3FC">($IMMT)</span></h3>
-        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px">
-          <li style="display:flex;gap:10px;font-size:15px;color:#C2B594;line-height:1.5"><span style="color:#7DD3FC;font-weight:700">-</span>Gas fee burned with every transaction</li>
-          <li style="display:flex;gap:10px;font-size:15px;color:#C2B594;line-height:1.5"><span style="color:#7DD3FC;font-weight:700">-</span>Governance token for platform decisions</li>
-          <li style="display:flex;gap:10px;font-size:15px;color:#C2B594;line-height:1.5"><span style="color:#7DD3FC;font-weight:700">-</span>Value vault accruing from all products</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SECTION 8 - MARKET OPPORTUNITY ============ -->
-<section style="padding:110px 32px;background:#FBF6EA" data-screen-label="Market Opportunity">
-  <div style="max-width:1240px;margin:0 auto">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center">
-      <div>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;color:#0284C7;text-transform:uppercase" data-reveal>Market opportunity</div>
-        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,3.4vw,44px);line-height:1.1;letter-spacing:-.02em;margin:16px 0 0;color:#221A0E" data-reveal>A trillion-dollar market, underserved at the retail level</h2>
-        <div style="margin-top:32px;display:flex;flex-direction:column;gap:14px">
-          <div data-reveal style="background:#1E1710;border-radius:14px;padding:20px 22px;color:#fff;display:flex;align-items:baseline;justify-content:space-between">
-            <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#9A8A6B">TAM</span>
-            <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:30px;color:#7DD3FC">$87.6B</span>
+      <div style="display:flex; flex-direction:column;">
+        <sc-for list="{{ l5Points }}" as="pt" hint-placeholder-count="4">
+          <div style="display:flex; gap:20px; padding:22px 0; border-bottom:1px solid rgba(21,22,27,0.08);">
+            <div style="font-family:'Clash Display',sans-serif; font-size:20px; font-weight:600; color:#3626ff; flex-shrink:0; width:36px;">{{ pt.num }}</div>
+            <div style="font-size:15px; line-height:1.55; color:#26282f; padding-top:2px;">{{ pt.text }}</div>
           </div>
-          <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:14px;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;margin:0 14px">
-            <div><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#8A7C61">SAM</span><div style="font-size:13px;color:#6E6149;margin-top:2px">Crypto Futures + AI Trading</div></div>
-            <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:26px;color:#0EA5E9">$17.6B</span>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPONENTS -->
+  <div id="components" style="position:relative; background:#ffffff; border-top:1px solid rgba(21,22,27,0.08); border-bottom:1px solid rgba(21,22,27,0.08); padding:{{ componentsPadding }}; z-index:1;">
+    <div style="max-width:1320px; margin:0 auto;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:18px;">
+        <svg width="24" height="44" viewBox="0 0 24 44"><path d="M12 0 C 2 10, 22 20, 12 44" stroke="#3626ff" stroke-width="1.5" fill="none"/></svg>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:1.5px; color:#3626ff; text-transform:uppercase;">04 — Components</div>
+      </div>
+      <div style="font-family:'Clash Display',sans-serif; font-size:36px; font-weight:600; letter-spacing:-1px; color:#15161b; margin-bottom:52px; max-width:640px;">Three systems, one boundary</div>
+      <div style="position:relative; display:{{ componentsDisplay }}; flex-direction:column; grid-template-columns:1fr 1.15fr 1fr; gap:{{ componentsGap }}; align-items:center; min-height:{{ componentsMinHeight }};">
+        <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+          <svg style="position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0;" viewBox="0 0 1000 340" preserveAspectRatio="none">
+            <path d="M 220 100 C 340 100, 380 170, 500 170" stroke="rgba(54,38,255,0.3)" stroke-width="1.5" fill="none"/>
+            <path d="M 780 100 C 660 100, 620 170, 500 170" stroke="rgba(54,38,255,0.3)" stroke-width="1.5" fill="none"/>
+          </svg>
+        </sc-if>
+        <div style="position:relative; z-index:1; background:#fbfaf6; border:1px solid rgba(21,22,27,0.08); border-radius:18px; padding:30px; margin-right:{{ componentsMarginRight }}; transition:transform 0.4s ease, box-shadow 0.4s ease; transform-style:preserve-3d; perspective:800px;" style-hover="transform:translateY(-8px) rotateY(-6deg) rotateX(3deg); box-shadow:0 30px 50px rgba(21,22,27,0.12);">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#3626ff; letter-spacing:1px; margin-bottom:16px;">DEEP LEARNING</div>
+          <div style="font-family:'Clash Display',sans-serif; font-size:20px; font-weight:600; color:#15161b; margin-bottom:10px;">Codex</div>
+          <div style="font-size:14px; line-height:1.55; color:#5c5f68;">Supports deep learning and self-improvement design — proposing verified changes to each AI's own decision logic.</div>
+        </div>
+        <div style="position:relative; z-index:1; background:#15161b; border-radius:22px; padding:44px 34px; box-shadow:0 30px 60px rgba(21,22,27,0.18); transition:transform 0.4s ease, box-shadow 0.4s ease;" style-hover="transform:translateY(-10px) scale(1.02); box-shadow:0 40px 70px rgba(21,22,27,0.3);">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#8b8fff; letter-spacing:1px; margin-bottom:18px;">SAFETY LAYER</div>
+          <div style="font-family:'Clash Display',sans-serif; font-size:26px; font-weight:600; color:#ffffff; margin-bottom:14px;">Central Worker</div>
+          <div style="font-size:15px; line-height:1.6; color:#a4a7b0;">Remains the safety and execution layer — not the controller of every trading decision.</div>
+        </div>
+        <div style="position:relative; z-index:1; background:#fbfaf6; border:1px solid rgba(21,22,27,0.08); border-radius:18px; padding:30px; margin-left:{{ componentsMarginLeft }}; transition:transform 0.4s ease, box-shadow 0.4s ease; transform-style:preserve-3d; perspective:800px;" style-hover="transform:translateY(-8px) rotateY(6deg) rotateX(3deg); box-shadow:0 30px 50px rgba(21,22,27,0.12);">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#3626ff; letter-spacing:1px; margin-bottom:16px;">FAST REFLECTION</div>
+          <div style="font-family:'Clash Display',sans-serif; font-size:20px; font-weight:600; color:#15161b; margin-bottom:10px;">Local LLM</div>
+          <div style="font-size:14px; line-height:1.55; color:#5c5f68;">Provides fast summaries and reflection between trades, close to the decision loop.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SESSION SEPARATION -->
+  <div id="session" style="position:relative; max-width:1320px; margin:0 auto; padding:{{ sessionPadding }}; z-index:1;">
+    <div style="position:relative; border-radius:24px; overflow:hidden; display:{{ sessionDisplay }}; flex-direction:column; grid-template-columns:1.2fr 0.8fr; min-height:{{ sessionMinHeight }}; box-shadow:0 30px 60px rgba(21,22,27,0.08);">
+      <div style="background:#3626ff; padding:48px 44px; display:flex; flex-direction:column; justify-content:center;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1px; color:#c9c8ff; margin-bottom:16px;">REGULAR SESSION</div>
+        <div style="font-family:'Clash Display',sans-serif; font-size:30px; font-weight:600; color:#ffffff; margin-bottom:16px;">Live decisions</div>
+        <div style="font-size:15.5px; line-height:1.65; color:#dcdaff; max-width:420px;">Real trading decisions, entries, position management, self-position exits, fast post-trade review, and abnormal-behavior monitoring.</div>
+      </div>
+      <div style="background:#15161b; padding:48px 40px; display:flex; flex-direction:column; justify-content:center;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1px; color:#8a8d96; margin-bottom:16px;">OFF-SESSION</div>
+        <div style="font-family:'Clash Display',sans-serif; font-size:24px; font-weight:600; color:#ffffff; margin-bottom:14px;">Observation &amp; research</div>
+        <div style="font-size:14.5px; line-height:1.6; color:#a4a7b0;">Hypothesis building, waiting discipline, preparation, Codex deep learning, Local LLM reflection, and self-code candidates.</div>
+      </div>
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <svg style="position:absolute; top:0; left:calc(60% - 60px); width:120px; height:100%; pointer-events:none;" viewBox="0 0 120 320" preserveAspectRatio="none">
+          <path d="M 70 0 C 30 100, 90 220, 50 320" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" fill="none"/>
+        </svg>
+      </sc-if>
+    </div>
+  </div>
+
+  <!-- SAFETY -->
+  <div id="safety" style="position:relative; background:#15161b; padding:{{ safetyPadding }}; z-index:1; overflow:hidden;">
+    <svg style="position:absolute; top:0; right:0; width:600px; height:600px; opacity:0.5;" viewBox="0 0 600 600">
+      <path d="M 600 0 C 400 100, 500 300, 300 350 S 100 500, 0 600" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" fill="none"/>
+      <path d="M 600 100 C 450 180, 520 350, 350 420" stroke="rgba(54,38,255,0.3)" stroke-width="1.5" fill="none"/>
+    </svg>
+    <div style="max-width:1320px; margin:0 auto; position:relative;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:40px; flex-wrap:wrap; margin-bottom:48px;">
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:1.5px; color:#8b8fff; text-transform:uppercase; margin-bottom:14px;">05 — Live Trading</div>
+          <div style="font-family:'Clash Display',sans-serif; font-size:36px; font-weight:600; letter-spacing:-1px; color:#ffffff; max-width:560px;">When LIVE mode is on, boundaries don't move</div>
+        </div>
+        <div style="font-size:15.5px; line-height:1.6; color:#a4a7b0; max-width:420px;">When LIVE mode is enabled, AI decisions can lead to real order execution. Central safety boundaries remain in place at all times.</div>
+      </div>
+      <div style="display:{{ safetyDisplay }}; flex-direction:column; grid-template-columns:repeat(3, 1fr); gap:14px;">
+        <sc-for list="{{ safetyItems }}" as="item" hint-placeholder-count="6">
+          <div style="border:1px solid rgba(255,255,255,0.14); border-radius:14px; padding:22px; background:rgba(255,255,255,0.04); display:flex; align-items:center; gap:12px;">
+            <span style="width:7px; height:7px; border-radius:50%; background:#8b8fff; flex-shrink:0;"></span>
+            <span style="font-size:14.5px; color:#e6e7ec;">{{ item }}</span>
           </div>
-          <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:14px;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;margin:0 28px">
-            <div><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#8A7C61">SOM</span><div style="font-size:13px;color:#6E6149;margin-top:2px">Early Retail + Emerging Market</div></div>
-            <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:#4E9E2E">$176M</span>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI ARENA -->
+  <div id="arena" style="position:relative; max-width:1320px; margin:0 auto; padding:{{ arenaPadding }}; z-index:1;">
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:18px;">
+      <svg width="24" height="44" viewBox="0 0 24 44"><path d="M12 0 C 2 10, 22 20, 12 44" stroke="#3626ff" stroke-width="1.5" fill="none"/></svg>
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:1.5px; color:#3626ff; text-transform:uppercase;">Solutions — AI Arena</div>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:32px; margin-bottom:36px; flex-wrap:wrap;">
+      <div style="font-family:'Clash Display',sans-serif; font-size:36px; font-weight:600; letter-spacing:-1px; color:#15161b; max-width:640px;">100 agents compete. Only the fittest keep trading.</div>
+      <div style="font-size:15.5px; line-height:1.6; color:#5c5f68; max-width:420px;">AI Arena runs many independent traders side by side under identical rules, ranking them on verified, risk-adjusted performance — not raw PnL.</div>
+    </div>
+    <div style="position:relative; border-radius:22px; overflow:hidden; box-shadow:0 30px 60px rgba(21,22,27,0.1);">
+      <img src="assets/100-agents-vs-1.png" alt="AI Arena: 100 agents vs 1" style="display:block; width:100%; height:auto;"/>
+    </div>
+  </div>
+
+  <!-- METRICS -->
+  <div id="metrics" style="position:relative; max-width:1320px; margin:0 auto; padding:{{ metricsPadding }}; z-index:1;">
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:18px;">
+      <svg width="24" height="44" viewBox="0 0 24 44"><path d="M12 0 C 2 10, 22 20, 12 44" stroke="#3626ff" stroke-width="1.5" fill="none"/></svg>
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:1.5px; color:#3626ff; text-transform:uppercase;">06 — Monitoring</div>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:32px; margin-bottom:52px; flex-wrap:wrap;">
+      <div style="font-family:'Clash Display',sans-serif; font-size:36px; font-weight:600; letter-spacing:-1px; color:#15161b; max-width:560px;">What gets measured, every session</div>
+      <svg width="140" height="50" viewBox="0 0 140 50"><path d="M 0 40 C 30 10, 60 45, 90 20 S 130 5, 140 15" stroke="#3626ff" stroke-width="1.5" fill="none"/></svg>
+    </div>
+    <div style="display:{{ metricsDisplay }}; flex-direction:column; grid-template-columns:1fr 1fr 1fr;">
+      <div style="padding:{{ metricsCol1Padding }}; border-right:{{ metricsCol1BorderRight }}; border-bottom:{{ metricsColBorderBottom }};">
+        <div style="font-family:'Clash Display',sans-serif; font-size:44px; font-weight:600; color:#3626ff; margin-bottom:16px; letter-spacing:-1px;">01</div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#9a9da5; letter-spacing:1px; margin-bottom:10px;">RESULT</div>
+        <div style="font-size:15px; line-height:1.6; color:#26282f;">Realized PnL and net PnL after fees.</div>
+      </div>
+      <div style="padding:{{ metricsCol2Padding }}; border-right:{{ metricsCol1BorderRight }}; border-bottom:{{ metricsColBorderBottom }};">
+        <div style="font-family:'Clash Display',sans-serif; font-size:44px; font-weight:600; color:#3626ff; margin-bottom:16px; letter-spacing:-1px;">02</div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#9a9da5; letter-spacing:1px; margin-bottom:10px;">DECISION QUALITY</div>
+        <div style="font-size:15px; line-height:1.6; color:#26282f;">Win rate, MAE/MFE, giveback, repeated loss-entry count, delayed invalidation, exit-decision quality.</div>
+      </div>
+      <div style="padding:{{ metricsCol3Padding }};">
+        <div style="font-family:'Clash Display',sans-serif; font-size:44px; font-weight:600; color:#3626ff; margin-bottom:16px; letter-spacing:-1px;">03</div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#9a9da5; letter-spacing:1px; margin-bottom:10px;">SELF-IMPROVEMENT</div>
+        <div style="font-size:15px; line-height:1.6; color:#26282f;">Performance before and after self program develop code application.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEVELS TABLE -->
+  <div id="levels" style="position:relative; background:#ffffff; border-top:1px solid rgba(21,22,27,0.08); border-bottom:1px solid rgba(21,22,27,0.08); padding:{{ levelsPadding }}; z-index:1;">
+    <div style="max-width:1320px; margin:0 auto;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:18px;">
+        <svg width="24" height="44" viewBox="0 0 24 44"><path d="M12 0 C 2 10, 22 20, 12 44" stroke="#3626ff" stroke-width="1.5" fill="none"/></svg>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:1.5px; color:#3626ff; text-transform:uppercase;">07 — Reference</div>
+      </div>
+      <div style="font-family:'Clash Display',sans-serif; font-size:36px; font-weight:600; letter-spacing:-1px; color:#15161b; margin-bottom:14px; max-width:680px;">L1–L5 autonomous trading levels</div>
+      <div style="font-size:15.5px; line-height:1.6; color:#5c5f68; margin-bottom:48px; max-width:720px;">The levels classify how independently an AI can judge and improve itself — not simply how much profit it made.</div>
+
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <div style="border:1px solid rgba(21,22,27,0.1); border-radius:18px; overflow:hidden;">
+        <div style="display:grid; grid-template-columns:70px 200px 1fr 1fr; background:#fbfaf6; padding:16px 26px; border-bottom:1px solid rgba(21,22,27,0.1);">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1px; color:#9a9da5;">LEVEL</div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1px; color:#9a9da5;">NAME</div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1px; color:#9a9da5;">CORE DEFINITION</div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1px; color:#9a9da5;">DIFFERENCE FROM A BOT</div>
+        </div>
+        <sc-for list="{{ levels }}" as="lv" hint-placeholder-count="5">
+          <div style="display:grid; grid-template-columns:70px 200px 1fr 1fr; padding:24px 26px; border-bottom:1px solid rgba(21,22,27,0.06); background:{{ lv.bg }}; transition:background 0.2s ease;" style-hover="background:#fbfaf6;">
+            <div style="font-family:'Clash Display',sans-serif; font-size:18px; font-weight:600; color:{{ lv.accent }};">{{ lv.level }}</div>
+            <div style="font-size:14.5px; font-weight:600; color:#15161b;">{{ lv.name }}</div>
+            <div style="font-size:14px; line-height:1.55; color:#3f4149; padding-right:16px;">{{ lv.def }}</div>
+            <div style="font-size:14px; line-height:1.55; color:#5c5f68;">{{ lv.diff }}</div>
+          </div>
+        </sc-for>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ isMobile }}">
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <sc-for list="{{ levels }}" as="lv" hint-placeholder-count="5">
+          <div style="border:1px solid rgba(21,22,27,0.1); border-radius:16px; padding:20px; background:{{ lv.bg }};">
+            <div style="display:flex; align-items:baseline; gap:10px; margin-bottom:10px;">
+              <div style="font-family:'Clash Display',sans-serif; font-size:20px; font-weight:600; color:{{ lv.accent }};">{{ lv.level }}</div>
+              <div style="font-size:14.5px; font-weight:600; color:#15161b;">{{ lv.name }}</div>
+            </div>
+            <div style="font-size:13.5px; line-height:1.55; color:#3f4149; margin-bottom:8px;">{{ lv.def }}</div>
+            <div style="font-size:13px; line-height:1.55; color:#5c5f68;">{{ lv.diff }}</div>
+          </div>
+        </sc-for>
+      </div>
+      </sc-if>
+
+      <div style="margin-top:22px; font-size:14px; line-height:1.6; color:#5c5f68; max-width:900px;">The key difference is not automatic execution. It is self-improvement: a bot repeats fixed rules, while an L5 AI finds why its judgment failed and improves its rules and execution code before the next trade.</div>
+    </div>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div style="position:relative; max-width:1320px; margin:0 auto; padding:{{ disclaimerPadding }}; z-index:1;">
+    <div style="border:1px solid rgba(21,22,27,0.12); border-radius:18px; padding:34px 38px; background:#fffaf0;">
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1.5px; color:#b5750a; margin-bottom:14px;">VERIFICATION STANDARD</div>
+      <div style="font-size:15.5px; line-height:1.7; color:#3f4149; max-width:820px;">The internal operating target uses approximately 1.5% daily return on capital as an observation line — roughly 30% as a monthly hypothesis. It is not a guaranteed or fixed expected return. This target must be verified through regular-session cumulative results including fees, slippage, losing days, maximum drawdown, tail risk, re-entry losses, and delayed exits.</div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div id="faq" style="position:relative; max-width:920px; margin:0 auto; padding:{{ faqPadding }}; z-index:1;">
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:18px;">
+      <svg width="24" height="44" viewBox="0 0 24 44"><path d="M12 0 C 2 10, 22 20, 12 44" stroke="#3626ff" stroke-width="1.5" fill="none"/></svg>
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:1.5px; color:#3626ff; text-transform:uppercase;">FAQ</div>
+    </div>
+    <div style="font-family:'Clash Display',sans-serif; font-size:36px; font-weight:600; letter-spacing:-1px; color:#15161b; margin-bottom:44px; max-width:640px;">Common questions</div>
+    <div style="display:flex; flex-direction:column;">
+      <sc-for list="{{ faqItems }}" as="item" hint-placeholder-count="5">
+        <div style="border-bottom:1px solid rgba(21,22,27,0.1);">
+          <div onClick="{{ item.toggle }}" style="display:flex; align-items:center; justify-content:space-between; gap:20px; padding:24px 4px; cursor:pointer;" style-hover="color:#3626ff;">
+            <div style="font-size:16.5px; font-weight:600; color:{{ item.headColor }};">{{ item.q }}</div>
+            <div style="flex-shrink:0; width:26px; height:26px; border-radius:50%; background:#fbfaf6; display:flex; align-items:center; justify-content:center; font-size:14px; color:#3626ff; transform:{{ item.iconRotate }}; transition:transform 0.25s ease;">+</div>
+          </div>
+          <sc-if value="{{ item.open }}">
+            <div style="padding:0 4px 26px; font-size:14.5px; line-height:1.65; color:#5c5f68; max-width:760px; animation:fadeIn 0.2s ease;">{{ item.a }}</div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- MARKETPLACE TEASER -->
+  <div id="marketplace" style="position:relative; background:#eceaff; padding:{{ marketplacePadding }}; z-index:1; overflow:hidden;">
+    <svg style="position:absolute; bottom:0; left:0; width:100%; height:100%; opacity:0.6;" viewBox="0 0 1320 400" preserveAspectRatio="none">
+      <path d="M -50 350 C 300 250, 600 400, 900 300 S 1300 200, 1400 300" stroke="rgba(54,38,255,0.18)" stroke-width="1.5" fill="none"/>
+    </svg>
+    <div style="max-width:900px; margin:0 auto; text-align:center; position:relative;">
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:1.5px; color:#3626ff; text-transform:uppercase; margin-bottom:18px;">Marketplace</div>
+      <div style="font-family:'Clash Display',sans-serif; font-size:40px; font-weight:600; letter-spacing:-1px; color:#15161b; margin-bottom:18px;">Verified strategies, built by other traders</div>
+      <div style="font-size:16.5px; line-height:1.6; color:#3f4149; max-width:600px; margin:0 auto 40px;">Copy self-trader bots, portfolio bots, templates, and signals from the community — each one carries its own verification history.</div>
+    </div>
+    <div style="max-width:1320px; margin:0 auto 40px; position:relative; overflow:hidden; -webkit-mask-image:linear-gradient(to right, transparent, black 8%, black 92%, transparent); mask-image:linear-gradient(to right, transparent, black 8%, black 92%, transparent);">
+      <div style="display:flex; gap:16px; width:max-content; animation:marqueeScroll 26s linear infinite;" style-hover="animation-play-state:paused;">
+        <sc-for list="{{ marketBots }}" as="bot" hint-placeholder-count="6">
+          <div style="width:240px; flex-shrink:0; background:#ffffff; border:1px solid rgba(21,22,27,0.08); border-radius:16px; padding:22px; box-shadow:0 20px 40px rgba(21,22,27,0.05); transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);" style-hover="transform:translateY(-5px);">
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:1px; color:{{ bot.color }}; margin-bottom:12px;">{{ bot.tag }}</div>
+            <div style="font-size:15.5px; font-weight:600; color:#15161b; margin-bottom:14px;">{{ bot.name }}</div>
+            <div style="font-size:12.5px; color:#5c5f68;">{{ bot.stat }}</div>
+          </div>
+        </sc-for>
+        <sc-for list="{{ marketBots }}" as="bot" hint-placeholder-count="6">
+          <div style="width:240px; flex-shrink:0; background:#ffffff; border:1px solid rgba(21,22,27,0.08); border-radius:16px; padding:22px; box-shadow:0 20px 40px rgba(21,22,27,0.05); transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);" style-hover="transform:translateY(-5px);">
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:1px; color:{{ bot.color }}; margin-bottom:12px;">{{ bot.tag }}</div>
+            <div style="font-size:15.5px; font-weight:600; color:#15161b; margin-bottom:14px;">{{ bot.name }}</div>
+            <div style="font-size:12.5px; color:#5c5f68;">{{ bot.stat }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="text-align:center; position:relative;">
+      <a href="#" style="display:inline-block; font-size:15px; font-weight:600; color:#ffffff; background:#3626ff; padding:16px 34px; border-radius:999px; transition:background 0.2s ease, transform 0.2s ease;" style-hover="background:#241ac2; transform:translateY(-2px);">Browse Marketplace</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="position:relative; background:#fbfaf6; border-top:1px solid rgba(21,22,27,0.08); padding:{{ footerPadding }}; z-index:1;">
+    <div style="max-width:1320px; margin:0 auto;">
+      <div style="display:grid; grid-template-columns:{{ footerGridCols }}; gap:{{ footerGap }}; margin-bottom:{{ footerMarginBottom }};">
+        <div>
+          <div style="display:flex; align-items:center; gap:9px; margin-bottom:16px;">
+            <svg width="22" height="22" viewBox="0 0 26 26"><path d="M2 13 C 2 6, 8 2, 13 2 S 24 6, 24 13 S 18 24, 13 24 S 2 20, 2 13" stroke="#3626ff" stroke-width="2" fill="none"/></svg>
+            <div style="font-family:'Clash Display',sans-serif; font-weight:600; font-size:16px; color:#15161b;">iMMT AI</div>
+          </div>
+          <div style="font-size:13.5px; line-height:1.6; color:#9a9da5; max-width:220px;">Autonomous, self-improving AI traders inside fixed safety boundaries.</div>
+        </div>
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1px; color:#9a9da5; margin-bottom:14px;">FEATURES</div>
+          <div style="display:flex; flex-direction:column; gap:9px;">
+            <a href="#loop" style="font-size:13.5px; color:#5c5f68;">Self-Trading Loop</a>
+            <a href="#l5" style="font-size:13.5px; color:#5c5f68;">AI Trading</a>
+            <a href="#levels" style="font-size:13.5px; color:#5c5f68;">Autonomy Levels</a>
+            <a href="#safety" style="font-size:13.5px; color:#5c5f68;">Pro Tools</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1px; color:#9a9da5; margin-bottom:14px;">MARKETPLACE</div>
+          <div style="display:flex; flex-direction:column; gap:9px;">
+            <a href="#marketplace" style="font-size:13.5px; color:#5c5f68;">Self-Trader Bots</a>
+            <a href="#marketplace" style="font-size:13.5px; color:#5c5f68;">Portfolio Bots</a>
+            <a href="#" style="font-size:13.5px; color:#5c5f68;">Templates</a>
+            <a href="#" style="font-size:13.5px; color:#5c5f68;">Signals</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1px; color:#9a9da5; margin-bottom:14px;">LEARN</div>
+          <div style="display:flex; flex-direction:column; gap:9px;">
+            <a href="#" style="font-size:13.5px; color:#5c5f68;">Documentation</a>
+            <a href="#" style="font-size:13.5px; color:#5c5f68;">Academy</a>
+            <a href="#" style="font-size:13.5px; color:#5c5f68;">Blog</a>
+            <a href="#" style="font-size:13.5px; color:#5c5f68;">Helpdesk</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1px; color:#9a9da5; margin-bottom:14px;">COMPANY</div>
+          <div style="display:flex; flex-direction:column; gap:9px;">
+            <a href="#" style="font-size:13.5px; color:#5c5f68;">About</a>
+            <a href="#" style="font-size:13.5px; color:#5c5f68;">Careers</a>
+            <a href="#" style="font-size:13.5px; color:#5c5f68;">Press</a>
+            <a href="#" style="font-size:13.5px; color:#5c5f68;">Support</a>
           </div>
         </div>
       </div>
-      <div data-reveal style="background:#F3EAD7;border:1px solid #EBE0CA;border-radius:20px;padding:34px">
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin:0 0 20px;color:#221A0E">Target users</h3>
-        <div style="display:flex;flex-direction:column;gap:16px">
-          <div style="display:flex;gap:14px;align-items:flex-start"><span style="width:34px;height:34px;flex:none;border-radius:9px;background:#E0F2FE;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2"><path d="M12 2v20M2 12h20" stroke-linecap="round"/></svg></span><p style="margin:0;font-size:15.5px;line-height:1.5;color:#4A4030">Retail traders tired of liquidation cycles</p></div>
-          <div style="display:flex;gap:14px;align-items:flex-start"><span style="width:34px;height:34px;flex:none;border-radius:9px;background:#E0F2FE;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p style="margin:0;font-size:15.5px;line-height:1.5;color:#4A4030">Semi-pro traders seeking automation</p></div>
-          <div style="display:flex;gap:14px;align-items:flex-start"><span style="width:34px;height:34px;flex:none;border-radius:9px;background:#E0F2FE;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2"><path d="M12 2l8 3v6c0 5-3.5 8-8 11-4.5-3-8-6-8-11V5z" stroke-linejoin="round"/></svg></span><p style="margin:0;font-size:15.5px;line-height:1.5;color:#4A4030">Emerging-market users with limited risk tolerance</p></div>
-        </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; padding-top:24px; border-top:1px solid rgba(21,22,27,0.08); font-size:12.5px; color:#9a9da5;">
+        <div>© 2026 iMMT AI. Trading involves risk. Targets are observation lines, not guarantees.</div>
+        <div style="font-family:'IBM Plex Mono',monospace;">v1.0 · regular session</div>
       </div>
     </div>
   </div>
-</section>
-
-<!-- ============ SECTION 9 - TRACTION ============ -->
-<section id="traction" style="padding:110px 32px;background:linear-gradient(180deg,#1E1710,#241B0E);color:#F2E9D6;position:relative;overflow:hidden" data-screen-label="Traction">
-  <div aria-hidden="true" style="position:absolute;inset:0;background-image:radial-gradient(600px 300px at 85% 0%,rgba(56,189,248,.1),transparent 70%)"></div>
-  <div style="position:relative;max-width:1240px;margin:0 auto">
-    <div style="display:flex;align-items:center;gap:12px" data-reveal>
-      <span style="width:9px;height:9px;border-radius:50%;background:#6FBF3E;animation:blink 1.5s infinite"></span>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;color:#7DD3FC;text-transform:uppercase">Proof of life - live &amp; operational</div>
-    </div>
-    <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,46px);line-height:1.08;letter-spacing:-.02em;margin:16px 0 48px" data-reveal>Traction that's already on the table</h2>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
-      <div data-reveal style="background:rgba(255,255,255,.04);border:1px solid #3B2F19;border-radius:16px;padding:28px">
-        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:42px;color:#fff;letter-spacing:-.02em">100</div>
-        <div style="font-size:14.5px;color:#C2B594;margin-top:4px">Deployed AI agents <span style="color:#8A7C61">(ETH/USDT live)</span></div>
-      </div>
-      <div data-reveal style="background:rgba(255,255,255,.04);border:1px solid #3B2F19;border-radius:16px;padding:28px">
-        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:42px;color:#fff;letter-spacing:-.02em">40K</div>
-        <div style="font-size:14.5px;color:#C2B594;margin-top:4px">Community members <span style="color:#8A7C61">(organic)</span></div>
-      </div>
-      <div data-reveal style="background:rgba(255,255,255,.04);border:1px solid #3B2F19;border-radius:16px;padding:28px">
-        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:42px;color:#fff;letter-spacing:-.02em">10K</div>
-        <div style="font-size:14.5px;color:#C2B594;margin-top:4px">Waitlist users <span style="color:#8A7C61">(pre-launch)</span></div>
-      </div>
-      <div data-reveal style="background:rgba(255,255,255,.04);border:1px solid #3B2F19;border-radius:16px;padding:28px">
-        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:42px;color:#fff;letter-spacing:-.02em">9</div>
-        <div style="font-size:14.5px;color:#C2B594;margin-top:4px">Paying users <span style="color:#8A7C61">(non-custodial)</span></div>
-      </div>
-      <div data-reveal style="background:linear-gradient(135deg,rgba(56,189,248,.18),rgba(14,165,233,.06));border:1px solid rgba(56,189,248,.4);border-radius:16px;padding:28px">
-        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:42px;color:#7DD3FC;letter-spacing:-.02em">$150K</div>
-        <div style="font-size:14.5px;color:#CDE9F7;margin-top:4px">Pre-committed institutional capital</div>
-      </div>
-      <div data-reveal style="background:rgba(255,255,255,.04);border:1px solid #3B2F19;border-radius:16px;padding:28px;display:flex;flex-direction:column;justify-content:center">
-        <div style="display:flex;align-items:center;gap:9px"><span style="width:8px;height:8px;border-radius:50%;background:#6FBF3E;animation:blink 1.2s infinite"></span><span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:26px;color:#6FBF3E">LIVE</span></div>
-        <div style="font-size:14.5px;color:#C2B594;margin-top:6px">Public performance dashboard</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SECTION 10 - IMMT VS THE MARKET ============ -->
-<section style="padding:110px 32px;background:#FBF6EA" data-screen-label="IMMT vs Market">
-  <div style="max-width:1100px;margin:0 auto">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;color:#0284C7;text-transform:uppercase;text-align:center" data-reveal>IMMT vs the market</div>
-    <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,46px);line-height:1.08;letter-spacing:-.02em;margin:16px 0 44px;color:#221A0E;text-align:center" data-reveal>Why nothing else compares</h2>
-    <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:18px;overflow:hidden;box-shadow:0 20px 50px -28px rgba(12,74,110,.3)">
-      <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;background:#1E1710;color:#fff">
-        <div style="padding:18px 24px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px">Feature</div>
-        <div style="padding:18px 16px;text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:#7DD3FC;background:rgba(56,189,248,.1)">IMMT</div>
-        <div style="padding:18px 16px;text-align:center;font-size:14px;color:#C2B594">Custodial Bots</div>
-        <div style="padding:18px 16px;text-align:center;font-size:14px;color:#C2B594">CEX Copy-Trade</div>
-      </div>
-      <div id="vs-rows"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SECTION 11 - WHY NOW ============ -->
-<section style="padding:110px 32px;background:#F3EAD7" data-screen-label="Why Now">
-  <div style="max-width:1240px;margin:0 auto">
-    <div style="display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center">
-      <div>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;color:#0284C7;text-transform:uppercase" data-reveal>Why now</div>
-        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,3.8vw,48px);line-height:1.05;letter-spacing:-.02em;margin:16px 0 0;color:#221A0E" data-reveal>The window is open.<br><span style="color:#0EA5E9">Briefly.</span></h2>
-        <p style="font-size:17px;line-height:1.6;color:#6E6149;margin:22px 0 0" data-reveal>IMMT is not a trading tool. It's an autonomous execution system that continuously adapts, reduces human error, and compounds survival in volatile markets.</p>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:12px">
-        <div data-reveal style="display:flex;gap:14px;align-items:center;background:#fff;border:1px solid #EBE0CA;border-radius:14px;padding:18px 22px"><span style="width:34px;height:34px;flex:none;border-radius:9px;background:#E0F2FE;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;color:#0EA5E9">↗</span><span style="font-size:16px;color:#221A0E;font-weight:500">AI trading adoption is accelerating globally</span></div>
-        <div data-reveal style="display:flex;gap:14px;align-items:center;background:#fff;border:1px solid #EBE0CA;border-radius:14px;padding:18px 22px"><span style="width:34px;height:34px;flex:none;border-radius:9px;background:#E0F2FE;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;color:#0EA5E9">↘</span><span style="font-size:16px;color:#221A0E;font-weight:500">Retail traders are getting structurally wiped by leverage cycles</span></div>
-        <div data-reveal style="display:flex;gap:14px;align-items:center;background:#fff;border:1px solid #EBE0CA;border-radius:14px;padding:18px 22px"><span style="width:34px;height:34px;flex:none;border-radius:9px;background:#E0F2FE;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;color:#0EA5E9">↓</span><span style="font-size:16px;color:#221A0E;font-weight:500">Trust in trading tools is collapsing</span></div>
-        <div data-reveal style="display:flex;gap:14px;align-items:center;background:#fff;border:1px solid #EBE0CA;border-radius:14px;padding:18px 22px"><span style="width:34px;height:34px;flex:none;border-radius:9px;background:#E0F2FE;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;color:#0EA5E9">↑</span><span style="font-size:16px;color:#221A0E;font-weight:500">Demand for automated, risk-aware systems is rising</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SECTION 12 - TEAM ============ -->
-<section id="team" style="padding:110px 32px;background:#FBF6EA" data-screen-label="Team">
-  <div style="max-width:1240px;margin:0 auto">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;color:#0284C7;text-transform:uppercase" data-reveal>Founding team</div>
-    <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,46px);line-height:1.08;letter-spacing:-.02em;margin:16px 0 48px;color:#221A0E" data-reveal>Builders behind the agents</h2>
-    <div data-reveal style="background:linear-gradient(165deg,#2A2010,#1E1710);border:1px solid #3B2F19;border-radius:20px;padding:36px;color:#F2E9D6;margin-bottom:18px;display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center">
-      <div style="width:84px;height:84px;border-radius:18px;background:linear-gradient(135deg,#38BDF8,#0EA5E9);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:30px;color:#fff;flex:none">RH</div>
-      <div>
-        <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap"><h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:24px;margin:0;color:#fff">Ray Heo</h3><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#7DD3FC">Founder / CEO / CTO</span></div>
-        <p style="font-size:15px;line-height:1.6;color:#C2B594;margin:10px 0 0;max-width:780px">20-year IT and trading veteran. Founder of Terafarm Group - the driving force behind IMMT, a standout innovator in crypto trading with 30,000+ users, 20,000 actively trading, and monthly volume above $10B across the Terafarm ecosystem.</p>
-      </div>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
-      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:24px;display:flex;gap:16px;align-items:center"><div style="width:50px;height:50px;border-radius:12px;background:#E0F2FE;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;color:#0EA5E9;flex:none">DK</div><div><div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;color:#221A0E">Douglas Kim</div><div style="font-size:13.5px;color:#8A7C61;margin-top:2px">Chief Project Manager</div></div></div>
-      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:24px;display:flex;gap:16px;align-items:center"><div style="width:50px;height:50px;border-radius:12px;background:#E0F2FE;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;color:#0EA5E9;flex:none">SO</div><div><div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;color:#221A0E">Samuel Olaide</div><div style="font-size:13.5px;color:#8A7C61;margin-top:2px">CMO - Marketing &amp; BD</div></div></div>
-      <div data-reveal style="background:#fff;border:1px solid #EBE0CA;border-radius:16px;padding:24px;display:flex;gap:16px;align-items:center"><div style="width:50px;height:50px;border-radius:12px;background:#E0F2FE;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;color:#0EA5E9;flex:none">NU</div><div><div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;color:#221A0E">Nuel</div><div style="font-size:13.5px;color:#8A7C61;margin-top:2px">Design Lead</div></div></div>
-      <div data-reveal style="background:#F3EAD7;border:1px solid #EBE0CA;border-radius:16px;padding:24px;display:flex;align-items:center;justify-content:center;text-align:center"><div><div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:#0EA5E9">Building in the open</div><div style="font-size:13.5px;color:#6E6149;margin-top:6px">A lean team shipping live, on camera, every day</div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SECTION 13 - CTA ============ -->
-<section id="community" style="position:relative;padding:0;background:#1E1710" data-screen-label="Call to Action">
-  <div style="position:relative;max-width:1240px;margin:0 auto;overflow:hidden">
-    <img src="assets/knight-guardian.png" alt="IMMT guardian" style="width:100%;display:block;object-fit:cover">
-    <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,15,9,.92) 0%,rgba(20,15,9,.45) 45%,rgba(20,15,9,.2) 100%)"></div>
-    <div data-overlaytext style="position:absolute;left:0;right:0;bottom:0;padding:0 6vw 7vh;color:#fff">
-      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,4vw,54px);line-height:1.05;letter-spacing:-.02em;margin:0;max-width:760px" data-reveal>The agent is running.<br>The only thing missing is <span style="color:#7DD3FC">you.</span></h2>
-      <div style="display:flex;flex-wrap:wrap;gap:13px;margin-top:30px" data-reveal>
-        <a href="https://youtube.com/@terafarm9093" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;padding:14px 22px;border-radius:13px;background:#fff;color:#221A0E;font-weight:600;font-size:16px;transition:transform .2s" style-hover="transform:translateY(-3px)"><svg width="18" height="18" viewBox="0 0 24 24" fill="#FF0000"><path d="M23 12c0-2.3-.2-3.9-.5-5-.3-1-1-1.7-2-2C18.9 4.5 12 4.5 12 4.5s-6.9 0-8.5.5c-1 .3-1.7 1-2 2C1.2 8.1 1 9.7 1 12s.2 3.9.5 5c.3 1 1 1.7 2 2 1.6.5 8.5.5 8.5.5s6.9 0 8.5-.5c1-.3 1.7-1 2-2 .3-1.1.5-2.7.5-5z"/><path d="M9.8 15.5l5.7-3.5-5.7-3.5z" fill="#fff"/></svg>Watch Live</a>
-        <a href="https://t.me/IMMT_group" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;padding:14px 22px;border-radius:13px;background:linear-gradient(135deg,#38BDF8,#0EA5E9);color:#fff;font-weight:600;font-size:16px;box-shadow:0 12px 26px rgba(14,165,233,.4);transition:transform .2s" style-hover="transform:translateY(-3px)">Join the Community</a>
-        <a href="https://immt.io" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;padding:14px 22px;border-radius:13px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);color:#fff;font-weight:600;font-size:16px;backdrop-filter:blur(6px);transition:transform .2s" style-hover="transform:translateY(-3px)">Visit immt.io</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ FOOTER ============ -->
-<footer style="background:#160F08;color:#C2B594;padding:48px 32px">
-  <div style="max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between">
-    <div style="display:flex;align-items:center;gap:11px">
-      <span style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#38BDF8,#0EA5E9);display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 14L9 6L12 10L15 4L20 14" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;color:#fff">IMMT<span style="color:#7DD3FC">AI</span></span>
-    </div>
-    <div style="display:flex;gap:24px;font-size:14px;flex-wrap:wrap">
-      <a href="https://youtube.com/@terafarm9093" target="_blank" rel="noopener" style="transition:color .2s" style-hover="color:#7DD3FC">YouTube</a>
-      <a href="https://t.me/IMMT_group" target="_blank" rel="noopener" style="transition:color .2s" style-hover="color:#7DD3FC">Telegram · IMMT_group</a>
-      <a href="https://x.com/IMMT_io" target="_blank" rel="noopener" style="transition:color .2s" style-hover="color:#7DD3FC">X · @IMMT_io</a>
-      <a href="https://immt.io" target="_blank" rel="noopener" style="transition:color .2s" style-hover="color:#7DD3FC">immt.io</a>
-    </div>
-    <div style="font-size:13px;color:#7A6E55;font-family:'JetBrains Mono',monospace">IMMT · Autonomous Trading Intelligence</div>
-  </div>
-</footer>
 
 </div>
+
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  componentDidMount(){
-    this._timers = [];
-    requestAnimationFrame(() => {
-      this.runCountUps();
-      this.setupReveals();
-      this.startTicker();
-      this.startFeed();
-      this.buildVsTable();
-      this.setupDashTabs();
-    });
+  state = {
+    openMenu: null,
+    mobileMenuOpen: false,
+    mobileExpanded: null,
+    lightboxOpen: false,
+    faqOpen: 0,
+    tick: 0,
+  };
+
+  getWidth = () => {
+    if (typeof document !== 'undefined' && document.documentElement) return document.documentElement.clientWidth;
+    if (typeof window !== 'undefined') return window.innerWidth;
+    return 1280;
+  };
+
+  componentDidMount() {
+    this._bump = () => this.setState(s => ({ tick: s.tick + 1 }));
+    window.addEventListener('resize', this._bump);
+    if (typeof ResizeObserver !== 'undefined') {
+      this._ro = new ResizeObserver(() => this._bump());
+      this._ro.observe(document.documentElement);
+    }
+    this._timeouts = [0, 50, 100, 200, 350, 500, 750, 1000, 1500, 2500].map(
+      (ms) => setTimeout(() => this._bump(), ms)
+    );
   }
-  componentWillUnmount(){
-    (this._timers||[]).forEach(t => clearInterval(t));
-    if (this._io) this._io.disconnect();
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._bump);
+    if (this._ro) this._ro.disconnect();
+    (this._timeouts || []).forEach(clearTimeout);
   }
-  runCountUps(){
-    document.querySelectorAll('[data-count]').forEach(el => {
-      const target = parseFloat(el.getAttribute('data-count'));
-      if (target === 0){ el.textContent = '0'; return; }
-      const dur = 1400, start = performance.now();
-      const step = (now) => {
-        const p = Math.min((now - start) / dur, 1);
-        const e = 1 - Math.pow(1 - p, 3);
-        el.textContent = Math.round(target * e).toString();
-        if (p < 1) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
-    });
-  }
-  setupReveals(){
-    const els = [...document.querySelectorAll('[data-reveal]')];
-    els.forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(26px)';
-      el.style.transition = 'opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1)';
-    });
-    this._io = new IntersectionObserver((ents) => {
-      ents.forEach((ent) => {
-        if (ent.isIntersecting){
-          const el = ent.target;
-          el.style.opacity = '1';
-          el.style.transform = 'none';
-          this._io.unobserve(el);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -7% 0px' });
-    els.forEach(el => this._io.observe(el));
-  }
-  startTicker(){
-    let eth = 3284.5, btc = 67120, pnl = 2.40;
-    const fmt = (n) => n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    const t = setInterval(() => {
-      eth = Math.max(3000, eth * (1 + (Math.random() - 0.47) * 0.0011));
-      btc = Math.max(60000, btc * (1 + (Math.random() - 0.47) * 0.0008));
-      pnl = Math.max(0.2, pnl + (Math.random() - 0.42) * 0.05);
-      const e = document.getElementById('eth-price'); if (e) e.textContent = '$' + fmt(eth);
-      const b = document.getElementById('btc-price'); if (b) b.textContent = '$' + fmt(btc);
-      const p = document.getElementById('pnl-today'); if (p) p.textContent = '+' + pnl.toFixed(2) + '%';
-    }, 1500);
-    this._timers.push(t);
-  }
-  startFeed(){
-    const agents = ['ATLAS-07','NOVA-22','ORION-14','VEGA-09','LYRA-31','HELIO-05','DRACO-18','CYGNUS-26','MAIA-12','RIGEL-03'];
-    const pairs = ['ETH/USDT','BTC/USDT'];
-    const sides = ['LONG','SHORT'];
-    const feed = document.getElementById('agent-feed');
-    const render = () => {
-      if (!feed) return;
-      const a = agents[Math.random() * agents.length | 0];
-      const pair = pairs[Math.random() * pairs.length | 0];
-      const side = sides[Math.random() * sides.length | 0];
-      const win = Math.random() > 0.26;
-      const val = (win ? '+' : '-') + (Math.random() * 1.5 + 0.12).toFixed(2) + '%';
-      const row = document.createElement('div');
-      row.style.cssText = 'display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-bottom:1px solid #2A2113;font-family:JetBrains Mono,monospace;font-size:12px;animation:heroIn .4s both';
-      row.innerHTML = '<span style="display:flex;align-items:center;gap:8px;color:#CDBFA0"><span style="width:6px;height:6px;border-radius:50%;background:' + (side === 'LONG' ? '#6FBF3E' : '#E0A92E') + '"></span>' + a + '&nbsp;<span style="color:#8A7C61;font-weight:500">' + side + '</span></span><span style="color:#8A7C61">' + pair + '</span><span style="color:' + (win ? '#6FBF3E' : '#C0573A') + ';font-weight:600">' + val + '</span>';
-      feed.insertBefore(row, feed.firstChild);
-      while (feed.children.length > 4) feed.removeChild(feed.lastChild);
+
+  setMenu = (name) => { if (this.getWidth() > 860) this.setState({ openMenu: name }); };
+  closeMenu = () => { this.setState({ openMenu: null }); };
+  toggleMobileMenu = () => this.setState(s => ({ mobileMenuOpen: !s.mobileMenuOpen }));
+  setGroup = (name) => this.setState(s => ({ mobileExpanded: s.mobileExpanded === name ? null : name }));
+  openLightbox = () => this.setState({ lightboxOpen: true });
+  closeLightbox = () => this.setState({ lightboxOpen: false });
+  stopProp = (e) => { if (e && e.stopPropagation) e.stopPropagation(); };
+  setFaq = (i) => this.setState(s => ({ faqOpen: s.faqOpen === i ? null : i }));
+
+  renderVals() {
+    const isMobile = this.getWidth() <= 860;
+    const isDesktop = !isMobile;
+    const om = this.state.openMenu;
+    const mg = this.state.mobileExpanded;
+    const pick = (d, m) => (isMobile ? m : d);
+
+    return {
+      isMobile: isMobile,
+      isDesktop: isDesktop,
+
+      // nav dropdowns (desktop hover menus) — precomputed per item, no function-call holes
+      featuresOpen: om === 'features',
+      solutionsOpen: om === 'solutions',
+      marketplaceOpen: om === 'marketplace',
+      learnOpen: om === 'learn',
+      companyOpen: om === 'company',
+      featuresColor: om === 'features' ? '#3626ff' : '#3f4149',
+      solutionsColor: om === 'solutions' ? '#3626ff' : '#3f4149',
+      marketplaceColor: om === 'marketplace' ? '#3626ff' : '#3f4149',
+      learnColor: om === 'learn' ? '#3626ff' : '#3f4149',
+      companyColor: om === 'company' ? '#3626ff' : '#3f4149',
+      openFeatures: () => this.setMenu('features'),
+      openSolutions: () => this.setMenu('solutions'),
+      openMarketplace: () => this.setMenu('marketplace'),
+      openLearn: () => this.setMenu('learn'),
+      openCompany: () => this.setMenu('company'),
+      closeMenu: this.closeMenu,
+
+      // mobile accordion
+      mobileMenuOpen: this.state.mobileMenuOpen,
+      toggleMobileMenu: this.toggleMobileMenu,
+      featuresGroupOpen: mg === 'features',
+      solutionsGroupOpen: mg === 'solutions',
+      marketplaceGroupOpen: mg === 'marketplace',
+      learnGroupOpen: mg === 'learn',
+      companyGroupOpen: mg === 'company',
+      toggleFeaturesGroup: () => this.setGroup('features'),
+      toggleSolutionsGroup: () => this.setGroup('solutions'),
+      toggleMarketplaceGroup: () => this.setGroup('marketplace'),
+      toggleLearnGroup: () => this.setGroup('learn'),
+      toggleCompanyGroup: () => this.setGroup('company'),
+
+      // responsive layout values — precomputed strings, plain dotted lookups in template
+      heroPadding: pick('120px 32px 100px', '64px 20px 48px'),
+      heroGridCols: pick('1.05fr 0.95fr', '1fr'),
+      heroHeadlineSize: pick('68px', '40px'),
+      heroStatsGap: pick('36px', '24px'),
+      heroStatsMarginTop: pick('56px', '40px'),
+      heroGraphicHeight: pick('520px', '320px'),
+      phoneWidth: pick(300, 240),
+      phoneHeight: pick(640, 512),
+      lightboxOpen: this.state.lightboxOpen,
+      openLightbox: this.openLightbox,
+      closeLightbox: this.closeLightbox,
+      stopProp: this.stopProp,
+      lightboxPadding: pick('48px', '28px 20px'),
+      lightboxDisplay: pick('flex', 'flex'),
+
+      overviewPadding: pick('60px 32px 120px', '48px 20px 64px'),
+      overviewDisplay: pick('grid', 'flex'),
+      overviewGap: pick('64px', '40px'),
+
+      loopPadding: pick('110px 32px', '64px 20px'),
+      loopDisplay: pick('grid', 'flex'),
+      loopGap: pick('56px', '36px'),
+
+      l5Padding: pick('110px 32px', '64px 20px'),
+      l5Display: pick('grid', 'flex'),
+
+      componentsPadding: pick('110px 32px', '64px 20px'),
+      componentsDisplay: pick('grid', 'flex'),
+      componentsGap: pick('0px', '16px'),
+      componentsMinHeight: pick('340px', 'auto'),
+      componentsMarginRight: pick('-10px', '0px'),
+      componentsMarginLeft: pick('-10px', '0px'),
+
+      sessionPadding: pick('110px 32px', '64px 20px'),
+      sessionDisplay: pick('grid', 'flex'),
+      sessionMinHeight: pick('320px', 'auto'),
+
+      safetyPadding: pick('110px 32px', '64px 20px'),
+      safetyDisplay: pick('grid', 'flex'),
+
+      arenaPadding: pick('60px 32px 0', '48px 20px 0'),
+      faqPadding: pick('100px 32px', '56px 20px'),
+      marketBots: [
+        { name: 'BTC Momentum L4', tag: 'Self-Trader Bot', stat: 'Verified 118d', color: '#3626ff' },
+        { name: 'ETH Mean Reversion L3', tag: 'Strategy', stat: 'Verified 64d', color: '#15161b' },
+        { name: 'Majors Portfolio Bot', tag: 'Portfolio Bot', stat: 'Verified 210d', color: '#3626ff' },
+        { name: 'Funding Rate Arb', tag: 'Signal', stat: 'Verified 41d', color: '#15161b' },
+        { name: 'SOL Breakout L4', tag: 'Self-Trader Bot', stat: 'Verified 89d', color: '#3626ff' },
+        { name: 'Cross-Exchange Basis', tag: 'Template', stat: 'Verified 33d', color: '#15161b' },
+      ],
+      metricsPadding: pick('110px 32px', '64px 20px'),
+      metricsDisplay: pick('grid', 'flex'),
+      metricsCol1Padding: pick('0 32px 0 0', '0 0 28px 0'),
+      metricsCol2Padding: pick('0 32px', '28px 0'),
+      metricsCol3Padding: pick('0 0 0 32px', '28px 0 0 0'),
+      metricsCol1BorderRight: pick('1px solid rgba(21,22,27,0.1)', 'none'),
+      metricsColBorderBottom: pick('none', '1px solid rgba(21,22,27,0.1)'),
+
+      levelsPadding: pick('110px 32px', '64px 20px'),
+
+      disclaimerPadding: pick('80px 32px', '48px 20px'),
+
+      marketplacePadding: pick('110px 32px', '64px 20px'),
+
+      footerPadding: pick('64px 32px 32px', '48px 20px 24px'),
+      footerGridCols: pick('1.4fr 1fr 1fr 1fr 1fr', '1fr 1fr'),
+      footerGap: pick('32px', '28px 20px'),
+      footerMarginBottom: pick('56px', '40px'),
+
+      objectives: [
+        { tag: 'READ', text: 'Interpret the current market state.' },
+        { tag: 'DECIDE', text: 'Decide whether to enter or wait.' },
+        { tag: 'MANAGE', text: "Manage its own position after entry." },
+        { tag: 'EXIT', text: 'Create exit evidence and decide timing and execution of its own position exit.' },
+        { tag: 'EVOLVE', text: 'Use Codex and Local LLM so the AI can evolve its own rules and self-develop code.' },
+      ],
+
+      loopSteps: [
+        { num: '01', text: 'Market observation', x: 300, y: 50, color: '#3626ff', r: 26 },
+        { num: '02', text: 'AI-specific entry decision', x: 425, y: 83.5, color: '#3626ff', r: 26 },
+        { num: '03', text: 'Position entry', x: 516.5, y: 175, color: '#3626ff', r: 26 },
+        { num: '04', text: 'Position management', x: 550, y: 300, color: '#3626ff', r: 26 },
+        { num: '05', text: 'AI self-position exit', x: 516.5, y: 425, color: '#3626ff', r: 26 },
+        { num: '06', text: 'Central safety verification & execution record', x: 425, y: 516.5, color: '#15161b', r: 34 },
+        { num: '07', text: 'Trade result analysis', x: 300, y: 550, color: '#9a9da5', r: 26 },
+        { num: '08', text: 'Reward / penalty update', x: 175, y: 516.5, color: '#9a9da5', r: 26 },
+        { num: '09', text: 'Weakness & failure-pattern accumulation', x: 83.5, y: 425, color: '#9a9da5', r: 26 },
+        { num: '10', text: 'Codex / Local LLM learning', x: 50, y: 300, color: '#3626ff', r: 26 },
+        { num: '11', text: 'Self-code proposal & application', x: 83.5, y: 175, color: '#3626ff', r: 26 },
+        { num: '12', text: 'Verification in the next trade', x: 175, y: 83.5, color: '#3626ff', r: 26 },
+      ].map((s, i) => ({ ...s, delay: i * 0.3 })),
+
+      l5Points: [
+        { num: '01', text: 'Interpret session, market state, liquidity, basis, volatility, and settlement pressure together.' },
+        { num: '02', text: 'Separate thesis, location, setup, trigger, and invalidation before entry.' },
+        { num: '03', text: 'Manage positions using MFE, MAE, giveback, time-stop, and fee-after-edge.' },
+        { num: '04', text: 'During exit, identify whether profit protection, invalidation, time-stop, session close, or tail risk has priority.' },
+      ],
+
+      safetyItems: [
+        'Hard gates', 'Execution kernel', 'Settlement safety',
+        'Duplicate-worker protection', 'API credential protection', 'Fund-transfer prohibition',
+      ],
+
+      faqItems: [
+        { q: 'Does the AI ever move funds on its own?', a: 'No. Central safety boundaries — hard gates, settlement safety, and fund-transfer protections — never move, regardless of what any agent decides during a session.' },
+        { q: 'What does L5 actually mean?', a: 'L5 is not "most profitable." It means the AI can explain its own entries, waits, exits, and losses as evidence, then improve that reasoning before the next trade — see the Autonomy Levels reference below.' },
+        { q: 'Can I use other traders\u2019 strategies?', a: 'Yes — the Marketplace offers verified self-trader bots, portfolio bots, templates, and signals, each carrying its own verification history.' },
+        { q: 'Is the ~1.5%/day figure guaranteed?', a: 'No. It is an internal observation line, not a guaranteed return. It must be verified against regular-session results including fees, slippage, drawdown, and tail risk.' },
+        { q: 'What happens outside trading hours?', a: 'During off-session, agents shift to hypothesis building, Codex deep learning, Local LLM reflection, and self-code candidates — all verified before ever reaching live trading.' },
+      ].map((item, i) => ({
+        q: item.q,
+        a: item.a,
+        open: this.state.faqOpen === i,
+        headColor: this.state.faqOpen === i ? '#3626ff' : '#15161b',
+        iconRotate: this.state.faqOpen === i ? 'rotate(45deg)' : 'rotate(0deg)',
+        toggle: () => this.setFaq(i),
+      })),
+
+      levels: [
+        { level: 'L1', name: 'Automated Bot', def: 'Executes orders when predefined rules or signals match.', diff: 'Repeats rules only; no market interpretation or self-improvement.', bg: '#ffffff', accent: '#9a9da5' },
+        { level: 'L2', name: 'Prediction-Assisted AI', def: 'Creates entry candidates from direction, probability, or confidence.', diff: 'Predicts, but entry/exit decisions still depend heavily on external logic.', bg: '#ffffff', accent: '#9a9da5' },
+        { level: 'L3', name: 'Supervised Autonomous Trader', def: 'Separates thesis, setup, trigger, and invalidation; records decision evidence.', diff: 'Begins explaining why it traded; improvements verified in simulation/shadow first.', bg: '#ffffff', accent: '#3626ff' },
+        { level: 'L4', name: 'Verified Autonomous Trader', def: 'Verifies whether its own rules and self-developed code improve performance.', diff: 'Evaluates improvement with fees, tail risk, drawdown — not only PnL.', bg: '#ffffff', accent: '#3626ff' },
+        { level: 'L5', name: 'Independent Self-Trader', def: 'Performs entry, waiting, management, self-position exit, review, and improvement using its own evidence and rules.', diff: 'Does not repeat fixed rules; finds failure causes and improves rules and execution code.', bg: '#eceaff', accent: '#3626ff' },
+      ],
     };
-    for (let i = 0; i < 4; i++) render();
-    const t = setInterval(render, 2300);
-    this._timers.push(t);
-  }
-  buildVsTable(){
-    const host = document.getElementById('vs-rows');
-    if (!host) return;
-    const rows = [
-      ['Non-custodial', 'yes', 'no', 'no'],
-      ['Transparent risk', 'yes', 'no', 'partial'],
-      ['User-owned agent', 'yes', 'no', 'no'],
-      ['On-chain logging', 'yes', 'rare', 'no'],
-      ['AI marketplace', 'yes', 'no', 'no'],
-      ['Token-aligned model', 'yes', 'rare', 'no']
-    ];
-    const cell = (v) => {
-      if (v === 'yes') return '<span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#E4F4D6;align-items:center;justify-content:center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3C8423" stroke-width="3"><path d="M5 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
-      if (v === 'no') return '<span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#F6E2DC;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C0573A" stroke-width="3"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg></span>';
-      return '<span style="font-family:JetBrains Mono,monospace;font-size:12px;color:#4B86A8;background:#E8F4FB;padding:3px 9px;border-radius:6px">' + v.charAt(0).toUpperCase() + v.slice(1) + '</span>';
-    };
-    host.innerHTML = rows.map((r, i) =>
-      '<div style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;align-items:center;border-top:1px solid #EFE6D2;' + (i % 2 ? 'background:#FCF8EF' : '') + '">' +
-        '<div style="padding:16px 24px;font-weight:600;font-size:15px;color:#221A0E">' + r[0] + '</div>' +
-        '<div style="padding:16px;text-align:center;background:rgba(56,189,248,.07)">' + cell(r[1]) + '</div>' +
-        '<div style="padding:16px;text-align:center">' + cell(r[2]) + '</div>' +
-        '<div style="padding:16px;text-align:center">' + cell(r[3]) + '</div>' +
-      '</div>'
-    ).join('');
-  }
-  setupDashTabs(){
-    const tc = document.getElementById('tab-crypto');
-    const tn = document.getElementById('tab-nasdaq');
-    const fc = document.getElementById('frame-crypto');
-    const fn = document.getElementById('frame-nasdaq');
-    if (!tc || !tn || !fc || !fn) return;
-    const apply = (btn, on) => {
-      btn.style.background = on ? 'linear-gradient(135deg,#38BDF8,#0EA5E9)' : 'transparent';
-      btn.style.color = on ? '#fff' : '#C2B594';
-      btn.style.boxShadow = on ? '0 8px 20px rgba(14,165,233,.35)' : 'none';
-    };
-    const set = (crypto) => {
-      apply(tc, crypto);
-      apply(tn, !crypto);
-      fc.style.display = crypto ? 'block' : 'none';
-      fn.style.display = crypto ? 'none' : 'block';
-    };
-    tc.onclick = () => set(true);
-    tn.onclick = () => set(false);
   }
 }
+
 </script>
 </body>
 </html>
